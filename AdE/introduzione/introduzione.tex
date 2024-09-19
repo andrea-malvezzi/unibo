@@ -5,7 +5,7 @@
 \usepackage{circuitikz} % permette di inserire porte logiche 
 \graphicspath{{../images/}} % imposta path per trovare le immagini, i .. significano "la dir precedente"
 \author{Andrea Malvezzi}
-\title{\textbf{Architettura degli Elaboratori - Introduzione}}  % textbf = testo bold
+\title{\textbf{Architettura degli Elaboratori~-~Introduzione}}  % textbf = testo bold
 \date{19 Settembre, 2024}
 \begin{document}
 \maketitle  % inserisce il titolo specificato in precedenza
@@ -38,7 +38,9 @@ Esistono diversi tipi di porte logiche, ma due di queste~-~la NAND e la NOR~-~nu
     1 & 1 & 1\\
     \hline
 \end{tabular}\\\\
-La funzione logica AND restituisce VERO (\textit{1}) soltanto quando entrambi i valori in ingresso sono VERO.
+La funzione logica AND restituisce VERO (\textit{1}) soltanto quando entrambi i valori in ingresso sono VERO.\\
+Nell'algebra booleana si indica con il simbolo della moltiplicazione "$\times$", o scrivendo vicini due valori (come (a)(b) equivale ad a$\times$b).
+\pagebreak
 \subsubsection{Porta logica OR}
 \begin{circuitikz} \draw(0, 2) node[or port, number inputs=2](myor){}
     (myor.in 1) node[anchor=east]{A}
@@ -60,7 +62,8 @@ La funzione logica AND restituisce VERO (\textit{1}) soltanto quando entrambi i 
     1 & 1 & 1\\
     \hline
 \end{tabular}\\\\
-La funzione logica OR restituisce VERO quando \underline{almeno} uno dei due valori in ingresso è VERO.
+La funzione logica OR restituisce VERO quando \underline{almeno} uno dei due valori in ingresso è VERO.\\
+Nell'algebra booleana si indica con il simbolo della somma (+).
 \subsubsection{Porta loica XOR}
 \begin{circuitikz} \draw(0, 2) node[xor port, number inputs=2](myxor){}
     (myxor.in 1) node[anchor=east]{A}
@@ -82,7 +85,8 @@ La funzione logica OR restituisce VERO quando \underline{almeno} uno dei due val
     1 & 1 & 0\\
     \hline
 \end{tabular}\\\\
-La funzione logica XOR restituisce VERO quando \underline{soltanto} uno dei due valori in ingresso è VERO.
+La funzione logica XOR restituisce VERO quando \underline{soltanto} uno dei due valori in ingresso è VERO.\\
+Nell'algebra booleana si indica con il simbolo "$\oplus$".
 \subsubsection{Porta logica NOT}
 \begin{circuitikz} \draw(0,1) node[not port, number inputs=1](mynot){}
     (mynot.in 1) node[anchor=east]{A}
