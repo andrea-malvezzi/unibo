@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\author{Andrea Malvezzi}
+\title{\textbf{Logica per l'informatica~-~Lezione~1.25.\\Formule logiche (cenni)}}
+\date{20 Settembre, 2024}
+\begin{document}
+\maketitle
+\pagebreak
+\section{Terminologia utile}
+Una proposizione equivale ad una frase per cui ha senso chiedersi se valga o meno:
+\begin{itemize}
+    \item "2 e un numero pari" $\rightarrow$ è una proposizione, 2 potrebbe essere o non essere pari;
+    \item "Mangia la mela!" $\rightarrow$ non è una proposizione, la frase ha un solo significato e non vi è nulla da intuire;
+    \item "Luca mangia la mela" $\rightarrow$ è una proposizione, Luca potrebbe mangiare la mela come potrebbe non farlo.
+\end{itemize}
+Nei linguaggi logici formali (un linguaggio con un determinato set di regole, caratteri etc...) le proposizioni sono dette "\textbf{formule logiche}".\\
+Una proposizione si può provare a dimostrare mediante una \textbf{prova}, prendendo il nome di "\textbf{enunciato}".\\
+Quando questo processo viene portato a termine con successo, si può allora parlare di \textbf{teorema}.\\
+MENTRE si svolge una prova, si può cercare di dimostrare una proposizione o si può assumere che questa valga (in seguito a un'ipotesi o previa dimostrazione).\\
+Nel primo caso, questa prenderà il nome di \textbf{conclusione}, mentre nel secondo di \textbf{premessa}.
+\section{Il ragionamento ipotetico}
+Quando ipotizziamo \textit{p} non stiamo affermando che \textit{p} valga, ma lo supponiamo, ovvero ci limitiamo a considerare le situazioni dove \textit{p} vale.
+\subsection*{Esempio di ragionamento ipotetico}
+Ipotizziamo che esistano unicorni rosa volanti e che tutti gli unicorni rosa siano femmine.\\
+In questo caso si può concludere che esistano femmine volanti, ma questo vale solamente nei mondi dove esistono unicorni rosa etc... 
+\section{Sintassi della logica del prim'ordine}
+\begin{itemize}
+    \item Falso/assurdo $\rightarrow \bot$ (bottom), che non vale mai;
+    \item Vero $\rightarrow \top$ (top), che vale sempre;
+    \item \textit{P} \textbf{e} \textit{Q}, \textbf{congiunzione} di \textit{P} e \textit{Q} $\rightarrow$ \textit{P} $\land$ \textit{Q}, che vale se valgono sia \textit{P} che \textit{Q};
+    \item \textit{P} \textbf{oppure} \textit{Q}, \textbf{disgiunzione} di \textit{P} e \textit{Q} $\rightarrow$ \textit{P} $\lor$ \textit{Q}, che vale se vale almeno una tra \textit{P} e \textit{Q};
+    \item \textbf{se} \textit{P} \textbf{allora} \textit{Q}, \textbf{implicazione logica} tra \textit{P} e \textit{Q} $\rightarrow$ \textit{P} $\Rightarrow$ \textit{Q}, vale se \textit{Q} vale sotto l'ipotesi di \textit{P};
+    \item \textbf{non} \textit{P} $\rightarrow \neg$\textit{P}, vale se \textit{P} falso;
+    \item \textit{P} \textbf{sse} \textit{Q}, \textbf{coimplicazione} di \textit{P} e di \textit{Q} $\rightarrow$ \textit{P} $\Leftrightarrow$ \textit{Q}, che vale se \textit{P} $\Rightarrow$ \textit{Q} e \textit{Q} $\Rightarrow$ \textit{P};
+    \item \textbf{Per ogni} x P $\rightarrow \forall$ x.\textit{P}, che vale se \textit{P} vale per ogni possibile valore di x;
+    \item \textbf{Esiste} x P $\rightarrow \exists$ x.\textit{P}, che vale se \textit{P} vale per almeno un possibile valore di x;  
+\end{itemize}
+\section{Ordine delle operazioni logiche}
+Per ridurre l'uso delle parentesi:
+\begin{itemize}
+    \item $\neg, >, <, \lor, \land, \Rightarrow, =, \Leftrightarrow$ (hanno la precedenza);
+    \item $\land, \lor, \Rightarrow, \Leftrightarrow$ (sono associativi a destra, si risolve da destra a sinistra); 
+\end{itemize}
+\section{Connettivi}
+Esistono connettivi di diverse \textbf{arietà}: esistono connettivi 0-ari, unari, binari e quanificatori, in base al numero di dati presi in input.\\
+Ad esempio, il simbolo $\neg$ è un operatore unario, in quanto riceve in input solamente un valore da negare, mentre l'operatore $\land$ è binario, in quanto riceve in input due dati.
+\end{document}
