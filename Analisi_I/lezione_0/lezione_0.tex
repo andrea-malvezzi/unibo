@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+\author{Andrea Malvezzi}
+\title{\textbf{Logica per l'informatica~-~Lezione 0}}
+\date{20 Settembre, 2024}
+\begin{document}
+\maketitle
+\pagebreak
+\section{A cosa serve la logica?}
+La logica serve a garantire la correttezza del procedimento di decomposizione e ricomposizione di un problema più complesso in vari problemi più semplici da risolvere.
+\section{Come si studia la logica?}
+Abbiamo detto che "logica" si intendono gli strumenti usati per dedurre conclusioni logiche. Ma per studiare questi strumenti occorrono ulteriori strumenti logici... si parla quindi di una \textbf{meta-logica}.
+\section{Diversi tipi di logica}
+Il fatto che per studiare la logica occorra un tipo diverso di logica, implica l'esistenza di logiche differenti tra loro. Difatti, facendo variare il significato della parola "valere", si originano diversi sistemi di logica differenti: 
+\begin{itemize}
+    \item Valere = verità $\rightarrow$ logica classica, quella usata nella matematica;
+    \item Valere = evidenza/programmabilità $\rightarrow$ logica intuizionista;
+    \item Valere = accadere $\rightarrow$ logica temporale, utilizzata in certe branche dell'informatica;
+    \item Valere = conoscenza $\rightarrow$ logica epistemica;
+    \item Valere = possesso $\rightarrow$ logica lineare (io posseggo x, lui possiede la possibilità di trasformare x in y, quindi possiamo interagire).
+\end{itemize}
+Ed altre...
+\section{Qualche cenno prima di cominciare}
+Nella logica si hanno delle premesse (le \textit{hypothesis, HP}) che possono essere corrette o meno (\underline{NON} vere o false!).\\
+Quando valgono queste \textit{HP} allora \textit{vale} (vedi capitolo 1.3 "Diversi tipi di logica") anche la conclusione.\\
+\section{Esempio di logica non basata sulla verità}
+In un libro fantasy possono esserci ragionamenti sugli unicorni rosa volanti.\\
+Il ragionamento puo essere corretto o sbagliato, ma sicuramente non rifletterà qualcosa di reale, di vero.\\
+Il sistema logico scelto sarà quindi basato non sulla logica classica (valere $\rightarrow$ verità), ma bensì su un altro tipo di logica.
+\section{Correttezza e Completezza}
+\begin{itemize}
+    \item Correttezza: tutto ciò che risulta dimostrabile vale?\\
+    Ovvero, le regole che abbiamo prefissato sono corrette?
+    \item Completezza delle regole: tutto ciò che vale risulta dimostrabile?\\
+    Ovvero, abbiamo messo abbastanza regole?
+    \item Completezza delle ipotesi: pur aggiungendo nuove ipotesi, non sempre sarà possibile coprire tutti i casi possibili: è importante comprendere i limiti della logica scelta per la risoluzione di uno specifico problema.
+\end{itemize}
+\end{document}
