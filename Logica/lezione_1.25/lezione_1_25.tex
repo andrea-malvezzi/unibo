@@ -41,8 +41,12 @@ Per ridurre l'uso delle parentesi:
     \item $\neg, >, <, \lor, \land, \Rightarrow, =, \Leftrightarrow$ (hanno la precedenza);
     \item $\land, \lor, \Rightarrow, \Leftrightarrow$ (sono associativi a destra, si risolve da destra a sinistra); 
 \end{itemize}
+\pagebreak
 \section{Connettivi}
 Esistono connettivi di diverse \textbf{arietà}: esistono connettivi 0-ari, unari, binari e quanificatori, in base al numero di dati presi in input.\\
 Ad esempio, il simbolo $\neg$ è un operatore unario, in quanto riceve in input solamente un valore da negare, mentre l'operatore $\land$ è binario, in quanto riceve in input due dati.
-Ad esempio, il simbolo $\neg$ è un operatore unario, in quanto riceve in input solamente un valore da negare, mentre l'operatore $\land$ è binario, in quanto riceve in input due dati.
+\subsection*{Esempio di utilizzo corretto di connettivi}
+$A \land \neg B \lor C \Rightarrow D \Rightarrow B \lor C \lor E$\\
+Questa proposizione logica si legge, tenendo a mente l'ordine degli operatori logici, nella maniera seguente:\\
+$((A \land \neg B) \land C) \Rightarrow (D \Rightarrow (B \lor (C \lor E)))$.
 \end{document}
