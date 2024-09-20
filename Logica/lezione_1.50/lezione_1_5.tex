@@ -1,0 +1,36 @@
+\documentclass[12pt]{article}
+\author{Andrea Malvezzi}
+\title{\textbf{Logica per l'informatica~-~Lezione~1.5.\\Teoria assiomatica degli insiemi (cenni)}}
+\date{20 Settembre, 2024}
+\begin{document}
+\maketitle
+\pagebreak
+\section{Introduzione}
+I matematici ragionano su vari elementi, alcuni concreti ed altri astratti.\\
+Per fare ciò occorre assumere che questi elementi soddisfino certe proprietà, ragionando al contempo stesso sulle conseguenze di queste.
+\subsection{Esempio di proposizione non sempre valida}
+Un esempio significativo lo si ha con la geometria euclidea.\\
+Prendendo uno dei suoi principali assiomi, ovvero "due rette parallele non si incontrano mai", si va ad esaminare una proposizione che non sempre risulta valida:
+\begin{itemize}
+    \item Prendendo ad esempio come concretizzazione delle due rette due segni a matita paralleli disegnati su un foglio, ovviamente i due non si incontreranno mai;
+    \item Prendendo invece come concretizzazione due persone che camminano parallelarmente sulla Terra, le due potrebbero eventualmente incontrarsi, a causa della forma del pianeta.
+\end{itemize}
+Per rendere tale proposizione consistente occorre quindi effettuare assunzioni a loro volta consistenti, tentando di ridurre al minimo le incongruenze nel nostro pensiero.
+\pagebreak
+\section{Dare fondamento a un sistema logico}
+Dare un fondamento a un sistema logico significa quindi, all'occorrenza, implementare un nuovo set di \textbf{enti} (concetto di cui si vuole parlare) e ipotesi partendo da un subset più piccolo che sappiamo essere consistente/coerente.\\
+Partendo dal piccolo siamo quindi in grado di implementare qualcosa di nuovo.\\
+Un esempio di ciò è la \textbf{teoria degli insiemi}, adottata verso il 1900 come \textbf{fondamento} per la matematica.\\
+Per poter ridurre gli enti matematici a insiemi, gli enti di partenza della teoria degli insiemi devono essere il più \textit{"bassi"} ed \textit{"astratti"} possibile, escludendo quindi numeri, funzioni etc... che verranno poi implementate in seguito se necessario.
+\section{La teoria degli insiemi e l'informatica}
+Si può affermare che la teoria degli insiemi sia il "\textit{linguaggio macchina della matematica}".\\
+Questo costituisce difatti uno strumento utile per sviluppare nuovi teoremi, implementando nuovi insiemi e fornendo così una capacità di astrazione infinita (grazie a tale fondamento si può effettivamente parlare di "infiniti numerici").\\
+Inoltre un insieme è un ente molto flessibile, in quanto ogni cosa può essere considerata un insieme, ed un insieme può essere un recipiente per altri insiemi, rimanendo comunque \textbf{unitario} e non un sottoinsieme a sua volta.\\
+Basti pensare a un sacchetto contenente delle biglie di 3 colori diversi: il sacchetto costituisce un insieme senza \textbf{soprainsieme}, contenente tanti altri insiemi minori (le palline di un certo colore, quelle con un certo dettaglio, etc...)\\
+Tuttavia, così facendo si perde la capacità computazionale in cui l'informatica invece eccelle: basti pensare all'inefficienza nel rappresentare i dati.\\
+Il numero 10, banalmente, richiede un centinaio di insiemi per essere definito e rappresentato correttamente, mentre per un calcolatore si tratta solamente di 4 bit disposti in una certa maniera.
+\section{La teoria naive degli insiemi}
+Fu il primo tentativo di descrivere la teoria degli insiemi da parte di Cantor.\\
+Oggi si considera inconsistente in seguito ad un assunto sviluppato da Russell capace di mettere in crisi l'intero sistema.\\
+
+\end{document}
