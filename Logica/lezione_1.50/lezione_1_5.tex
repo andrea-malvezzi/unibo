@@ -31,6 +31,39 @@ Tuttavia, così facendo si perde la capacità computazionale in cui l'informatic
 Il numero 10, banalmente, richiede un centinaio di insiemi per essere definito e rappresentato correttamente, mentre per un calcolatore si tratta solamente di 4 bit disposti in una certa maniera.
 \section{La teoria naive degli insiemi}
 Fu il primo tentativo di descrivere la teoria degli insiemi da parte di Cantor.\\
-Oggi si considera inconsistente in seguito ad un assunto sviluppato da Russell capace di mettere in crisi l'intero sistema.\\
-
+Essenzialmente secondo questa teoria:
+\begin{itemize}
+    \item Posso formare insiemi in qualunque modo mi venga in mente.
+    \begin{itemize}
+        \item es. elencando gli elementi: \textit{A} = \{1, 2, 3, ...\};
+        \item es. tramite \textbf{l'assioma di comprensione}: \textit{B} = \{\textit{X} | \textit{P(X)}\};  
+    \end{itemize}
+    \item Gli insiemi non devono essere \textbf{omogenei} (elementi anche non della stessa specie).
+    \item Le ripetizioni e l'ordine non contano.
+    \item I predicati sono l'uguaglianza e l'appartenenza.
+\end{itemize}
+Gli insiemi si possono quindi vedere (spesso) come delle scatole, ed è perciò corretto parlare di \textbf{appartenenza} e di \textbf{inclusione}.
+\begin{itemize}
+    \item Appartenenza ($\in$): \textit{A} è un elemento dell'insieme \textit{B} se "aprendo" \textit{B} vedo direttamente \textit{A}.
+    \begin{itemize}
+        \item es. di \textbf{non} appartenenza: \{1, 2\} $\notin$ \{1, 2, 3\} in quanto \{1, 2\} sono contenuti in una scatola a sé (in un sottoinsieme quindi);
+        \item es. di appartenenza: 1 $\in$ \{1, 2, 3\} in quanto 1 non è contenuto in un'altra scatola.
+    \end{itemize}
+    \item inclusione ($\subset$): \textit{A} è sottoinsieme di \textit{B} sse aprendo le scatole vedo tutti gli elementi di \textit{A} anche in \textit{B}.
+    \begin{itemize}
+        \item es. di \textbf{non} inclusione: \{1, 3\} $\not \subset$ \{\{1, 2\}, 3\}, in quanto aprendo sia l'insieme \textit{A} (\{1, 2\}) che quello \textit{B} (\{\{1, 2\}, 3\}) non si vedono direttamente tutti gli elementi di \textit{A} in \textit{B};
+        \item es. di inclusione: \{1, 3\} $\subset$ \{1, 2, 3\}, in quanto "semplificando" le parentesi (non è il termine corretto, è solamente per rendere l'idea di "aprire" la scatola) si ritrova il lato \textit{sx} in quello \textit{dx}, quindi \textit{A} in \textit{B}.
+    \end{itemize} 
+\end{itemize}
+\subsection{Il paradosso di Russell}
+Il sistema Naive - ed in particolare il suo \textbf{assioma di comprensione} - vennero messi in crisi da Russell e dalla seguente affermazione:
+\begin{center}
+    \textbf{\textit{X}} = \{\textit{Y} | \textit{Y} $\notin$ \textit{Y}\}
+\end{center}
+Prende in esame tutti gli insiemi \textit{X} che non contengono se stessi, e si chiede se \textit{X} contenga se stesso:
+\begin{itemize}
+    \item se si: \textit{X} contiene un insieme che contiene se stesso $\rightarrow$ la premessa viene violata;
+    \item se no: \textit{X} non contiene un insieme che non contiene se stesso $\rightarrow$ non contiene nessuno dei suoi sottoinsiemi, i quali non contengono sè stessi;
+\end{itemize}
+Quindi, \textit{X} $\in$ \textit{X} sse \textit{X} $\notin$ \textit{X}, da cui il titolo di "paradosso".
 \end{document}
