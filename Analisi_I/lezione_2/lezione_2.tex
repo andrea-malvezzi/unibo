@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\title{\textbf{Analisi Matematica\\L'insieme numerico $\mathbb{R}$}}
+\date{23 settembre 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\section{$\sqrt{2}$ è rappresentabile come frazione\\($\sqrt{2} \in \mathbb{Q}$)?}
+Per rispondere alla domanda presentata, procederemo con una dimostrazione per assurdo.\\
+Assumiamo che $\sqrt{2} \in \mathbb{Q}$. Dunque:
+\begin{itemize}
+    \item $\exists$ m, n $\in \mathbb{N} | \sqrt{2} = m/n$, m.c.d. (m, n) $= 1$
+    \item $\sqrt{2} = m/n$
+    \item $2 = m^2/n?^2$
+    \item $m^2 = 2n^2$ 
+\end{itemize}
+$2n^2$ è pari (ha 2 tra i divisori), perciò anche $m^2$ è pari. Quindi:
+\begin{itemize}
+    \item $\exists$ $m\textsubscript{1} \in \mathbb{N} | m\textsubscript{1} = 2n$
+    \item ($2m\textsubscript{1})^2 = 2n^2$
+    \item $2m\textsubscript{1}^2 = n^2$  
+\end{itemize}
+ma...
+\begin{itemize}
+    \item $n^2$ è pari, perciò $n$ è pari;
+    \item essendo $n$ ed $m$ pari, viene meno la premessa iniziale per cui $m$ e $n$ non hanno divisori in comune.
+\end{itemize}
+Ed ecco dimostrato \textbf{per assurdo} che $\sqrt{2} \notin \mathbb{Q}$!
+\section{Differenze tra $\mathbb{Q}$ ed $\mathbb{R}$}
+Anzitutto occorre specificare che $\mathbb{R}$ nasce come completamento di $\mathbb{Q}$. Questo significa che il primo serve a riempire i buchi - i \textbf{vuoti} - lasciati dal secondo nel piano.\\
+Questo significa che in $\mathbb{R}$ non ci sono spazi vuoti ed è quindi un insieme che nutre della proprietà di \textbf{continuità}, anche detta di \textbf{completezza}.
+\subsection{Formalizzazione della proprietà di continuità}
+Assumendo l'esistenza di $\mathbb{R}$, definiamo:
+\begin{itemize}
+    \item $\emptyset \not= A \subseteq \mathbb{R}$
+\end{itemize}
+Ora, per studiare più in dettaglio i sottoinsiemi di $\mathbb{R}$, definiamo tre casi:
+\begin{enumerate}
+    \item un numero appartenente ad $\mathbb{R}$ si dice \textbf{maggiorante} di un sottoinsieme $A$ se:\\
+        $\forall a \in A, M \geqslant a, M \in \mathbb{R}$.\\
+        Se $A$ ammette un maggiorante all'interno dell'insieme stesso, è detto \textbf{superiormente limitato}.
+    \item lo stesso vale per $M\leqslant a$.
+    \item Se $A$ ammette sia maggiorante che \textbf{minorante} è detto \textbf{limitato}.
+\end{enumerate}
+Ovviamente, se $A$ ha un maggiorante o un minorante allora ne ha infiniti.\\
+Inoltre nel caso in cui questi siano contenuti nell'insieme stesso prendono il nome di \textbf{MAX} e di \textbf{MIN}.
+\section{La proprietà completezza di $\mathbb{R}$}
+$\forall$ $\emptyset \not= A \subseteq \mathbb{R}$:
+\begin{enumerate}
+    \item Se $A$ è superiormente limitato allora $\exists$ $minM\textsubscript{0} (A) =: sup A$, dove $M\textsubscript{0}$ è il minimo maggiorante;
+    \item Se $A$ è inferiormente limitato allora $\exists$ $maxM\textsubscript{0} (A) =: inf A$, dove $M\textsubscript{0}$ è il massimo minorante;
+\end{enumerate}
+Infine, per definizione, il sup e min di un insieme non limitato in uno o in entrambi gli estremi è pari ad infinito (con il rispettivo segno).
+\end{document}
