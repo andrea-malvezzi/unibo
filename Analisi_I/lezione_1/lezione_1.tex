@@ -1,5 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{../images/}}
 \title{\textbf{Analisi Matematica\\Nomenclatura e funzioni}}
 \date{16 settembre 2024}
 \author{Andrea Malvezzi}
@@ -65,4 +67,52 @@ Consideriamo quanto segue:
 \end{itemize}
 La coimplicazione \textit{p} $\Leftrightarrow$ \textit{q} si legge "Oggi è lunedì sse domani è martedì."\\
 Quindi la coimplicazione varrà solamente nel caso in cui \textit{p} e \textit{q} siano entrambe vere o false contemporaneamente.
+\section{Funzioni}
+Una funzione definita da $A$ a $B$ si indica con la seguente scrittura:
+\begin{center}
+    $f:$ $A$ $\rightarrow$ $B$
+\end{center}
+Qui, $A$ corrisponde al \textbf{dominio} della funzione, mentre $B$ al suo \textbf{codominio}.
+Tuttavia una funzione, per essere definita tale, deve rispettare la seguente \textbf{legge di associazione}:
+\begin{center}
+    $\forall a \in A, \exists! b \in B | f(a) = b$
+\end{center}
+Dove $b$ è detta immagine di $a$ tramite $f$.
+\pagebreak
+\subsection{Iniettività di una funzione (1-1)}
+Una funzione si dice iniettiva quando vale il seguente:
+\begin{center}
+    $\forall a, a\textsubscript{1} \in A | a \not= a\textsubscript{1} \Rightarrow f(a) \not= f(a\textsubscript{1})$
+\end{center}
+L'iniettività di una funzione dipende strettamente dal dominio di questa. Certe volte è possibile rendere una funzione iniettiva riducendo il dominio e studiandone solamente una parte (vedi Tangente, etc...)
+\subsubsection{Esempio di funzione NON iniettiva}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.9\linewidth,height=.40\textheight,keepaspectratio]{lezione_1/iniet_func.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:no_iniett_example}Un esempio di funzione NON iniettiva.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
+La funzione presentata NON è iniettiva in quanto $f(2) = f(-2)$.
+\pagebreak
+\subsection{Suriettività di una funzione (sv)}
+Una funzione si dice suriettiva quando vale il seguente:
+\begin{center}
+    $\forall b \in B, \exists a \in A | f(a) = b$
+\end{center}
+La suriettività di una funzione definita nella maniera seguente:
+\begin{center}
+    f: $A$ $\rightarrow$ $B$
+\end{center}
+dipende strettamente dal codominio di $B$.
+\subsubsection{Esempio di funzione NON suriettiva}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.9\linewidth,height=.40\textheight,keepaspectratio]{lezione_1/sv_func.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:no_sv_example}Un esempio di funzione NON suriettiva.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
+La funzione presentata non è suriettiva in quanto nel codominio della funzione l'8 non ha una corrispondenza con un numero del dominio di partenza.
+\pagebreak
 \end{document}
