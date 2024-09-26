@@ -1,6 +1,9 @@
 \documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{../images/}}
 \author{Andrea Malvezzi}
-\title{\textbf{Logica per l'informatica~-~Lezione~1.5.\\Teoria assiomatica degli insiemi (cenni)}}
+\title{\textbf{Logica per l'informatica~-~Lezione~1.5.\\Teorie degli insiemi (cenni)}}
 \date{20 Settembre, 2024}
 \begin{document}
 \maketitle
@@ -63,7 +66,72 @@ Il sistema Naive - ed in particolare il suo \textbf{assioma di comprensione} - v
 Prende in esame tutti gli insiemi \textit{X} che non contengono se stessi, e si chiede se \textit{X} contenga se stesso:
 \begin{itemize}
     \item se si: \textit{X} contiene un insieme che contiene se stesso $\rightarrow$ la premessa viene violata;
-    \item se no: \textit{X} non contiene un insieme che non contiene se stesso $\rightarrow$ non contiene nessuno dei suoi sottoinsiemi, i quali non contengono sè stessi;
+    \item se no: \textit{X} \textbf{non contiene un insieme che non contiene se stesso} (premessa violata) $\rightarrow$ non contiene nessuno dei suoi sottoinsiemi, i quali non contengono sè stessi;
 \end{itemize}
 Quindi, \textit{X} $\in$ \textit{X} sse \textit{X} $\notin$ \textit{X}, da cui il titolo di "paradosso".
+\section{Teoria assiomatica degli insiemi}
+Per risolvere il Paradosso di Russell (a cui da ora ci riferiremo come \textit{PdR}), occorre quindi eliminare l'assioma di comprensione e controllare l'uso \textit{meta-linguistico}.\\
+Occorre quindi sviluppare una teoria basata su:
+\begin{itemize}
+    \item non definizione dei concetti di insieme, uguaglianza e appartenenza;
+    \item uso di assiomi per affermare l'esistenza di insiemi a partire da altri insiemi;
+    \item uso di definizioni;
+\end{itemize}
+\subsection{Terminologia utile}
+\begin{itemize}
+    \item \textbf{assioma}: un'ipotesi che assumiamo: potrebbe essere vera o falsa, ma siamo interessati solo alle situazioni in cui vale;
+    \item \textbf{definizione}: solamente un'abbreviazione, non si ipotizza nulla;
+\end{itemize}
+\pagebreak
+\section{La teoria degli insiemi Zermelo-Fraenkel}
+La teoria degli insiemi ZF si basa sull'\textbf{assioma di estensionalità} e sulla definizione di \textbf{essere sottoinsieme}.
+\subsection{Assioma di estensionalità}
+Due insiemi sono uguali sse hanno gli stessi elementi.
+\begin{center}
+    $\forall X, \forall Y, (X = Y \Leftrightarrow \forall z. (z \in X \Leftrightarrow z \in Y))$
+\end{center}
+\textit{Per ogni X e Y, X e Y sono uguali sse per ogni Z, Z appartiene a X sse Z appartiene a Y.}
+\subsection{Definizione di essere sottoinsieme}
+X è sottoinsieme di Y se ogni suo elemento appartiene anche in Y.
+\begin{center}
+    $X \subseteq Y := \forall z, (z \in X \Rightarrow z \in Y) $
+\end{center}
+\pagebreak
+\section{Lean}
+Lean è un linguaggio di programmazione funzionale usato per dimostrare teoremi.\\
+In Lean ogni simbolo logico ha delle regole di Introduzione e di Eliminazione.
+\subsection{Per ogni ($\forall$)}
+\subsubsection{Regola di introduzione}
+Scopo: Dimostrare che $\forall X,  P(X)$. Per farlo si \textbf{dimostra} su un \textit{x} generico.\\
+\underline{In Lean}: \textbf{assume x : set. [dimostrazione P(X)]}\\
+Ovvero "assumendo che x sia un set (un insieme), etc...
+\subsubsection{Regola di eliminazione}
+Scopo: da un'ipotesi o un risultato intermedio concludo che P valga\\
+per un x a mia scelta.\\
+\underline{In Lean}: \textbf{by NOME\_IPOTESI \\
+we proved CONCLUSIONE (NOME\_RISULTATO\_INTERMEDIO)}\\\\
+Attenzione: non è detto che il valore che ho scelto sia utile ai fini della dimostrazione!\\
+\textbf{es.:}\\
+avendo dimostrato che $\forall x$ $x$ è un numero pari, posso concludere che $7$ sia un numero pari.
+\pagebreak
+\subsection{Implicazione ($\Rightarrow$)}
+\subsubsection{Regola di introduzione}
+Scopo: dimostrare $P \Rightarrow Q$ su un $x$ generico.\\
+\underline{In Lean}: \textbf{suppose P as [NOME\_IPOTESI].[dimostrazione $Q$]}
+\subsubsection{Regola di eliminazione}
+Scopo: da un'ipotesi o un risultato intermedio, concludo che \textit{Q} valga\\
+per un x a mia scelta.\\
+\underline{In Lean}: 
+\textbf{by [NOME\_IPOTESI\_PQ],}\\
+\textbf{[NOME\_IPOTESI\_P] we proved [Q]}\\
+\textbf{as [NOME\_RISULTATO\_INTERMEDIO]}
+\pagebreak
+\subsection{Esempio di codice Lean}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[height=.50\textheight,keepaspectratio]{lezione_1.50/lean_sample_code.PNG} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:lean_sample_code}Dimostrazione teorema di riflessività dell'inclusione.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
 \end{document}
