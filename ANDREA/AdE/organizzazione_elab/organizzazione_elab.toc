@@ -1,0 +1,22 @@
+\contentsline {section}{\numberline {1}Il modello Von Neumann}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}I bus}{3}{subsection.1.1}%
+\contentsline {section}{\numberline {2}La CPU}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Alcuni registri importanti}{3}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Il ciclo FDE}{4}{section.3}%
+\contentsline {section}{\numberline {4}La Control Unit}{4}{section.4}%
+\contentsline {section}{\numberline {5}La Arithmetic Logic Unit}{4}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Il clock}{5}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Configurazioni CISC e RISC}{5}{section.6}%
+\contentsline {section}{\numberline {7}Migliorare le prestazioni}{6}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Pipelining}{6}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Multicore}{6}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Diverse forme di parallelismo}{7}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {7.3.1}Gli array computer}{7}{subsubsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.2}Multiprocessori}{8}{subsubsection.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.3}Multicomputer}{9}{subsubsection.7.3.3}%
+\contentsline {section}{\numberline {8}Le memorie}{10}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Salvare in memoria}{11}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}La memoria cache}{11}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {8.2.1}Il principio di località}{11}{subsubsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.3}Gli Hard Disk (HD)}{12}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Memorie allo stato solido}{12}{subsection.8.4}%

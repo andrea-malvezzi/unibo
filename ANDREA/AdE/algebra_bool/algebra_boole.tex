@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{graphicx}
+\graphicspath{{../images/}}
+\graphicspath{{../images/}} % imposta path per trovare le immagini, i .. significano "la dir precedente"
+\author{Andrea Malvezzi}
+\title{\textbf{Architettura degli Elaboratori~-~Porte logiche e circuiti combinatori}}  % textbf = testo bold
+\date{26 Settembre, 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Algebra di Boole}
+\subsection{Espressioni booleane}
+Un'espressione booleana si costruisce usando:
+\begin{itemize}
+    \item 0 e 1 (False e True);
+    \item gli operatori booleani (o logici);
+    \item delle variabili sempre con valore 0 oppure 1.
+\end{itemize}
+\subsection{Proprietà dell'algebra di Boole}
+Nella tabella seguente sono presenti delle equivalenze per descrivere le proprietà dell'algebra di Boole.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth, height=.7\textheight,keepaspectratio]{porte_logiche/properties_boole.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:properties_boolean_algebra}Una visualizzazione delle proprietà dell'algebra di Boole.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
+\pagebreak
+\subsubsection{La legge di De Morgan}
+La più importante tra le leggi presentate è sicuramente quella di De Morgan,\\
+in quanto permette di passare da una colonna della tabella all'altra in modo semplice e veloce.
+\subsubsection{Esempio di applicazione della legge di De Morgan}
+\begin{itemize}
+    \item Per cominciare, scriviamo la OR form della legge inversa: $A + \overline{A} = 1$;
+    \item Seguentemente occorre pensare a com'è scritta l'espressione: siamo\\davanti ad una OR tra due variabili A, di cui una negata, il tutto pari ad 1;
+    \item Ora osserviamo la legge di De Morgan nella forma OR. Questa afferma quanto segue: La negazione di una OR equivale ad una AND con entrambi gli input negati;
+    \item Applichiamo quindi De Morgan: $\overline{A} + A = 1$ diventerà $\overline{A\overline{A}} = \overline{1}$, ovvero $\overline{A}A = 0$.
+\end{itemize}
+Ed ecco mostrato come passare da un lato all'altro della tabella tramite la formula di De Morgan.
+\subsection{Formula canonica}
+Una funzione booleana si può definire attraverso un'espressione basata solamente sulla AND, la OR e la NOT.\\
+Inoltre, una funzione booleana è esprimibile in una forma detta "canonica". Per ricavarla occorre:
+\begin{itemize}
+    \item identificare tutte le combinazioni per cui la funzione in esame è vera (queste son dette \textbf{mintermini});
+    \item fare la OR dei mintermini trovati;
+\end{itemize}
+\subsubsection{Esempio di formula canonica}
+
+\end{document}
