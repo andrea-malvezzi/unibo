@@ -1,5 +1,0 @@
-\contentsline {section}{\numberline {1}Definizione di sottoinsieme proprio}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Esempi di sottoinsiemi propri e non propri}{3}{subsection.1.1}%
-\contentsline {section}{\numberline {2}Biunivocità e invertibilità di una funzione}{3}{section.2}%
-\contentsline {section}{\numberline {3}Definizione di insieme numerabile}{3}{section.3}%
-\contentsline {section}{\numberline {4}Notazioni in $\mathbb {N}$}{4}{section.4}%
