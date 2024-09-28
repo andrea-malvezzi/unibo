@@ -20,3 +20,7 @@
 \contentsline {subsubsection}{\numberline {8.2.1}Il principio di località}{11}{subsubsection.8.2.1}%
 \contentsline {subsection}{\numberline {8.3}Gli Hard Disk (HD)}{12}{subsection.8.3}%
 \contentsline {subsection}{\numberline {8.4}Memorie allo stato solido}{12}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Memoria RAID}{13}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}CD}{13}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Le schede grafiche}{13}{section.9}%
+\contentsline {section}{\numberline {10}Conclusioni}{13}{section.10}%

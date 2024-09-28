@@ -176,4 +176,22 @@ Possiede diverse parti:
 \end{figure}
 \subsection{Memorie allo stato solido}
 Sono dispositivi completamente elettronici, quindi anche più resistenti (si ha un'assenza di componenti meccaniche) e veloci, ma meno capienti.
+\pagebreak
+\subsection{Memoria RAID}
+Per ridurre il gap di velocità tra CPU e memoria, si è pensato di utilizzare più dischi in parallelo.\\
+Tale configurazione è detta RAID, e si suddivide in 5 livelli:
+\begin{itemize}
+    \item livello 0: Non-reduntant data striping. Si hanno più dischi che salvano blocchi di dati (stripes) diversi, senza backup;
+    \item livello 1: Redundant data striping. Come il livello 0, ma con backup;
+    \item livello 2: Data striping at bit level. Spezza i dati in bytes piuttosto che in blocchi;
+    \item livello 3: Bit-interleaved parity. Come il precedente, ma con un bit di parità per il controllo dell'errore;
+    \item livello 4: Block-interleaved parity. Come il livello 0, ma con bit di parità;
+    \item livello 5: Block-interleaved distributed parity. Come il precedente, ma i bit di parità sono disposti su più dischi per evitare errori.
+\end{itemize}
+\subsection{CD}
+I CD sfruttano un principio ottico: sono composti da zone piane (land) e forate (pit) e in base alla sequenza con cui vengono lette dal PC, queste rappresentano 0 oppure 1.
+\section{Le schede grafiche}
+Le GPU possono essere programmate in appositi linguaggi (come CUDA-C) per diventare in grado di eseguire programmi non grafici (vedi \textit{miners di Bitcoin}).
+\section{Conclusioni}
+Come dimostrato, i PC sono composti da più componenti, ognuno dei quali svolge un compito unico e comunica con gli altri mediante BUS, ai quali si collegano grazie ad un \textbf{controller} e ad un \textbf{arbitro} (per evitare di utilizzarne uno al contempo stesso).
 \end{document}

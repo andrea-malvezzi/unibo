@@ -49,6 +49,31 @@ Inoltre, una funzione booleana è esprimibile in una forma detta "canonica". Per
     \item identificare tutte le combinazioni per cui la funzione in esame è vera (queste son dette \textbf{mintermini});
     \item fare la OR dei mintermini trovati;
 \end{itemize}
+\pagebreak
 \subsubsection{Esempio di formula canonica}
-
+Analizziamo la seguente tabella:
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.7\textwidth, height=.7\textheight,keepaspectratio]{porte_logiche/canonica.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:canonica_esempio}Nella tabella presentata si hanno 3 mintermini: $\overline{A}B\overline{C}$, $AB\overline{C}$, $ABC$.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}\\
+Ora dobbiamo fare la OR tra i 3 mintermini trovati precedentemente:
+\begin{center}
+    $\overline{A}B\overline{C} + AB\overline{C} + ABC$
+\end{center}
+Questa espressione equivale alla forma canonica della funzione studiata.
+\pagebreak
+\section{I transistor}
+Un transistor è un dispositivo a 3 connettori: \textbf{collettore}, \textbf{emettitore} e \textbf{base}.\\
+Quando non c'è tensione sulla base, il componente agisce come una resistenza infinita tra emettitore e collettore.\\
+In caso contrario, si comporta da conduttore ideale.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.7\textwidth, height=.7\textheight,keepaspectratio]{porte_logiche/transistor_not_ex.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:transistor_not_esempio} In figura una porta NOT: quando \textit{}} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}\\
 \end{document}

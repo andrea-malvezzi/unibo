@@ -4,4 +4,5 @@
 \contentsline {subsubsection}{\numberline {1.2.1}La legge di De Morgan}{4}{subsubsection.1.2.1}%
 \contentsline {subsubsection}{\numberline {1.2.2}Esempio di applicazione della legge di De Morgan}{4}{subsubsection.1.2.2}%
 \contentsline {subsection}{\numberline {1.3}Formula canonica}{4}{subsection.1.3}%
-\contentsline {subsubsection}{\numberline {1.3.1}Esempio di formula canonica}{4}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.1}Esempio di formula canonica}{5}{subsubsection.1.3.1}%
+\contentsline {section}{\numberline {2}I transistor}{6}{section.2}%
