@@ -1,0 +1,3 @@
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Conditionals_loops/uguaglianza_numeri/cmake-build-debug/CMakeFiles/uguaglianza_numeri.dir
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Conditionals_loops/uguaglianza_numeri/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Conditionals_loops/uguaglianza_numeri/cmake-build-debug/CMakeFiles/rebuild_cache.dir
