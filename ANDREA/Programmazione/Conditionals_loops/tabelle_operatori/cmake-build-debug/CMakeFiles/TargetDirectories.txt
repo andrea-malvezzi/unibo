@@ -1,0 +1,3 @@
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Conditionals_loops/tabelle_operatori/cmake-build-debug/CMakeFiles/tabelle_operatori.dir
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Conditionals_loops/tabelle_operatori/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Conditionals_loops/tabelle_operatori/cmake-build-debug/CMakeFiles/rebuild_cache.dir
