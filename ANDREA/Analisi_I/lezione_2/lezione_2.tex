@@ -2,6 +2,7 @@
 \usepackage[hidelinks]{hyperref}    
 \usepackage[all]{hypcap}
 \usepackage{amssymb}
+\usepackage{amsmath}
 \title{\textbf{Analisi Matematica\\Insiemi e cenni di calcolo combinatorio}}
 \date{19 settembre 2024}
 \author{Andrea Malvezzi}
@@ -12,9 +13,9 @@
 \pagebreak
 \section{Definizione di sottoinsieme proprio}
 Un insieme $A$ si dice sottoinsieme proprio di $B$ quando vale quanto segue:
-\begin{center}
-    Se $\emptyset != A \subsetneqq B$
-\end{center}
+\begin{equation}
+    \text{Se } \emptyset != A \subsetneqq \label{eq:sottoinsieme_proprio}B
+\end{equation}
 Dove il simbolo $\subsetneqq$ sta per "inclusione stretta", ovvero:
 \begin{itemize}
     \item $A \not= B$;
@@ -31,9 +32,54 @@ Qui, $A$ è un sottoinsieme proprio di $B$ e di $C$. Tuttavia, $B$ non è sottoi
 Una funzione si dice biunivoca quando è sia \textit{1-1} che \textit{sv}.\\
 Una funzione biunivoca è inoltre \textbf{invertibile}.
 \section{Definizione di insieme numerabile}
-Un insieme $\mathbb{X}$ si dice numerabile quando esiste una funzione della seguente specie:\\
-$g: \mathbb{N} \rightarrow \mathbb{X}$, \textit{g è sv}.
+Un insieme $\mathbb{X}$ si dice numerabile quando esiste una funzione della seguente specie:
+\begin{equation}
+    g: \mathbb{N} \rightarrow \mathbb{X}, \textit{g è sv} \label{eq:insieme_numerabile}
+\end{equation}
 \pagebreak
-\section{Notazioni in $\mathbb{N}$}
-
+\section{Elementi di calcolo combinatorio}
+\subsection{Fattoriale di un numero}
+Avendo $\mathbb{N} = \{0, 1, 2, 3, 4, ...\}$, e un $n \in \mathbb{N}$, allora si dice \textbf{fattoriale di $n$} il valore $n!$, ovvero:
+\begin{equation}
+    n! := 
+    \begin{cases} 
+        1 \cdot 2 \cdot 3 \cdot \dots \cdot (n-1) \cdot n & \text{se } n \geq 1, \\
+        1 & \text{se } n = 0 
+        \label{eq:fattoriale}
+    \end{cases}
+\end{equation}
+\subsubsection{Esempio del fattoriale di un numero:}
+Prendiamo come esempio il $4!$ (anche detto \textbf{4-fattoriale}).
+\[4! = 1 \cdot 2 \cdot 3 \cdot 4 = 24\]
+Prendiamo ora invece lo $0!$. Ricordando quanto affermato in (\ref{eq:fattoriale}):
+\[0! = 1\]
+\subsection{Coefficiente binomiale}
+Avendo due numeri tali che $n, m \in \mathbb{N} : m \leq n$, allora si dice \textbf{Coefficiente binomiale}:
+\begin{equation}
+    \binom{n}{m} := \dfrac{n!}{(n-m)!m!} \label{eq:coefficiente_binomiale}
+\end{equation}
+Dove $\dfrac{n!}{(n-m)m!}$ corrisponde a una \textbf{combinazione semplice}.
+\subsubsection{Esempio di coefficiente binomiale:}
+Avendo $n=3 \text{e } m=2$, allora:
+\[
+    \binom{3}{2} = \dfrac{3!}{2!(3-2)!} = \dfrac{6}{2} = 3
+\]
+\pagebreak
+\subsection{Prima proprietà del coefficiente binomiale}
+\begin{equation}
+    \binom{n}{k} = \binom{n}{n-k} \label{prop1_coeff_binomiale}
+\end{equation}
+Ovvero: ad ogni sottoinsieme di $k$ elementi corrisponde un sottoinsieme di $n-k$ elementi, per cui il loro numero è uguale.
+\subsubsection{Prova algebrica}
+\[
+    \binom{n}{n-k} = \dfrac{n!}{[n-(n-k)]!(n-k)!} = \dfrac{n!}{k!(n-k)!} = \binom{n}{k}
+\]
+Per fornire un esempio concreto:
+\[
+    \binom{7}{2} = \dfrac{7!}{[7 - (7 - 2)]!(7-2)!} = \dfrac{7!}{5!2!} = \binom{7}{5} = \binom{7}{7-2}
+\]
+\subsection{Seconda proprietà del coefficiente binomiale}
+\begin{equation}
+    \binom{n}{k-1} + \binom{n}{k} = \binom{n+1}{k} \label{prop2_coeff_binomiale}
+\end{equation}
 \end{document}
