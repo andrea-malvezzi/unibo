@@ -2,7 +2,6 @@
 \usepackage[hidelinks]{hyperref}    
 \usepackage[all]{hypcap}
 \usepackage{graphicx}
-\graphicspath{{../images/}}
 \graphicspath{{../images/}} % imposta path per trovare le immagini, i .. significano "la dir precedente"
 \author{Andrea Malvezzi}
 \title{\textbf{Architettura degli Elaboratori~-~Porte logiche e circuiti combinatori}}  % textbf = testo bold
@@ -73,7 +72,14 @@ In caso contrario, si comporta da conduttore ideale.
     \centering
     \includegraphics[width=.7\textwidth, height=.7\textheight,keepaspectratio]{porte_logiche/transistor_not_ex.png} % essenzialmente resiza l'immagine
     \begin{center}
-        \caption{\label{fig:transistor_not_esempio} In figura una porta NOT: quando \textit{}} % label fuori da caption spesso non va, mettilo dentro
+        \caption{\label{fig:transistor_not_esempio}Esempio di porta NOT realizzata con transistor.} % label fuori da caption spesso non va, mettilo dentro
     \end{center}
-\end{figure}\\
+\end{figure}
+\subsection{La porta NOT realizzata tramite transistor}
+La porta NOT della figura (\ref{fig:transistor_not_esempio}) funziona nella seguente maniera:
+\begin{itemize}
+    \item quando l'ingresso \textit{V\textsubscript{in}} è \textit{alto}, la corrente \textit{V\textsubscript{cc}} attraversa il transistor e lascia \textit{V\textsubscript{out}} basso (Input 1, output 0);
+    \item quando l'ingresso \textit{V\textsubscript{in}} è \textit{basso}, la corrente \textit{V\textsubscript{cc}} non riesce ad attraversare il transistor, il quale agisce da resistenza infinita, passando quindi per \textit{V\textsubscript{out}}, il quale diventa alto (Input 0, output 1).
+\end{itemize}
+\subsection{La porta NAND realizzata tramite transistor}
 \end{document}

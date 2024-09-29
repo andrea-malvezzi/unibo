@@ -3,6 +3,14 @@
 \usepackage[all]{hypcap}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{{../images/}}
+% Define custom colors
+\definecolor{royal_blue}{RGB}{65, 105, 225}         % Royal Blue
+\definecolor{crimson_red}{RGB}{220, 20, 60}         % Crimson Red
+\definecolor{goldenrod_yellow}{RGB}{218, 165, 32}   % Goldenrod Yellow
+
 \title{\textbf{Analisi Matematica\\Insiemi e cenni di calcolo combinatorio}}
 \date{19 settembre 2024}
 \author{Andrea Malvezzi}
@@ -53,6 +61,17 @@ Prendiamo come esempio il $4!$ (anche detto \textbf{4-fattoriale}).
 \[4! = 1 \cdot 2 \cdot 3 \cdot 4 = 24\]
 Prendiamo ora invece lo $0!$. Ricordando quanto affermato in (\ref{eq:fattoriale}):
 \[0! = 1\]
+\subsection{Scomporre un numero fattoriale}\
+Avendo un fattoriale $n!$, allora si può abbassare di uno $n$ e riscriverlo come $(n-1)!(n)$.
+\begin{equation}
+    n! = (n)(n-1)! \label{eq:scompos_fattoriale}
+\end{equation} 
+\subsubsection{Esempio di scomposizione numero fattoriale}
+Avendo $4!$, allora potrò riscriverlo nella seguente maniera:
+\[
+    4! = 4 \cdot 3!
+\]
+Questa "proprietà" (che è in realtà una conseguenza della definizione stessa di fattoriale) sarà molto utile nelle dimostrazioni seguenti.
 \subsection{Coefficiente binomiale}
 Avendo due numeri tali che $n, m \in \mathbb{N} : m \leq n$, allora si dice \textbf{Coefficiente binomiale}:
 \begin{equation}
@@ -64,7 +83,6 @@ Avendo $n=3 \text{e } m=2$, allora:
 \[
     \binom{3}{2} = \dfrac{3!}{2!(3-2)!} = \dfrac{6}{2} = 3
 \]
-\pagebreak
 \subsection{Prima proprietà del coefficiente binomiale}
 \begin{equation}
     \binom{n}{k} = \binom{n}{n-k} \label{prop1_coeff_binomiale}
@@ -82,4 +100,58 @@ Per fornire un esempio concreto:
 \begin{equation}
     \binom{n}{k-1} + \binom{n}{k} = \binom{n+1}{k} \label{prop2_coeff_binomiale}
 \end{equation}
+\subsubsection{Prova algebrica}
+\[
+    \binom{n}{k-1} + \binom{n}{k} = \dfrac{n!}{\colorbox{goldenrod_yellow}{(n-(k-1))!}(k-1)!} + \dfrac{n!}{(n-k)!\colorbox{green}{k!}} = \dots
+\]
+Ora risolviamo \colorbox{goldenrod_yellow}{$-(k-1)$} e sfruttiamo (\ref{eq:scompos_fattoriale}) per scomporre \colorbox{goldenrod_yellow}{$(n-k+1)!$} in \colorbox{crimson_red}{$(n-k+1)(n-k)!$}. Inoltre, sempre applicando la medesima proprietà, scomponiamo \colorbox{green}{$k!$} in \colorbox{cyan}{$(k)(k-1)!$}.
+\[
+    \dots = \dfrac{n!}{(n-k+1)!(k-1)!} + \dfrac{n!}{(n-k)!k!} = \dfrac{n!}{\colorbox{crimson_red}{(n-k+1)(n-k)!}(k-1)!} + \dfrac{n!}{(n-k)!\colorbox{cyan}{k(k-1)!}} = \dots
+\]
+Ora raccogliamo i termini che compaiono in entrambe le frazioni:
+\[
+    \dots = \dfrac{n!}{(n-k)!(k-1)!}\left(\dfrac{1}{n-k+1} + \dfrac{1}{k}\right) = \dots
+\]
+Risolviamo le frazioni in parentesi:
+\[
+    \dots = \dfrac{n!}{(n-k)!(k-1)!} \cdot \dfrac{k + n -k + 1}{(n-k+1)k} = \dots
+\]
+Semplifichiamo la frazione di destra eliminando le due $k$ di segno opposto e moltiplichiamo tra loro le due frazioni ottenute:
+\[
+    \dots = \dfrac{n!(n+1)}{(n-k)!(k-1)!(n-k+1)(k)} = \dots
+\]
+E per finire, osserviamo come $(n-k)!$, se associato a $(n-k+1)$, permetta di ricongiungersi a una scrittura del tipo $(n-k+1)!$. La stessa cosa vale per $(k-1)!$ e $(k)$ (sempre grazie a (\ref{eq:scompos_fattoriale})).
+\[
+    \dots = \dfrac{(n+1)!}{(n-k+1)!k!} = \binom{n+1}{k}
+\]
+\pagebreak
+\subsection{Binomio di Newton}
+Questa formula si usa per calcolare la $n$-sima potenza di un binomio in maniera semplice.
+\begin{equation}
+    (a+b)^n = \sum_{k=0}^{n} \binom{n}{k} \cdot a^{n-k} \cdot b^k \label{eq:binom_newton}
+\end{equation}
+Ma la vera comodità della formula presentata consiste nella validità delle proprietà del coefficiente binomiale precedentemente presentate.\\
+(\ref{prop1_coeff_binomiale}) e (\ref{prop2_coeff_binomiale}) rimangono difatti valide anche per questa sommatoria, in quanto legata al triangolo di Tartaglia.\\
+\subsubsection{Esempio di calcolo della \textit{n}-sima potenza di un binomio}
+Per calcolare $(a+b)^n$, basterà far variare $n$ nella sommatoria presentata:
+\[
+    \text{Per } n=1, (a + b)^1 = \binom{1}{0}a + \binom{1}{1}b
+\]
+\[
+    \text{Per } n=2, (a + b)^2 = \binom{2}{0}a^2 + \binom{2}{1}ab + \binom{2}{2}b^2
+\]
+\[
+    \text{Per } n=3, (a + b)^3 = \binom{3}{0}a + \binom{3}{1}a^2b + \binom{3}{2}ab^2 + \binom{3}{3}b^3
+\]
+\[
+    \text{etc} \dots
+\]
+Ora si può osservare come lo sviluppo della sommatoria presentata vada ad assumere la forma di un triangolo. Questo triangolo storicamente prende il nome di "Triangolo di Tartaglia" e permette di calcolare tutti i moltiplicatori di $a$ e di $b$ (vedi immagine sottostante).
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth, height=.7\textheight,keepaspectratio]{lezione_2/tartaglia.PNG} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:tartaglia}Il triangolo di Tartaglia sviluppato fino ad n=5.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
 \end{document}
