@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\title{\textbf{Analisi Matematica\\Successioni e funzioni principali}}
+\date{30 settembre 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Le successioni monotone}
+Una successione può essere di diversi tipi:
+\subsection{Crescente}
+Una successione $(a_n)_n$ si dice crescente se:
+\begin{equation}
+    \forall n \in \mathbb{N}: a_n \leq a_{n+1} \label{eq:successione_crescente}
+\end{equation}
+Inoltre, una successione può essere \textbf{strettamente} crescente (ogni termine è maggiore del precedente) o \textbf{monotona} crescente (ogni termine è maggiore \underline{o uguale} del precedente).
+\subsection{Decrescente}
+Una successione $(b_n)_n$ si dice decrescente se:
+\begin{equation}
+    \forall n \in \mathbb{N}: b_n \geq b_{n+1} \label{eq:successione_decrescente}
+\end{equation}
+Inoltre, una successione può essere \textbf{strettamente} decrescente (ogni termine è minore del precedente) o \textbf{monotona} decrescente (ogni termine è minore \underline{o uguale} del precedente).
+\subsection{Le successioni monotone}
+Una proprietà importante delle successioni monotone consiste nel fatto che esse posseggono sempre un limite.\\
+Ciò significa che sono sempre o \textbf{convergenti} o \textbf{divergenti}, in base al tipo di successione e al fatto di essere superiormente o inferiormente limitate.
+\pagebreak
+\subsubsection{Esempio di successione monotona crescente convergente}
+Un esempio di successione monotona crescente convergente è:
+\[
+    (a_n) = \dfrac{n}{n+1}
+\]
+In quanto, calcolando il limite per n tendente a infinito, si ottiene un valore diverso da infinito (la successione risulta quindi superiormente limitata):
+\[
+    \lim_{n\to\infty} \dfrac{n}{n+1} = \lim_{n\to\infty} \dfrac{1}{1 + \dfrac{1}{n}}
+\]
+Che, appliando il limite, diventa:
+\[
+    \dfrac{1}{1 + 0} = 1
+\]
+Pertanto:
+\[
+    \lim_{n\to\infty} \dfrac{n}{n+1} = 1
+\]
+La spiegazione per le successioni monotone decrescenti convergenti è analoga (sempre imponendo il limite per $\infty$).
+\subsubsection{Esempio di successione monotona decrescente divergente}
+Un esempio di successione monotona decrescente divergente è:
+\[
+    (b_n) = -n
+\]
+In quanto, calcolando il limite per n tendente a infinito, si ottiene un valore pari a infinito (la successione risulta quindi \underline{non} inferiormente limitata): 
+\[
+    \lim_{n\to\infty} -n = -\infty
+\]
+La spiegazione per le successioni monotone crescenti divergenti è analoga.
+\pagebreak
+\section{Funzione esponenziale}
+La funzione esponenziale è definita nella maniera seguente:
+\begin{equation}
+    f: \mathbb{R} \rightarrow \mathbb{R_+} \label{eq:esponenziale_definizione}
+\end{equation}
+E la sua forma più generica è:
+\begin{equation}
+    f(x) = a^x \label{eq:esponenziale_generica}
+\end{equation}
+Quando $a > 1$, allora $f$ sarà crescente, mentre quando $0 < a < 1$ la funzione sarà decrescente.\\
+Notare come la funzione non ammetta una base negativa.
+\section{Funzione logaritmica}
+La funzione logaritmica è l'opposto dell'esponenziale ed è perciò definita nella maniera seguente:
+\begin{equation}
+    f: \mathbb{R_+} \rightarrow \mathbb{R} \label{eq:logaritmica_definizione}
+\end{equation}
+Notare come dominio e codominio siano quelli della funzione esponenziale (\ref{eq:esponenziale_definizione}) ma invertiti.\\
+La forma più generica della funzione logaritmica è:
+\begin{equation}
+    \log_a{y} = x \rightarrow a^{log_a{y}} = y \label{eq:logaritmica_generica}
+\end{equation}
+Inoltre, la funzione logaritmo sarà negativa se:
+\begin{itemize}
+    \item $b > 1,$ $\log_b{x} < 0$ $\forall x \in (0, 1)$;
+    \item $0 < b < 1,$ $log_b{x} < 0$ quando $x > 1$.
+\end{itemize}
+Notare come la funzione non sia definita per $x = 0$.
+\end{document}

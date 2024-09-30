@@ -124,7 +124,7 @@ Inoltre, la funzione logica XOR si può rappresentare con la seguente forma cano
 \end{equation}
 \pagebreak
 \section{Implementare una funzione logica}
-\subsection{Dalla forma canonica all'implementazione}
+\subsection{Dalla forma canonica all'implementazione}\label{sec:implem_canonica}
 Per implementare una funzione logica (ovvero per realizzarla mediante porte logiche) occorre innanzitutto studiarne la tabella di verità, in modo da ricavarne la forma canonica.\\
 Ad esempio, avendo la seguente tabella di verità:\\
 \begin{center}
@@ -210,7 +210,7 @@ Ad esempio, per 2 variabili, si avranno $2^2 = 4$ celle:
         \hline
     \end{tabular}
 \end{center}
-Con l'aumentare del numero delle variabili, basterà inserire un bit extra prima nella parte destra (B che diventerà BC) e poi in quella inferiore (A che diventerà AD).\\
+Con l'aumentare del numero delle variabili, invece la cosa cambierà leggermente.\\
 Ad esempio, per 3 variabili:
 \begin{center}
     \begin{tabular}{|| c | c c c c ||}
@@ -223,4 +223,56 @@ Ad esempio, per 3 variabili:
         \hline  
     \end{tabular}
 \end{center}
+Mentre con 4:
+\begin{center}
+    \begin{tabular}{|| c | c c c c ||}
+        \hline
+        AD/BC & 00 & 01 & 10 & 11\\
+        \hline
+        00 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
+        \hline
+        01 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
+        \hline
+        10 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
+        \hline
+        11 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
+        \hline
+    \end{tabular}
+\end{center}
+Inoltre è importante notare come le coppie (00, 01, 10, 11, $\dots$) siano arbitrariamente posizionate: l'obiettivo è creare gruppi di 1 posizionati adiacenti verticalmente, orizzontalmente o in modo toroidale.
+\subsubsection{Riempire la mappa}
+Ora bisogna riempire la mappa creata mettendo 1 dove la combinazione di Input restituisce 1 e 0 nelle altre celle.
+Ad esempio, prendendo la funzione presentata in (\ref{sec:implem_canonica}):
+\begin{center}
+    \begin{tabular}{|| c | c c c c ||}
+        \hline
+        A/B(SEL) & 00 & 01 & 10 & 11 \\
+        \hline
+        0 & 0 & 0 & 0 & 1 \\
+        \hline
+        1 & 1 & 0 & 1 & 1 \\
+        \hline
+    \end{tabular}
+\end{center}
+Osserviamo ora tuttavia come con questa disposizione delle coppie B,SEL si formino 3 gruppi, e come 2 di questi siano composti da 1 isolati.\\
+Per evitare questa cosa, potremmo provare a cambiare disposizione delle accoppiate, ad esempio invertendo la coppia 10 con quella 11.
+\begin{center}
+    \begin{tabular}{|| c | c c c c ||}
+        \hline
+        A/B(SEL) & 00 & 01 & 11 & 10 \\
+        \hline
+        0 & 0 & 0 & 1 & 0 \\
+        \hline
+        1 & 1 & 0 & 1 & 1 \\
+        \hline
+    \end{tabular}
+\end{center}
+Ora abbiamo due gruppi di 1:
+\begin{itemize}
+    \item A = 0 con B, SEL = 11 \& A = 1 con B, SEL = 11 (verticalmente);
+    \item A = 1 con B, SEL = 00 \& A = 1 con B, SEL = 10 (toroidalmente);
+\end{itemize}
+\subsubsection{Funzione semplificata}
+In base ai raggruppamenti effettuati nella sezione precedente, ora possiamo scrivere la forma canonica semplificata della funzione, ovvero:
+
 \end{document}
