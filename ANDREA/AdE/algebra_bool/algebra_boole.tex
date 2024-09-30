@@ -2,6 +2,7 @@
 \usepackage[hidelinks]{hyperref}    
 \usepackage[all]{hypcap}
 \usepackage{graphicx}
+\usepackage{circuitikz}
 \graphicspath{{../images/}} % imposta path per trovare le immagini, i .. significano "la dir precedente"
 \author{Andrea Malvezzi}
 \title{\textbf{Architettura degli Elaboratori~-~Porte logiche e circuiti combinatori}}  % textbf = testo bold
@@ -82,4 +83,144 @@ La porta NOT della figura (\ref{fig:transistor_not_esempio}) funziona nella segu
     \item quando l'ingresso \textit{V\textsubscript{in}} è \textit{basso}, la corrente \textit{V\textsubscript{cc}} non riesce ad attraversare il transistor, il quale agisce da resistenza infinita, passando quindi per \textit{V\textsubscript{out}}, il quale diventa alto (Input 0, output 1).
 \end{itemize}
 \subsection{La porta NAND realizzata tramite transistor}
+Per realizzare una porta NAND occorranno due transistor:
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.5\textwidth, height=.4\textheight,keepaspectratio]{porte_logiche/transistor_nand_ex.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:transistor_nand_esempio}Esempio di porta NAND realizzata con 2 transistor.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}\\
+Il funzionamento della porta logica in figura è simile a quello della NOT in (\ref{fig:transistor_not_esempio}): 
+\begin{itemize}
+    \item quando l'alimentazione di entrambi i transistor è alta, \textit{V\textsubscript{out}} non riceverà corrente (0);
+    \item quando uno dei due transistor NON sarà alimentato, \textit{V\textsubscript{out}} sarà alimentato (1).
+\end{itemize}
+\subsection{La porta XOR}
+\begin{circuitikz} \draw(0, 2) node[xor port, number inputs=2](myxor){}
+    (myxor.in 1) node[anchor=east]{A}
+    (myxor.in 2) node[anchor=east]{B}
+    (myxor.out) node[anchor=west]{Output}
+    ;
+\end{circuitikz}
+\hfill
+\begin{tabular}{|| c c | c ||}
+    \hline
+    A & B & Output\\
+    \hline
+    0 & 0 & 0\\
+    \hline
+    0 & 1 & 1\\
+    \hline
+    1 & 0 & 1\\
+    \hline
+    1 & 1 & 0\\
+    \hline
+\end{tabular}\\\\
+La funzione logica XOR restituisce VERO quando \underline{soltanto} uno dei due valori in ingresso è VERO.\\
+Inoltre, la funzione logica XOR si può rappresentare con la seguente forma canonica:
+\begin{equation}
+    XoR(a, b) = Or(And(a, NOT(b)), And(Not(a),b)) = (a \cdot \overline{b}) + (\overline{a} \cdot b) \label{canon: xor}
+\end{equation}
+\pagebreak
+\section{Implementare una funzione logica}
+\subsection{Dalla forma canonica all'implementazione}
+Per implementare una funzione logica (ovvero per realizzarla mediante porte logiche) occorre innanzitutto studiarne la tabella di verità, in modo da ricavarne la forma canonica.\\
+Ad esempio, avendo la seguente tabella di verità:\\
+\begin{center}
+    \begin{tabular}{|| c c c | c ||}
+        \hline
+        A & B & SEL & OUT\\
+        \hline
+        0 & 0 & 0 & 0\\
+        \hline
+        0 & 0 & 1 & 0\\
+        \hline
+        0 & 1 & 0 & 0\\
+        \hline
+        0 & 1 & 1 & 1\\
+        \hline
+        1 & 0 & 0 & 1\\
+        \hline
+        1 & 0 & 1 & 0\\
+        \hline
+        1 & 1 & 0 & 1\\
+        \hline
+        1 & 1 & 1 & 1\\
+        \hline
+    \end{tabular}
+\end{center}
+Occorrerà identificare tutti i mintermini della funzione ed effettuare una OR tra questi, ovvero:
+\begin{itemize}
+    \item $\overline{A} \cdot B \cdot SEL$
+    \item $A \cdot \overline{B} \cdot \overline{SEL}$
+    \item $A \cdot B \cdot \overline{SEL}$
+    \item $A \cdot B \cdot SEL$
+\end{itemize}
+Ed infine:
+\[
+    (\overline{A} \cdot B \cdot SEL) + (A \cdot \overline{B} \cdot \overline{SEL}) + (A \cdot B \cdot \overline{SEL}) + (A \cdot B \cdot SEL)
+\]
+Ora che la forma canonica è nota, si può procedere a realizzare il circuito:
+\begin{circuitikz} \draw
+    (0, 6) node[and port, number inputs=3](first_and){}
+    (first_and.in 1) node[anchor=east]{$\overline{A}$}
+    (first_and.in 2) node[anchor=east]{B}
+    (first_and.in 3) node[anchor=east]{SEL}
+    (0, 4) node[and port, number inputs=3](second_and){}
+    (second_and.in 1) node[anchor=east]{A}
+    (second_and.in 2) node[anchor=east]{$\overline{B}$}
+    (second_and.in 3) node[anchor=east]{$\overline{SEL}$}
+    (0, 2) node[and port, number inputs=3](third_and){}
+    (third_and.in 1) node[anchor=east]{A}
+    (third_and.in 2) node[anchor=east]{B}
+    (third_and.in 3) node[anchor=east]{$\overline{SEL}$}
+    (0, 0) node[and port, number inputs=3](fourth_and){}
+    (fourth_and.in 1) node[anchor=east]{A}
+    (fourth_and.in 2) node[anchor=east]{B}
+    (fourth_and.in 3) node[anchor=east]{SEL}
+    (4, 3) node[or port, number inputs=4](or){}
+    (or.out) node[anchor=west]{Output}
+    (first_and.out) -- (or.in 1)
+    (second_and.out) -- (or.in 2)
+    (third_and.out) -- (or.in 3)
+    (fourth_and.out) -- (or.in 4)
+    ;
+    \node at (first_and.bin 1) [ocirc, left]{};
+    \node at (second_and.bin 2) [ocirc, left]{};
+    \node at (second_and.bin 3) [ocirc, left]{};
+    \node at (third_and.bin 3) [ocirc, left]{};
+\end{circuitikz}
+\subsection{Semplificare un circuito logico}
+Per semplificare un circuito logico si può utilizzare un potente strumento chiamato \textbf{Mappa di Karnaugh}, o \textbf{K-map}.\\
+Ecco come realizzare una mappa di Karnaugh:
+\subsubsection{Definire le variabili}
+Per realizzare una K-map occorrerà identificare le variabili usate nella funzione logica di cui si sta semplificando la tabella di verità.\\
+In base al numero di variabili scelte ($n$), si avranno $2^n$ celle nella tabella.
+\subsubsection{Disegnare la mappa}
+La K-map è una griglia dove, in base al numero di variabili cambia il numero di celle.\\
+Ad esempio, per 2 variabili, si avranno $2^2 = 4$ celle:
+\begin{center}
+    \begin{tabular}{|| c | c c ||}
+        \hline
+        A/B & 0 & 1\\
+        \hline
+        0 & $\dots$ & $\dots$\\
+        1 & $\dots$ & $\dots$\\
+        \hline
+    \end{tabular}
+\end{center}
+Con l'aumentare del numero delle variabili, basterà inserire un bit extra prima nella parte destra (B che diventerà BC) e poi in quella inferiore (A che diventerà AD).\\
+Ad esempio, per 3 variabili:
+\begin{center}
+    \begin{tabular}{|| c | c c c c ||}
+        \hline
+        A/BC & 00 & 01 & 10 & 11\\
+        \hline
+        0 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
+        \hline
+        1 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
+        \hline  
+    \end{tabular}
+\end{center}
 \end{document}
