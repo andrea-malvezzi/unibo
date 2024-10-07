@@ -215,7 +215,7 @@ Ad esempio, per 3 variabili:
 \begin{center}
     \begin{tabular}{|| c | c c c c ||}
         \hline
-        A/BC & 00 & 01 & 10 & 11\\
+        A/BC & 00 & 01 & 11 & 10\\
         \hline
         0 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
         \hline
@@ -227,15 +227,15 @@ Mentre con 4:
 \begin{center}
     \begin{tabular}{|| c | c c c c ||}
         \hline
-        AD/BC & 00 & 01 & 10 & 11\\
+        AD/BC & 00 & 01 & 11 & 10\\
         \hline
         00 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
         \hline
         01 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
         \hline
-        10 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
-        \hline
         11 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
+        \hline
+        10 & $\dots$ & $\dots$ & $\dots$ & $\dots$\\
         \hline
     \end{tabular}
 \end{center}
@@ -243,19 +243,6 @@ Inoltre è importante notare come le coppie (00, 01, 10, 11, $\dots$) siano arbi
 \subsubsection{Riempire la mappa}
 Ora bisogna riempire la mappa creata mettendo 1 dove la combinazione di Input restituisce 1 e 0 nelle altre celle.
 Ad esempio, prendendo la funzione presentata in (\ref{sec:implem_canonica}):
-\begin{center}
-    \begin{tabular}{|| c | c c c c ||}
-        \hline
-        A/B(SEL) & 00 & 01 & 10 & 11 \\
-        \hline
-        0 & 0 & 0 & 0 & 1 \\
-        \hline
-        1 & 1 & 0 & 1 & 1 \\
-        \hline
-    \end{tabular}
-\end{center}
-Osserviamo ora tuttavia come con questa disposizione delle coppie B,SEL si formino 3 gruppi, e come 2 di questi siano composti da 1 isolati.\\
-Per evitare questa cosa, potremmo provare a cambiare disposizione delle accoppiate, ad esempio invertendo la coppia 10 con quella 11.
 \begin{center}
     \begin{tabular}{|| c | c c c c ||}
         \hline
@@ -274,5 +261,37 @@ Ora abbiamo due gruppi di 1:
 \end{itemize}
 \subsubsection{Funzione semplificata}
 In base ai raggruppamenti effettuati nella sezione precedente, ora possiamo scrivere la forma canonica semplificata della funzione, ovvero:
-
+\[
+    B \cdot SEL + A \cdot \overline{SEL}
+\]
+\pagebreak
+\subsubsection{Come prendere le lettere?}
+Ma perché? Per capire come determinare le lettere in base ai raggruppamenti fatti, osserviamo la tabella precedentemente presentata.\\
+In essa è possibile notare, per ogni raggruppamento, come alcune lettere cambino di valore (da 1 a 0 e viceversa), mentre altre rimangano costanti.\\
+Per ogni raggruppamento occorrerà prendere tutte le lettere rimaste costanti per l'intero gruppo creato e negare quelle rimaste a 0.
+Quindi, nell'esempio presentato:
+\begin{center}
+    \begin{tabular}{|| c | c c c c ||}
+        \hline
+        A/B(SEL) & 00 & 01 & \colorbox{green}{11} & 10 \\
+        \hline
+        0 & 0 & 0 & \colorbox{cyan}{1} & 0 \\
+        \hline
+        1 & 1 & 0 & \colorbox{cyan}{1} & 1 \\
+        \hline
+    \end{tabular}
+\end{center}
+Come visibile, nel raggruppamento verticale scelto le uniche due lettere a rimanere costanti sono B e SEL.
+Per quanto riguarda il raggruppamento toroidale, invece:
+\begin{center}
+    \begin{tabular}{|| c | c c c c ||}
+        \hline
+        A/B(SEL) & 00 & 01 & 11 & 10 \\
+        \hline
+        0 & 0 & 0 & 1 & 0 \\
+        \hline
+        \colorbox{green}{1} & \colorbox{cyan}{1} & 0 & 1 & \colorbox{cyan}{1} \\
+        \hline
+    \end{tabular}
+\end{center}
 \end{document}
