@@ -47,4 +47,22 @@ Dobbiamo dimostrare $X = Y$. Per l'assioma di estensionalità, è sufficiente di
 \end{equation}
 \subsection{Dimostrazione}
 Sia X un insieme. Dobbiamo dimostrare $\emptyset \subseteq X$, ovvero $\forall Z. Z \in \emptyset \Rightarrow Z \in X$. Sia Z un insieme t.c. $Z \in \emptyset$ (H). Per l'assioma dell'insieme vuoto $Z \in \emptyset$. Quindi per H assurdo e perciò $Z \in X$.
+\section{L'intersezione con il vuoto è il vuoto}
+\subsection{Teorema}
+\begin{equation}
+    X \cap \emptyset = \emptyset \label{teo:intersezione_vuoto}
+\end{equation}
+\subsection{Dimostrazione}
+Sia X un insieme. Dobbiamo dimostrare $X \cap \emptyset = \emptyset$.\\
+Per il teorema dell'estensionalità passo a dimostrare che $\forall Z. Z \in X \cap \emptyset \Leftrightarrow Z \in \emptyset$. Ora, supponendo che Z sia un insieme, $Z \in \emptyset \Rightarrow Z \in X \cap \emptyset$ lo abbiamo già dimostrato in (\ref{teo:vuoto_subset_tutto}).\\
+Dimostriamo quindi l'affermazione opposta, ovvero: $Z \in X \cap \emptyset \Rightarrow Z \in \emptyset$. Supponiamo $Z \in X \cap \emptyset$. Quindi, per il teorema dell'intersezione binaria, $Z \in X (H_1) \text{ e } Z \in \emptyset (H_2)$. Quindi $Z \in \emptyset$.
+\section{L'unico sottoinsieme del vuoto è il vuoto}
+\subsection{Teorema}
+\begin{equation}
+    se X \subseteq \emptyset allora X = \emptyset \label{teo:vuoto_unico_subset_vuoto}
+\end{equation}
+\subsection{Dimostrazione}
+$X \subseteq \emptyset$ significa $\forall Z, Z \in X \Rightarrow Z \in \emptyset$ (H). Dobbiamo dimostrare $X = \emptyset$.\\
+Per l'assioma di estensionalità possiamo ridurci a dimostrare $\forall Z, Z \in X \Leftrightarrow Z \in \emptyset$. Tuttavia, prendendo un insieme Z, è stato provato in precedenza (\ref{teo:vuoto_subset_tutto}) che $Z \in \emptyset \Rightarrow \in X$.\\
+Inoltre $Z \in X \Rightarrow Z \in \emptyset$ vale per H.
 \end{document}
