@@ -1,10 +1,67 @@
 \documentclass[12pt]{article}
 \usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{amsmath}
 \title{\textbf{Logica per l'informatica~-~Lezione~1.75.\\}}
 \date{25 settembre 2024}
 \author{Andrea Malvezzi}
 \begin{document}
 \maketitle
 \pagebreak
-
+\tableofcontents
+\pagebreak
+\section{Teoria insiemistica ZF, assiomi fondamentali}
+\subsection{Assioma di estensionalità}
+Due insiemi sono uguali se hanno gli stessi elementi:
+\begin{equation}
+    \forall X, \forall Y, (X = Y \Leftrightarrow \forall Z. (Z \in X \Leftrightarrow Z \in Y)) \label{ass:estensionalità}
+\end{equation}
+Per ogni X ed Y, X ed Y sono uguali sse per ogni Z, Z appartiene a X sse Z appartiene ad Y.
+\subsection{Definizione di essere sottoinsieme}
+X è sottoinsieme di Y se ogni suo elemento è contenuto all'interno di Y:
+\begin{equation}
+    X \subseteq Y := \forall Z. (Z \in X \Rightarrow Z \in Y) \label{ass:sottoinsieme}
+\end{equation}
+X è sottoinsieme di Y se per ogni Z di X, se Z appartiene ad X allora Z appartiene anche ad Y.
+\subsection{Assioma di separazione}
+Dato un insieme, è possibile formare un suo sottoinsieme che soddisfi una certa proprietà.
+\[
+    \forall X, \exists Y, \forall Z, (Z \in Y \Leftrightarrow Z \in X \wedge P(Z))
+\]
+Ed indicando Y come $\{Z \in X : P(X)\}$, scriviamo ora:
+\begin{equation}
+    \forall X, \exists Z, (Z \in \{W \in X : P(W)\} \Leftrightarrow Z \in X \wedge P(Z)) \label{ass:separazione}
+\end{equation}
+Tramite questo assioma possiamo evitare il paradosso di Russell, scrivendo: 
+\[
+    X = \{Y \in U : Y \notin Y\}
+\]
+dove U è una classe, non un insieme.
+\subsection{Assioma dell'insieme vuoto}
+Avendo un insieme X che è vuoto:
+\begin{equation}
+    \exists X, \forall Z, Z \in X \label{ass:insieme_vuoto}
+\end{equation}
+\subsection{Definizione di insieme vuoto}
+Sia Y un insieme di cui un altro assioma conferma l'esistenza, allora:
+\begin{equation}
+    \emptyset := \{X \in Y : false\} \label{def:insieme_vuoto}
+\end{equation}
+\subsection{Definizione di intersezione binaria}
+Con questo si spiega l'intersezione tra due insiemi:
+\begin{equation}
+    A \cap B := \{X \in A : X \in B\} \label{def:intersezione_binaria}
+\end{equation}
+\subsection{Definizione di intersezione}
+Dato un insieme di insiemi, esiste l'insieme che ne è l'intersezione.
+\begin{equation}
+    \cap F := \{x \in A : \forall Y, (Y \in F \Rightarrow X \in Y)\} \text{ dove } A \in F
+\end{equation}
+F è l'insieme di TUTTI gli insiemi da intersecare, mentre l'insieme intersezione viene indicato come $\cap_{Y \in F}Y$, ad esempio $A \cap B \cap C = \cap_{Y \in (A, B, C)}Y$.
+\subsection{Assioma dell'unione}
+\begin{equation}
+    \forall F, \exists X, \forall Z. (Z \in X \Leftrightarrow \exists Y, (Y \in F \wedge Z \in Y)) \label{ass:unione}
+\end{equation}
+Preso un qualunque insieme F di insiemi da unire, esiste un insieme unione X t.c. per ogni elemento qualsiasi Z, Z appartiene ad X sse esiste almeno un insieme Y appartenente a F nel quale Z è contenuto. 
 \end{document}

@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{amsmath}
+\title{\textbf{Logica per l'informatica\\Dimostrazioni inerenti alla teoria assiomatica}}
+\date{08 ottobre 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Introduzione}
+Inizialmente, per studiare la logica useremo dimostrazioni informali, ovvero prove meno verbose di quelle rigorose e spesso con dettagli mancanti o perfino errate.\\
+A questo fine useremo svariati operatori logici, che ora vedremo nel dettaglio e dal punto di vista dell'utilizzo nel linguaggio Lean.
+\section{Per ogni }
+Simbolo: $\forall$.
+\subsection{Regola di introduzione}
+Scopo: dimostrare che $\forall x. P(X)$. Per farlo, lo dimostro su un X generico.\\
+La conclusione diventa P.
+\subsubsection{In Lean}
+\begin{center}
+    assume x: set. [dimostrazione di P(x)]
+\end{center}
+\subsection{Regola di eliminazione}
+Scopo: da un'ipotesi o un risultato intermedio $\forall x.P(x)$ concludo che la mia ipotesi vale per un x a mia scelta.
+\subsubsection{In Lean}
+\begin{center}
+    by NOME\_IPOTESI we proved CONCLUSIONE (NOME\_RISULTATO\_INTERMEDIO)
+\end{center}
+Ad esempio, da $\forall A, \emptyset \subseteq A$ si può ricavare $\emptyset \subseteq \emptyset$ sostituendo ad A l'insieme vuoto.
+\pagebreak
+\section{Implicazione}
+Simbolo: $\Rightarrow$.
+\subsection{Regola di introduzione}
+Scopo: per dimostrare $P \Rightarrow Q$, lo dimostro su un x generico.\\
+La conclusione diventa Q.
+\subsubsection{In Lean}
+\begin{center}
+    suppose P as [NOME\_IPOTESI] [dimostrazione di Q]
+\end{center}
+\subsection{Regola di eliminazione}
+Scopo: da un'ipotesi o un risultato intermedio $P \Rightarrow Q$, posso concludere che Q valga.
+\subsubsection{In Lean}
+\begin{center}
+    by [NOME\_IPOTESI\_PQ],[NOME\_IPOTESI\_P] we proved [Q] as [NOME\_RISULTATO\_INTERMEDIO]
+\end{center}
+\subsection{Regola di eliminazione (variante)}
+Scopo: da un'ipotesi o un risultato intermedio $P \Rightarrow Q$, per dimostrare Q mi posso ridurre a dimostrare P.
+\subsubsection{In Lean}
+\begin{center}
+    by [NOME\_IPOTESI] it suffices to prove [NOME\_IPOTESI\_P]
+\end{center}
+\pagebreak
+\section{Coimplicazione SSE}
+Simbolo: $\Leftrightarrow$.
+\subsection{Regola di introduzione}
+Scopo: dimostrare $P \Leftrightarrow Q$, dimostro sia $P \Rightarrow Q$ che $Q \Rightarrow P$.
+\subsubsection{In Lean}
+\begin{center}
+    we split the proof.\\
+    \begin{itemize}
+        \centering
+        \item proof 1
+        \item proof 2
+    \end{itemize}
+\end{center}
+\subsection{Regola di eliminazione}
+Scopo: l'ipotesi $P \Leftrightarrow Q$ può essere usata sia come un'ipotesi $P \Rightarrow Q$ che come un'ipotesi $Q \Rightarrow P$.
+\section{Assurdo}
+\subsection{Regola di eliminazione}
+Scopo: se ho dimostrato l'assurdo posso concludere qualsiasi cosa.
+\subsubsection{In Lean}
+\begin{center}
+    by [NOME\_ASSURDO] done \\
+    oppure posso anche scrivere\\
+    by [NOME\_ASSURDO] we proved false
+\end{center}
+\section{Negazione}
+Simbolo: $\neg$.\\
+Scopo: $\overline{P}$ è un'abbreviazione per $P \Rightarrow$ assurdo. Quindi per dimostrare $\overline{P}$ si assume che P valga e si dimostra l'assurdo.\\
+\textbf{Attenzione:} questo non serve a dimostrare l'assurdo!
+\section{Congiunzione}
+Simbolo: $\wedge$.
+\subsection{Regola di introduzione}
+Scopo: per dimostrare $P \wedge Q$ (P \textbf{e} Q) si dimostrano sia P che Q. Da un'ipotesi P e da un'ipotesi Q si ricava $P \wedge Q$.
+\subsubsection{In Lean}
+\begin{center}
+    by conj, NOMEp, NOMEq we proved $P \wedge Q$ as H
+\end{center}
+\subsection{Regola di eliminazione}
+Scopo: un'ipotesi o un risultato intermedio $P \wedge Q$ può essere usato sia come P che come Q. In alternativa, invece di concludere o assumere $P \wedge Q$ (H), si può direttamente concludere P ($H_1$) e Q ($H_2$).
+\subsubsection{In Lean}
+\begin{center}
+    by NOME we proved P as $H_1$ and Q as $H_2$
+\end{center}
+\section{Abbreviazioni e formule in Lean}
+\begin{itemize}
+    \item $\forall x \in A.P(x)$ viene usato per indicare $\forall x \in A, P(x) \forall x. (x \in A \Rightarrow P(x))$
+    \item $\exists x \in A.P(x)$ viene usato per indicare $\exists x. (x \in A \wedge P(x))$
+    \item $by H_1, H_2 \dots H_n$ we proved P(H) anziché elencare tutte le ipotesi
+    \item "thus" per fare riferimento all'ultima ipotesi/risultato intermedio
+    \item "we need to prove" per esplicitare la conclusione corrente
+    \item "done" per indicare che il lettore è in grado di ricostruire la prova per conto suo 
+\end{itemize}
+\pagebreak
+\section{Enunciati e prove}
+\begin{itemize}
+    \item L'\textbf{enunciato} è ciò che vogliamo dimostrare, ovvero un insieme di ipotesi e di una conclusione;
+    \item una \textbf{prova} è una sequenza di passi che ci convince che la conclusione "valga" quando "valgono" le ipotesi;
+    \item per convenzione, tutte le variabili non introdotte da un $\forall$ o da un $\exists$ si considerano introdotte da dei $\forall$ all'inizio dell'enunciato;
+    \item tutti gli \textbf{assiomi} sono sempre utilizzabili come ipotesi in qualunque momento.
+\end{itemize}
+\end{document}

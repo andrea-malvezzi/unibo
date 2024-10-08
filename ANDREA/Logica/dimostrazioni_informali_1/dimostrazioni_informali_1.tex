@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{amsmath}
+\title{\textbf{Logica per l'informatica\\Dimostrazioni inerenti alla teoria assiomatica}}
+\date{08 ottobre 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Riflessività del $\subseteq$}
+\subsection{Teorema}
+\begin{equation}
+    X \subseteq X \label{teo:riflessività_subseteq}
+\end{equation}
+\subsection{Dimostrazione}
+Sia X un insieme. Dobbiamo dimostrare il teorema (\ref{teo:riflessività_subseteq}), ovvero:
+\begin{center}
+    $\forall Y.Y \in X \Rightarrow Y \in X$.
+\end{center}
+Sia Y un insieme tale che Y $\in$ X(H). Debbo dimostrare Y $\in$ X. Ovvio per l'ipotesi H.
+\section{Transitività del $\subseteq$}
+\subsection{Teorema}
+\begin{equation}
+    \text{se } X \subseteq Y \text{ e } Y \subseteq Z \text{ allora } X \subseteq Z \label{teo:transitività_subseteq}
+\end{equation}
+\subsection{Dimostrazione}
+Siano X, Y e Z insiemi tali che $X \subseteq Y$, ovvero $\forall A, A \in X \Rightarrow A \in Y (H_1)$ e $Y \subseteq Z$, ovvero $\forall A, A \in Y \Rightarrow A \in Z (H_2)$.\\
+Dobbiamo dimostrare $X \subseteq Z$, ovvero $\forall B, B \in X \Rightarrow B \in Z$. Sia B un insieme t.c. $B \in X (H_3)$. Da $H_3$ e $H_1$ ho $B \in Y$. \\
+Quindi per $H_2$ ho $B \in Z$.
+\pagebreak
+\section{Anti-simmetria del $\subseteq$}
+\subsection{Teorema}
+\begin{equation}
+    \text{se } X \subseteq Y \text{ e } Y \subseteq X \text{ allora } X = Y \label{teo:anti-simmetria_subseteq}
+\end{equation}
+\subsection{Dimostrazione}
+Siano X e Y insiemi t.c. $X \subseteq Y$, ovvero $\forall Z, Z \in X \Rightarrow Z \in X, (H_2)$.\\
+Dobbiamo dimostrare $X = Y$. Per l'assioma di estensionalità, è sufficiente dimostrre $\forall Z, Z \in X \Leftrightarrow Z \in Y$. Sia Z un insieme. $Z \in X \Rightarrow Z \in Y$ vale per $H_1$ e $Z \in Y \Rightarrow Z \in X$ vale per $H_2$.
+\section{Il vuoto è sottoinsieme di qualunque cosa}
+\subsection{Teorema}
+\begin{equation}
+    \emptyset \subseteq X \label{teo:vuoto_subset_tutto}
+\end{equation}
+\subsection{Dimostrazione}
+Sia X un insieme. Dobbiamo dimostrare $\emptyset \subseteq X$, ovvero $\forall Z. Z \in \emptyset \Rightarrow Z \in X$. Sia Z un insieme t.c. $Z \in \emptyset$ (H). Per l'assioma dell'insieme vuoto $Z \in \emptyset$. Quindi per H assurdo e perciò $Z \in X$.
+\end{document}

@@ -1,9 +1,13 @@
 \documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
 \author{Andrea Malvezzi}
 \title{\textbf{Logica per l'informatica~-~Lezione~1.5.\\Teoria assiomatica degli insiemi (cenni)}}
 \date{20 Settembre, 2024}
 \begin{document}
 \maketitle
+\pagebreak
+\tableofcontents
 \pagebreak
 \section{Introduzione}
 I matematici ragionano su vari elementi, alcuni concreti ed altri astratti.\\
@@ -55,7 +59,7 @@ Gli insiemi si possono quindi vedere (spesso) come delle scatole, ed è perciò 
         \item es. di inclusione: \{1, 3\} $\subset$ \{1, 2, 3\}, in quanto "semplificando" le parentesi (non è il termine corretto, è solamente per rendere l'idea di "aprire" la scatola) si ritrova il lato \textit{sx} in quello \textit{dx}, quindi \textit{A} in \textit{B}.
     \end{itemize} 
 \end{itemize}
-\subsection{Il paradosso di Russell}
+\subsection{Il paradosso di Russell} \label{subsec:Russell}
 Il sistema Naive - ed in particolare il suo \textbf{assioma di comprensione} - vennero messi in crisi da Russell e dalla seguente affermazione:
 \begin{center}
     \textbf{\textit{X}} = \{\textit{Y} | \textit{Y} $\notin$ \textit{Y}\}
@@ -66,4 +70,12 @@ Prende in esame tutti gli insiemi \textit{X} che non contengono se stessi, e si 
     \item se no: \textit{X} non contiene un insieme che non contiene se stesso $\rightarrow$ non contiene nessuno dei suoi sottoinsiemi, i quali non contengono sè stessi;
 \end{itemize}
 Quindi, \textit{X} $\in$ \textit{X} sse \textit{X} $\notin$ \textit{X}, da cui il titolo di "paradosso".
+\section{Teoria assiomatica degli insiemi}
+Per evitare il PdR (\ref{subsec:Russell}) occorre quindi eliminare l'assioma di comprensione e costruire una teoria basata sulle seguenti:
+\begin{itemize}
+    \item non-definizione dei concetti di insieme, uguaglianza e appartenenza;
+    \item uso di assiomi per confermare l'esistenza di insiemi a partire da altri insiemi;
+    \item uso di definizioni;
+\end{itemize}
+Esistono numerose teorie insiemistiche, tra cui anche quella di Zermelo-Fraenkel (\textbf{ZF}), con cui si riesce a sviluppare gran parte della matematica, nonostante non sia considerabile consistente.
 \end{document}
