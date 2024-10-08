@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{xcolor}
+\definecolor{goldenrod_yellow}{RGB}{218, 165, 32}
+\definecolor{dark_green}{RGB}{116, 148, 121}
+\definecolor{exists_pink}{RGB}{255, 132, 212}
+\title{\textbf{Logica per l'informatica\\Legenda colori slide}}
+\date{08 ottobre 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Introduzione}
+Questa legenda serve a tenere traccia di cosa significano gli art attack di Coen nelle slide.
+Ogni colore corrisponde ad un comando Lean e senza una legenda può risultare difficile seguire le lezioni.
+Ed ecco perché era \textbf{imperativo} crearne una.
+\section{Legenda}
+\textbf{N.B.} tutti i colori sono in ordine di apparenza nelle slide, con la prima apparizione alla dodicesima slide della presentazione "Prove in teoria degli insiemi".
+\begin{itemize}
+    \item \colorbox{yellow}{Giallo} = Introduzione del forall ($\forall_i$);
+    \item \colorbox{green}{Verde chiaro} = Introduzione implicazione logica tra P e Q ($\Rightarrow_i$);
+    \item \colorbox{magenta}{Magenta} = Passaggio non corrispondente ad un comando logico / espansione di definizione;
+    \item \colorbox{pink}{Rosa chiaro} = Eliminazione della negazione ($\bot_e$);
+    \item \colorbox{lightgray}{Grigio chiaro} = Eliminazione dell'and ($\wedge_e$);
+    \item \colorbox{goldenrod_yellow}{Ocra} = Introduzione dell'and ($\wedge_i$);
+    \item \colorbox{dark_green}{Verde scurdo} = Eliminazione dell'or ($\vee_e$);
+    \item \colorbox{gray}{Grigio} = Introduzione ipotesi 1/2 dell'or ($\vee_{i_1}$ / $\vee_{i_2}$);
+    \item \colorbox{exists_pink}{Rosa} = Eliminazione exists ($\exists_e$);
+    \item \colorbox{cyan}{Azzurro} = Introduzione exists ($\exists_i$);
+\end{itemize}
+\end{document}

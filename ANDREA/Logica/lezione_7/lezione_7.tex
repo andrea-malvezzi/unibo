@@ -1,0 +1,97 @@
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{amsmath}
+\title{\textbf{Logica per l'informatica\\Dimostrazioni inerenti alla teoria assiomatica}}
+\date{08 ottobre 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{L'unione}
+\subsection{Assioma dell'unione}
+Dato un insieme di insiemi, esiste l'insieme che ne è l'unione.
+\begin{equation}
+    \forall F, \exists X, \forall Z. (Z \in X \Leftrightarrow \exists Y, (Y \in F \wedge Z \in Y)) \label{ass:unione}
+\end{equation}
+Dove F è l'insieme da unire, mentre Z è un elemento dell'unione sse appartiene ad almeno uno degli insiemi contenuti in F (nel nostro assioma, se appartiene ad un insieme Y di F).\\
+L'insieme X viene indicato con $\cup F$ oppure $\cup_{Y \in F}Y$.
+\subsubsection{Teorema dell'unione binaria}
+Quando l'insieme F è formato solamente da due insiemi, allora si riesce a dimostrare il \textbf{teorema dell'unione binaria}.
+Formalmente:
+\begin{equation}
+    \forall A, \forall B, \exists X, \forall Z. (Z \in X \Leftrightarrow Z \in A \vee Z \in B) \label{teo:unione_binaria}
+\end{equation}
+Ovvero, dati A e B (i due insiemi da unire) esiste un insieme unione X (che indicheremo come $A \cup B$) tale per cui gli elementi Z di X o appartengono ad A, oppure appartengono a B.
+\section{Disgiunzione (or)}
+\subsection{Regola di introduzione}
+Per dimostrare $P \vee Q$ basta dimostrare o P o Q (due regole di introduzione, ma solo una va dimostrata), dichiarando quale delle due si vuole considerare.\\
+Ma non c'è sempre una scelta giusta già dall'inizio della dimostrazione. \\
+Vediamo il seguente esempio:
+\subsubsection{Problema con la regola di introduzione}
+Prendiamo come esempio il seguente teorema:
+\[
+    \forall X, x \in \mathbb{N}. Pari(x) \vee Dispari(x)
+\]
+Mi aspetterei che questo teorema sia dimostrabile in quanto ogni numero naturale risulterebbe o pari o dispari.\\
+Procediamo per step: preso un numero X, devo dimostrare Pari(X) o Dispari(X).\\
+Dimostriamo ora che X è pari. Essendo X un numero generico, nel caso in cui riuscissi a dimostrare la parità di X, dimostrerei in realtà che TUTTI i numeri X siano pari.\\
+Per dimostrare il teorema su cui stiamo lavorando occorrebbe generare delle ipotesi basandosi su eventuali teoremi ed annunciati precedentemente elencati, per poi arrivare a sbrogliare la confusione generatasi nell'or.
+\subsection{Regola di eliminazione}
+A differenza della regola di introduzione, che va posticipata quanto possibile, quella di eliminazione va anticipata il più possibile, in quanto non costituisce una scelta ma anzi, ramifica la dimostrazione e permette di lavorare con più ipotesi.
+\subsubsection{In Lean}
+\begin{verbatim}
+we proceed by cases on NOME_P_or_Q to prove CONCLUSIONE
+  case or_1
+    suppose P(H)
+\end{verbatim}
+\quad \quad \dots
+\begin{verbatim}
+  case or_2
+    suppose Q(H)
+\end{verbatim}
+\quad \quad \dots
+\section{Teoremi con l'or}
+\subsection{Monotonia dell'unione}
+\subsubsection{Teorema}
+\begin{equation}
+    X \subseteq X^1 \Rightarrow X \cup Y \subseteq X^1 \cup Y. \label{teo:monotonia_unione}
+\end{equation}
+Voglio dimostrare che se $X$ è sottoinsieme di $X^1$ allora $X$ unito a $Y$ è sottoinsieme di $X^1$ unito $Y$.
+\subsubsection{Dimostrazione}
+Siano $X$ e $X^1$ due insiemi tali che $X \subseteq X^1$, ovvero $\forall Z.Z \in X \Rightarrow Z \in X^1 (H_1)$.\\
+Dobbiamo dimostrare $X \cup Y \subseteq X^1 \cup Y$, ovvero $\forall W. W \in X \cup Y \Rightarrow W \in X^1 \cup Y$.\\
+Ora so che W appartiene ad un unione, quindi posso sfruttare (\ref{ass:unione}), secondo il quale W sta in X oppure in Y.\\
+A questo punto occorre fare una scelta: 
+\begin{itemize}
+    \item o dimostrare $W \in X$;
+    \item oppure dimostrare $W \in Y$;
+\end{itemize}
+Nel primo caso, so che $W$ è incluso in $X$ e, tramite $H_1$, allora anche in $X^1$, quindi ho dimostrato la premessa iniziale ($W \in X^1 \cup Y$).\\
+Nel secondo invece so che se $W$ è incluso in $Y$ allora sicuramente $W \in X^1 \cup Y$.
+\subsection{Esempio di teorema direttamente dimostrabile}
+\subsubsection{Teorema}
+\[
+    X \in Y \Rightarrow X \in Y \cup Z
+\]
+\subsubsection{Dimostrazione}
+Siano X, Y e Z degli insiemi t.c. $X \in Y$ (H). Da (H) ho $X \in Y \vee X \in Z$. Quindi, per (\ref{teo:unione_binaria}), si ha $X \in Y \cup Z$.
+\section{L'Esiste}
+\subsection{Regola di introduzione}
+Per dimostrare $\exists X. P(X)$ devo scegliere una X e dimostrare $P(X)$, in quel caso specifico.\\
+Nuovamente, dato che occorre fare una scelta, può essere necessario aspettare per selezionare un X significativo e utile alla dimostrazione di un teorema.\\
+Inoltre, in questo caso X può essere anche un'intera espressione, non più solamente una variabile.
+\subsection{Regola di eliminazione}
+Da un'ipotesi o da un risultato intermedio $\exists X.P(X)$ si può procedere nella prova fissando una variabile generica e supponendo che per tale X valga P, per poi usare tale ipotesi H al fine della dimostrazione.
+\section{Teoremi con l'esiste}
+\subsection{Primo esempio}
+\subsubsection{Teorema}
+\[
+    X \in \cup F \rightarrow \exists U. (U \in F \wedge U \not= \emptyset)
+\]
+\subsubsection{Dimostrazione}
+
+\end{document}
