@@ -3,6 +3,7 @@
 \usepackage[all]{hypcap}   
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{xcolor}
 \graphicspath{{../images/}}
 \author{Andrea Malvezzi}
 \title{\textbf{Architettura degli Elaboratori~-~Rappresentazione dell'informazione}}
@@ -56,4 +57,28 @@ Mentre per fare la conversione inversa, si può optare per un metodo più altern
         \caption{\label{fig:moltiplicazioni_successive}Partendo da sx e con un moltiplicatore pari a 0, per ogni cifra si somma la cifra in questione al doppio del moltiplicatore, per poi assegnare al moltiplicatore valore pari a quello appena ottenuto.}
     \end{center}
 \end{figure}
+\section{Numeri binari negativi}
+Per codificare i numeri binari negativi si possono usare diverse tecniche, tra cui:
+\subsection{Modulo e segno}
+Si usa il bit più significativo (a sx) come segno, dove 0 indica il "+" e l'1 indica il "-".
+\subsubsection{Esempio}
+Usando 8 bit:
+\begin{itemize}
+    \item $6_{10} = \colorbox{yellow}{0}0000110_2$, dove il bit evidenziato indica il segno "+";
+    \item $-6_{10} = \colorbox{yellow}{1}0000110_2$, dove il bit evidenziato indica il segno "-".
+\end{itemize}
+\subsection{Complemento a 1}
+Qualora il numero da rappresentare fosse negativo, si complementa il modulo della codifica binaria di tale numero.
+\subsubsection{Esempio}
+\begin{itemize}
+    \item $6_{10} = \colorbox{yellow}{0}0000110_2$;
+    \item $-6_{10} = \colorbox{yellow}{1}1111001_2$, dove semplicemente si invertono i numeri dopo al bit di segno del 6.
+\end{itemize}
+\subsection{Complemento a 2}
+Come il complemento ad 1, ma se il numero è negativo aggiunge anche un 1 in seguito all'operazione di complemento.
+\subsubsection{Esempio}
+\begin{itemize}
+    \item $6_{10} = \colorbox{yellow}{0}0000110_2$;
+    \item $-6_{10} = \colorbox{yellow}{1}11110\colorbox{green}{10}_2$, dove guardando il secondo esempio del completamento a 1, è facile notare la differenza tra le due (le cifre evidenziate in verde).
+\end{itemize}
 \end{document}
