@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\definecolor{goldenrod_yellow}{RGB}{218, 165, 32}
+\definecolor{dark_green}{RGB}{116, 148, 121}
+\definecolor{exists_pink}{RGB}{255, 132, 212}
+\title{\textbf{Logica per l'informatica\\Legenda colori slide}}
+\date{08 ottobre 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+Primo grande insieme saranno i numeri naturali, tramite una meta-logica.\\
+Tutti i numeri naturali devono essere distinti, e un modo dei tanti per garantire questa proprietà (e conseguentemente anche molte altre utili per implementare eventuali operazioni) è la seguente:
+\[ [[0]] := \emptyset \]
+\[ [[n + 1]] := [[n]] \cup {[[n]]} \]
+Esempio:
+\[ [[0]] = \emptyset \]
+\[ [[1]] = {\emptyset} \text{$\emptyset$ è l'insieme corrispondente allo 0} \]
+\[ [[2]] = {\emptyset, {\emptyset}} \]
+\[ [[3]] = {\emptyset, {\emptyset}}, {\emptyset, {\emptyset}} \]
+Dove le doppie quadre indicano la "codifica" di un numero in una data maniera: $:=$ indica una definizione, ovvero la "maniera".
+
+\section{Teorema}
+Tutti i numeri naturali sono diversi: quindi non ci sono due insiemi uguali.\\
+Sentendo uguale, devo pensare al teorema di estensionalità. Supponiamo quindi 1 = 2.\\
+Quindi $\forall Z. (Z \in 1 \Leftrightarrow Z \in 2)$ per l'assioma di estensionalità.\\
+Poiché 1 $\in$ 2 per l'assioma dell'unione e del singoletto, dato che 1 appartiene al singoletto vuoto, ne deduciamo che $1 \in 1 = \emptyset$.\\
+Se fossimo partiti da 4=5, saremmo dovuti partire dal dimostrare che 3 = 4, poi 2 = 3, etc...\\
+Quindi ${\emptyset} = 1 \text{ e } 1 = \emptyset$ CONTINUA SLIDE
+\subsection{Osservazione}
+Per ora abbiam solo dimostrato l'esistenza di insiemi finiti. Occorre un assioma che chiarisca l'esistenza di un insieme infinito, o almeno che definisca l'insieme contenente \textbf{almeno} i numeri naturali, per poi restringerlo a contenere \textbf{solamente} quelli naturali.\\
+I numeri naturali son importanti perché permettono di "catturare" nell'insieme di sistemi abilitati quello dell'informatica, in quanto ogni processo converte dati in sequenze di 1 e 0, quindi numeri naturali.\\
+\section{Assioma dell'infinito}
+Esiste un insieme che contiene almeno (gli encoding di) tutti i numeri naturali. Questo tuttavia non ci sa dire se in tale insieme stanno dentro solamente quelli naturali, in quanto manca il sse.
+\[ \exists Y. (\emptyset \in Y \wedge \forall N. (N \in Y \Rightarrow N \cup \{ N \} \in Y)) \]
+Per ogni insieme Y, il vuoto è compreso in tale insieme, e per ogni N, N unito all'insieme N (la definizione di prima della codifica dei numeri naturali, FAI ESEMPIO) appartiene ad Y.
+\section{Assioma insieme potenza}
+Classico esempio di assioma che risulta utile quando si considerano insiemi infiniti.\\
+Preso un insieme ne esiste un insieme dei sottoinsiemi.
+\[ X,\exists Y,Z.(Z \in Y \Leftrightarrow Z \subseteq X) \]
+Indicando Y come $2^x$ o $P(X)$ (insieme potenza o delle parti):
+\[ 2^{\{1,2\}} = \{\emptyset, \{ 1 \}, \{2\}, \{\emptyset, 1, 2\}\} \]
+Potremmo anche avere come insieme X un insieme infinito, oppure al posto di $2^x$ qualcosa come $2^{2^{2^x}}$.
+\section{Assioma di regolarità o di fondazione}
+Ogni insieme non vuoto contiene un elemento da cui è disgiunto.\\
+Conseguentemente, nessun insieme contiene ricorsivamente sé stesso: questo è interessante in quanto permette di provare a parlare di cardinalità di un insieme e, quando possibile, di misurarla.
+\section{Assioma di rimpiazzamento}
+Supponiamo di avere un insieme che son sicuro esista. Supponiamo, attraverso formule logiche, di associare ad ogni elemento un altro insieme.
+Allora son sicuro che esista un insieme Y contenente tutti i collegamenti. Questo insieme avrà SEMPRE cardinalità minore o uguale a quella dell'insieme di partenza.
+\end{document}
