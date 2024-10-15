@@ -81,4 +81,34 @@ Come il complemento ad 1, ma se il numero è negativo aggiunge anche un 1 in seg
     \item $6_{10} = \colorbox{yellow}{0}0000110_2$;
     \item $-6_{10} = \colorbox{yellow}{1}11110\colorbox{green}{10}_2$, dove guardando il secondo esempio del completamento a 1, è facile notare la differenza tra le due (le cifre evidenziate in verde).
 \end{itemize}
+\section{Rilevazione e Correzione errori}
+Quando si lavora con dei dati potrebbero riscontrarsi degli errori. Per rilevare ed eventualmente anche correggere tali errori si aggiungono dei bit detti di controllo davanti alla parola corrispondente al dato.
+\subsection{Distanza di Hamming}
+La distanza di Hamming tra due parole è il numero di bit di cui differiscono tra loro, ad esempio tra $0011$ e $1111$ vi è una distanza di $2$.\\
+Per \textbf{rilevare} $n$ bit errati in una parola è necessario un codice con distanza di Hamming $\geq n + 1$.\\
+Per \textbf{correggere} $n$ bit errati in una parola è necessario un codice con distanza di Hamming $\geq 2n+1$.
+\subsection{Il bit di parità}
+Uno dei codici per il controllo dell'errore più usati è quello del "Bit di parità".\\
+Si ha un unico bit di controllo che si sceglie per rendere pari il numero di uno nella parola da controllare. Qualora il dato, una volta trasmesso etc$\dots$ non avesse un numero pari di 1, allora si potrà controllare i bit uno per uno per individuare l'errore.
+\subsection{Correzione dell'errore con codice di Hamming}
+Avendo una parola lunga $n_1$ bit e decidendo di aggiungervi $n_2$ bit di controllo dell'errore, allora il codice di Hamming sarà in grado di correggere tutti i possibili errori \textbf{su singoli bit} usando il numero minimo di bit di controllo $n_2$ che soddisfa la seguente disequazione:
+\begin{equation}
+    n_1 + n_2 + 1 \leq 2^{n_2} \label{eq:codice_Hamming}
+\end{equation}
+Questi bit di controllo (di parità) verranno posizionati nelle posizioni con indice pari alle potenze di 2, quindi alle posizioni $1, 2, 4, 8, 16, \dots$ e controlleranno proprio i gruppi corrispondenti a tali posizioni (vedi esempio seguente).
+\subsubsection{Esempio di codice di Hamming}
+A seguire un esempio di applicazione del codice di Hamming: qui si ha una parola di 16 bit, quindi occorerà trovare $n_2$ minimo per risolvere l'equazione (\ref{eq:codice_Hamming}). Quindi:
+Prendiamo ad esempio $n_2$ pari a $4$:
+\[16 + 4 + 1 \leq 2^{4} ? \text{ falso.}\]
+Aumentiamo quindi $n_2$ e riproviamo:
+\[16 + 5 + 1 \leq 2^{5} ? \text{ vero.}\]
+Quindi avremo 5 bit di parità da posizione nelle posizioni $(1, 2, 4, 8, 16)$, ovvero:
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1\textwidth, height=.7\textheight,keepaspectratio]{rappresentazione_dati/hamming_example.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:esempio_Hamming}Qui il bit di parità nella posizione 4 controlla il numero di uni prima di tale posizione, ed essendocene solamente uno, viene posto pari a 0.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
+Per trovare la posizione dell'errore, occorre
 \end{document}
