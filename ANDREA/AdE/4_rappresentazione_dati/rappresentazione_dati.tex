@@ -81,6 +81,43 @@ Come il complemento ad 1, ma se il numero è negativo aggiunge anche un 1 in seg
     \item $6_{10} = \colorbox{yellow}{0}0000110_2$;
     \item $-6_{10} = \colorbox{yellow}{1}11110\colorbox{green}{10}_2$, dove guardando il secondo esempio del completamento a 1, è facile notare la differenza tra le due (le cifre evidenziate in verde).
 \end{itemize}
+\subsection{Codifica in eccesso}
+Un altro modo per rappresentare un numero consiste nel definire un "\textbf{offset}" o \textbf{eccesso} da aggiungere al valore del numero che si vuole rappresentare.\\
+Di conseguenza, i numeri negativi diventeranno più piccoli, mentre quelli positivi più grandi.
+\subsubsection{Esempio teorico}
+Volendo rappresentare i numeri nell'intervallo $[-2^{k-1}, 2^{k-1}-1]$, potremmo decidere di sommare a tutti i valori corrispondenti a tali numeri $2^{k-1}$. In questo modo avremmo:
+\begin{gather*}
+    000 \dots 0 = -2^{k-1}\\
+    111 \dots 1 = 2^{k-1}-1\\
+    100 \dots 0 = 0\\
+\end{gather*}
+\subsubsection{Esempio pratico}
+Voglio rappresentare $2^5-1$ valori con eccesso di 4. Ovviamente serviranno 5 bit totali per questa operazione in quanto $2^5-1 = 31$ cifre, più lo $0$ quindi $32$ totali. Perciò:
+\[ -16_{10} \Rightarrow -16 + 4 = -12 \]
+Ora, essendo il numero trattato negativo, trasformiamo il suo valore assoluto in binario, usando 5 bit:
+\[ |-12|_{10} = 01100_2 \]
+In seguito, essendo il numero da convertire negativo, occorerà applicare la codifica di completamento a 2 alla conversione in binario ottenuta precedentemente:
+\[ 01100_2 \Rightarrow 10011_2 + 00001_2 \Rightarrow 10100_2 \]
+Rappresentiamo ora l'11:
+\[11_{10} + 4_{10} = 15_{10} = 01111_2\]
+\subsection{Codifica floating point}
+La codifica \textbf{floating point} si basa sul rappresentare un numero $n$ tramite altri due numeri: un $f$ detto \textbf{mantissa} e un $e$ detto \textbf{esponente}.\\
+La mantissa può essere normalizzata (la prima cifra non può essere $0$), oppure no, in base alle caratteristiche della codifica con cui si sta operando.
+\subsubsection{Esempio di codifica con normalizzazione}
+Supponiamo di operare con una codifica con normalizzazione, offset pari a 64 e base 2. Volendo rappresentare il numero 432:
+\begin{center}
+    Convertiamo 432 in binario:
+\end{center}
+\[432_{10} = 110110000_2\]
+\begin{center}
+    Ora posizioniamo la virgola (o il punto) dopo alla prima cifra della parola ottenuta:
+\end{center}
+% TODO: chiedi spiegazioni al prof su come effettuare il passaggio da n a floating point
+\[110110000_2 \Rightarrow 1.10110000_2\]
+\begin{center}
+    Contando i numeri dopo alla virgola, otterremo i bit dell'esponente, da sommare con l'offset per ottenere la cifra effettiva da convertire in binario:
+\end{center}
+\[8 + 64 = 72_{10} \Rightarrow 1001000_2\]
 \section{Rilevazione e Correzione errori}
 Quando si lavora con dei dati potrebbero riscontrarsi degli errori. Per rilevare ed eventualmente anche correggere tali errori si aggiungono dei bit detti di controllo davanti alla parola corrispondente al dato.
 \subsection{Distanza di Hamming}
@@ -109,6 +146,6 @@ Quindi avremo 5 bit di parità da posizione nelle posizioni $(1, 2, 4, 8, 16)$, 
     \begin{center}
         \caption{\label{fig:esempio_Hamming}Qui il bit di parità nella posizione 4 controlla il numero di uni prima di tale posizione, ed essendocene solamente uno, viene posto pari a 0.} % label fuori da caption spesso non va, mettilo dentro
     \end{center}
-\end{figure}
+\end{figure}\\
 Per trovare la posizione dell'errore, occorre
 \end{document}

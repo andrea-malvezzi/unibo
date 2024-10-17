@@ -1,0 +1,130 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{../_images/}}
+\title{\textbf{Logica per l'informatica\\Lista teoremi e assiomi}}
+\date{10 ottobre 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+\section*{Introduzione}
+A seguire una lista di tutti i teoremi e di tutti gli assiomi utili alle dimostrazioni di laboratorio, con casi di utilizzo e spiegazioni approfondite.
+\section{Assiomi}
+\subsection{Assioma di estensionalità}
+Due insiemi sono uguali quando contengono gli stessi elementi:
+\begin{equation}
+    X,Y.(X = Y \Leftrightarrow \forall Z.(Z \in X \Leftrightarrow Z \in Y)) \label{ass:estensionalità} \tag{ax. 1}
+\end{equation}
+Questo teorema si utilizza quando occorre indagare sull'uguaglianza tra due insiemi: potrei usarlo sia per mostrare che due insiemi siano uguali, oppure per mostrare che NON lo siano.
+\subsubsection{Esempio}
+\begin{gather*}
+    A = \{1, 2\}\\
+    B = \{1\}\\
+    A = B? \text{ 1 è presente in entrambi gli insiemi, ma 2 solamente in A.}
+\end{gather*}
+\subsubsection{Nota Bene}
+Essendo questo un assioma "a due direzioni" (un insieme è uguale a un altro se hanno gli stessi elementi E VICEVERSA) in Lean si potrebbe realizzare DUE assiomi (uno per verso, evitando il sse), per semplificarne l'utilizzo:
+\begin{center}
+    axiom ax\_extensionality1: $\forall A, B. (\forall Z, Z \in A \Leftrightarrow B) \Rightarrow A = B$\\
+    axiom ax\_extensionality2: $\forall A, B, A = B \Rightarrow (\forall Z, Z \in A \Leftrightarrow B)$\\
+\end{center}
+\pagebreak
+\subsection{Assioma di separazione o di comprensione}
+Questo assioma permette, partendo da un insieme $A$, di formare un sottoinsieme $B$ in modo tale che quest'ultimo soddisfi una certa proprietà $P(X)$.
+\begin{equation}
+    A, \exists B, x.(x \in B \Leftrightarrow x \in A \wedge P(x)) \label{ass:separazione_comprensione} \tag{ax. 2}
+\end{equation}
+$B$ equivale al sottoinsieme che vogliamo creare, quindi possiamo scriverlo come:
+\begin{equation}
+    B = \{x \in A : P(x)\} \label{def:insieme_B_separazione_comprensione}
+\end{equation}
+Stiamo quindi dicendo che avendo un insieme A, esiste un insieme B che contiene elementi di A tali per cui valga la proprietà specificata come $P(x)$.
+\subsubsection{Esempio}
+Avendo un insieme $A$ contenente alcuni numeri naturali, voglio creare un insieme $B$ contenente solamente i numeri pari di $A$. Quindi:
+\begin{gather*}
+    A = \{1, 2, 3, 4, 5, 6, 7\}\\
+    P(x) = \text{ "x è pari."}\\
+    B = \{x \in A : P(x)\}, \text{ quindi: }\\
+    B = \{2, 4, 6\} 
+\end{gather*}
+\subsection{Assioma dell'insieme vuoto}
+Avendo un insieme X vuoto, allora non ci sono elementi contenuti al suo interno:
+\begin{equation}
+    \exists X, Z.(Z \not\in X) \label{ass:insieme_vuoto} \tag{ax. 3}
+\end{equation}
+Questo assioma risulta utile nelle dimostrazioni per assurdo.
+\subsubsection{Esempio}
+L'insieme vuoto comprende se stesso?
+\begin{gather*}
+    \emptyset \in \emptyset?\\
+    \text{ applichiamo l'assioma del vuoto: } \exists X, \forall z. (z \not\in X)\\
+    \text{ sapendo che l'insieme vuoto è per definizione: } \forall z. (z \not\in \emptyset)\\
+    \text{ abbiamo, sostituendo alla z l'insieme vuoto: } \forall \emptyset. (\emptyset \not\in \emptyset)
+\end{gather*}
+Abbiamo quindi dimostrato che l'insieme vuoto non contiene sé stesso.
+\pagebreak
+\subsection{Assioma dell'unione}
+Consideriamo un insieme F come una scatola contenente $n$ insiemi che\\
+vogliamo unire tra loro.\\
+Allora esiste un insieme detto \textbf{insieme unione} $X$ contenente tutti gli elementi dei sottinsiemi di $F$.  \\
+Quindi definendo $X = \cup F$, i membri di $\cup F$ saranno tutti i membri dei membri di $F$.\\
+Si usa quando si vuole effettuare un'unione tra $n$ insiemi e la sua proposizione è la seguente:
+\begin{equation}
+    \forall F, \exists X, \forall Z. (Z \in X \Leftrightarrow \exists Y, (Y \in F \wedge Z \in Y)) \label{ass:unione} \tag{ax. 4}
+\end{equation}
+\subsubsection{Esempio}
+Avendo un insieme $A$ contenente $3$ sottoinsiemi che si vogliono unire tra loro, allora:
+\begin{gather*}
+    A = \{\{1, 2\}, \{3, 4\}, \{5, 6\}\}\\
+    X = \cup A = \{z : \exists Y \in A : z \in Y\}\\
+    \text{ quindi: } X = \{1, 2, 3, 4, 5, 6\}
+\end{gather*}
+\subsection{Assioma del singoletto}
+Avendo un insieme $X$, esiste un insieme $Y$ indicato come $\{X\}$ per cui un elemento $Z$ appartiene ad $Y$ se e solo se $Z$ è $X$:
+\begin{equation}
+    X, Z.(Z \in \{X\} \Leftrightarrow Z = X) \label{ass:singoletto} \tag{ax. 5}
+\end{equation}
+Questo assioma risulta molto utile quando si vuole formare un insieme contenente solamente un elemento, detto \textbf{singoletto}.\\
+Si usa inoltre per comporre insiemi più complessi (ma pur sempre finiti), combinando tra loro diversi singoletti.\\
+Ad esempio, per formare la coppia $(a, b)$ si potrebbero prima creare $\{a\} \text{ e } \{b\}$, e poi unirli tramite l'assioma dell'unione (\ref{ass:unione}).
+\pagebreak
+\subsection{Assioma dell'infinito}
+Esiste un insieme che contiene ALMENO tutti gli encoding dei numeri meta-naturali. Questo insieme potrebbe quindi contenere anche più elementi di quelli che stiamo cercando.
+\begin{equation}
+    \exists Y.(\emptyset \in Y \wedge \forall N. (N \in Y \Rightarrow N \cup \{N\} \in Y)) \label{ass:infinito} \tag{ax. 6}
+\end{equation}
+Il fatto che tale insieme possa contenere anche più elementi di quelli che stiamo cercando è dovuto alla presenza di una implicazione logica invece che di una COimplicazione.\\
+L'insieme risultante si potrà poi filtrare mediante Assioma di separazione \eqref{ass:separazione_comprensione} per ridursi gradualmente sempre di più al sottoinsieme dei numeri naturali.
+\subsection{Assioma dell'insieme potenza}
+Questo assioma risulta particolarmente utile quando si considerano insiemi infiniti.\\
+Afferma che preso un insieme di partenza, allora esiste un altro insieme, detto \textbf{insieme potenza}, contenente tutti i suoi sottoinsiemi:
+\begin{equation}
+    A, \exists Y, z.(z \in Y \Leftrightarrow z \subseteq X) \label{ass:insieme_potenza} \tag{ax. 7}
+\end{equation}
+$Y$ si può rappresentare come $P(x)$ o come $2^x$ ed è detto \textbf{insieme potenza} o \textbf{insieme delle parti}.
+\subsection{Assioma di regolarità o di fondazione}
+
+\section{Teoremi}
+\section{Definizioni}
+\subsection{Definizione di numeri naturali} \label{subsec:def:numeri_naturali}
+Per ogni meta-numero naturale $n$ occorre definire un insieme [[n]] da identificare con tale numero $n$.
+Uno dei tanti modi per definire tali numeri, garantendo allo stesso tempo che questi siano distinti (e molte altre cose)è la seguente:
+\begin{gather*}
+    [[0]] := \emptyset\\
+    [[n + 1]] := [[n]] \cup \{[[n]]\}
+\end{gather*}
+Dove $[[n]]$ indica la codifica del meta-numero naturale $n$, ottenuta unendo l'insieme corrispondente ad $n-1$ a sé stesso.
+\subsubsection{Esempio}
+\begin{gather*}
+    [[0]] = \emptyset\\
+    [[1]] = \{\emptyset\}\\
+    [[2]] = \{\emptyset, \{\emptyset\}\}\\
+    [[3]] = \{\emptyset, \{\emptyset\}, \{\emptyset, \{\emptyset\}\}\}
+\end{gather*}
+Dove l'insieme corrispondente a $n=0$ si ottiene unendo l'insieme vuoto a sé stesso.
+\end{document}
