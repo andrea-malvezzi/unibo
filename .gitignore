@@ -6,3 +6,13 @@
 /*/*/*/*.synctex(busy)
 /*/*/*/*.synctex.*
 /*/*/*/*.toc
+
+# logica
+/*/*/*/*/*.aux
+/*/*/*/*/*.fdb_latexmk
+/*/*/*/*/*.fls
+/*/*/*/*/*.log
+/*/*/*/*/*.out
+/*/*/*/*/*.synctex(busy)
+/*/*/*/*/*.synctex.*
+/*/*/*/*/*.toc
