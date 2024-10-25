@@ -1,0 +1,99 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{../images/}}
+\title{\textbf{Analisi Matematica\\Limiti}}
+\date{07 Ottobre 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Teorema degli zeri}
+\begin{center}
+    Avendo una funzione continua del tipo:
+\end{center}
+\[f:[a,b] \rightarrow \mathbb{R}\]
+\begin{center}
+    dove
+\end{center}
+\[f(a) \cdot f(b) < 0\]
+\begin{center}
+    allora:
+\end{center}
+\begin{equation}
+    \exists c \in (a,b) : f(c) = 0 \label{teo:zeri}
+\end{equation}
+\subsection{Dimostrazione}
+Vedi scritture precedenti per dimostrare (dai lucidi).
+\subsection{Applicazioni ai polinomi}
+Nei polinomi di grado dispari, in base alla tendenza della x la funzione tenderà a più o a meno infinito:
+\begin{gather*}
+    \lim_{x \to \infty}{f(x)} = \infty\\
+    \lim_{x \to -\infty}{f(x)} = -\infty
+\end{gather*}
+E perciò, pur non sapendo il valore esatto a cui tende la funzione a $\pm \infty$, sappiamo per certo che:
+$$
+\begin{cases}
+    f(x) > 0 \text{, se } x \to \infty\\
+    f(x) < 0 \text{, se } x \to -\infty
+\end{cases}
+$$
+E quindi, grazie al teorema degli zeri, sappiamo che nell'intervallo studiato della funzione si ha un punto dove la funzione si annulla.\\
+\textbf{Tutte le funzioni dispari hanno quindi almeno una radice del polinomio.}\\
+In quelle di grado pari, questo non è garantito a causa della peculiarità dell'esponente pari di trasformare i negativi in positivi. Potrebbe accadere, ma non è sicuro.
+\section{Teorema di Weierstrass}
+In un intervallo chiuso (che contiene i suoi estremi) e limitato di una funzione continua, allora:
+\begin{gather}
+    \exists x_0 \in [a, b] : f(x) \leq f(x_0), \forall x \in [a, b] \label{teo:weierstrass_1} \\
+    \exists x_1 \in [a, b] : f(x_1) \leq f(x), \forall x \in [a, b] \label{teo:weierstrass_2}
+\end{gather}
+\begin{center}
+    dove
+\end{center}
+\begin{gather*}
+    f(x_0) = \text{ max } f([a, b]) := M\\
+    f(x_1) = \text{ min } f([a, b]) := m
+\end{gather*}
+\subsection{Teorema di Weierstrass riformulato}
+Usando in combinazione il teorema degli zeri e quello di Weierstrass è possibile ottenere quanto segue:
+\begin{gather*}
+    \exists M = max f([a, b])\\
+    \exists m = min f([a, b])
+\end{gather*}
+\begin{center}
+    e vale:
+\end{center}
+\begin{equation}
+    f([a, b]) = [m, M] \label{teo:weierstrass_espansione}
+\end{equation}
+Vedi dimostrazione dai lucidi.
+\section{Introduzione alla nozione di derivata}
+\subsection{Cenni di geometria analitica}
+Il coefficiente angolare corrisponde alla tangente dell'angolo che la retta studiata forma con l'asse delle $x$.\\
+Questo coefficiente si calcola nella maniera seguente:
+\begin{equation}
+    m = \dfrac{y_1 - y_0}{x_1 - x_0} \label{eq:coefficiente_angolare}
+\end{equation}
+\begin{center}
+    e serve a generare una retta $\dots$
+\end{center}
+\begin{equation}
+    y = m \cdot + q \label{eq:retta_generica}
+\end{equation}
+\begin{center}
+    $\dots$ o più di una, quando si parla di fasci di rette:
+\end{center}
+\begin{equation}
+    y - y_0 = m(x - x_0) \label{eq:fascio_rette}
+\end{equation}
+\subsection{Retta tangente a un'altra retta in un dato punto}
+Avendo un $x_0$, allora si ha che la derivata della funzione in quel tal punto è uguale al limite del rapporto incrementale, ovvero:
+\begin{equation}
+    \dfrac{f(x) - f(x_0)}{x - x_0} \label{eq:rapporto_incrementale}
+\end{equation}
+\end{document}
