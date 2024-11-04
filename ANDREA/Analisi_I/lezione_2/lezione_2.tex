@@ -5,7 +5,7 @@
 \usepackage{amsmath}
 \usepackage{xcolor}
 \usepackage{graphicx}
-\graphicspath{{../images/}}
+\graphicspath{{../images/lezione_2}}
 % Define custom colors
 \definecolor{royal_blue}{RGB}{65, 105, 225}         % Royal Blue
 \definecolor{crimson_red}{RGB}{220, 20, 60}         % Crimson Red
@@ -44,6 +44,22 @@ Un insieme $\mathbb{X}$ si dice numerabile quando esiste una funzione della segu
 \begin{equation}
     g: \mathbb{N} \rightarrow \mathbb{X}, \textit{g è sv} \label{eq:insieme_numerabile}
 \end{equation}
+\subsection{Dimostrazioni sugli insiemi numerici}
+\subsubsection{$\mathbb{Z}$ è numerabile?}
+Consideriamo
+\[f: \mathbb{N} \rightarrow \mathbb{Z}\]
+\[f(n) = \begin{cases}
+    \dfrac{n}{2} \text{ se n pari} \\
+    -\dfrac{n + 1}{2} \text{ se n dispari}
+\end{cases}\]
+Ora calcoliamo:
+\begin{gather*}
+    f(0) = 0 \\
+    f(1) = -\dfrac{1+1}{2} = -1 \\
+    f(2) = \dfrac{2}{2} = 1 \\
+    \dots
+\end{gather*}
+Quindi $f$ è \textit{sv}, perciò $\mathbb{Z}$ è numerabile.
 \pagebreak
 \section{Elementi di calcolo combinatorio}
 \subsection{Fattoriale di un numero}
@@ -59,7 +75,7 @@ Avendo $\mathbb{N} = \{0, 1, 2, 3, 4, ...\}$, e un $n \in \mathbb{N}$, allora si
 \subsubsection{Esempio del fattoriale di un numero:}
 Prendiamo come esempio il $4!$ (anche detto \textbf{4-fattoriale}).
 \[4! = 1 \cdot 2 \cdot 3 \cdot 4 = 24\]
-Prendiamo ora invece lo $0!$. Ricordando quanto affermato in (\ref{eq:fattoriale}):
+Prendiamo ora invece lo $0!$. Ricordando quanto affermato i n (\ref{eq:fattoriale}):
 \[0! = 1\]
 \subsection{Scomporre un numero fattoriale}\
 Avendo un fattoriale $n!$, allora si può abbassare di uno $n$ e riscriverlo come $(n-1)!(n)$.
@@ -124,6 +140,28 @@ E per finire, osserviamo come $(n-k)!$, se associato a $(n-k+1)$, permetta di ri
 \[
     \dots = \dfrac{(n+1)!}{(n-k+1)!k!} = \binom{n+1}{k}
 \]
+\subsubsection{Prova combinatoria}
+Il numero di insiemi contenenti $K$ elementi componibili a partire da un insieme $N$ composto da $n+1$ elementi è pari a:
+\begin{itemize}
+        \item il numero di insiemi dove un certo $X_0$ è contenuto nell'insieme stesso (ovvero dove si hanno $\binom{n}{k-1}$ elementi);
+    \item il numero di insiemi dove un certo $X_0$ \textbf{non} è contenuto nell'insieme stesso (ovvero dove si hanno $\binom{n}{k}$ elementi);
+\end{itemize}
+Che visualizzato equivale a (vedi pagina seguente):
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.9\linewidth,height=.40\textheight,keepaspectratio]{prova_combinatoria_1.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:prova_combinatoria_primo_caso}Primo caso descritto.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.9\linewidth,height=.40\textheight,keepaspectratio]{prova_combinatoria_2.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:prova_combinatoria_secondo_caso}Secondo caso descritto.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure} % TODO: fix text here
+Dunque in un insieme $N$ si possono avere un numero di insiemi di $K$ elementi pari alla somma di $\binom{n}{k-1}$ e di $\binom{n}{k}$.
 \pagebreak
 \subsection{Binomio di Newton}
 Questa formula si usa per calcolare la $n$-sima potenza di un binomio in maniera semplice.
@@ -132,6 +170,29 @@ Questa formula si usa per calcolare la $n$-sima potenza di un binomio in maniera
 \end{equation}
 Ma la vera comodità della formula presentata consiste nella validità delle proprietà del coefficiente binomiale precedentemente presentate.\\
 (\ref{prop1_coeff_binomiale}) e (\ref{prop2_coeff_binomiale}) rimangono difatti valide anche per questa sommatoria, in quanto legata al triangolo di Tartaglia.\\
+\subsubsection{Come ricavare tale formula?}
+Supponiamo di voler ricavare la formula che ci permette di esprimere $(a+b)^{n}$ usando l'analisi combinatoria.\\
+Prendiamo ora $c \cdot a^k \cdot b^p$, considerando che $k+p=n$. A cosa corrisponde la lettera $c$?\\
+In generale si sa che $(a+b)^{n}$ corrisponda a una sommatoria di monomi del tipo: $a^{n-k}b^{k}$, con $k \in [0, n]$ considerando solo i numeri naturali.\\
+Proviamo a considerare il caso più famoso di questo, ovvero il quadrato del binomio:
+\[(a + b)^2 = (a + b)(a + b) = \dots = a^2 + \colorbox{yellow}{2}ab + b^2\]
+Quindi la lettera $c$ corrisponde al totale dei modi con cui si può ottenere $a^{n-k}b^{k}$ in $(a + b)^{n}$
+\subsubsection{Esempio di ricavo della formula prendendo $n = 4$}
+Avendo $n=4$, in quanti modi posso ottenere $ab^{3}$? Bisognerà "selezionare" $b$ da tre dei quattro fattori disponibili, perciò:
+\[(a + b)^4 = (a + \colorbox{yellow}{b}) \cdot (a + \colorbox{yellow}{b}) \cdot (a + \colorbox{yellow}{b}) \cdot (\colorbox{green}{a} + b)\]
+Ovvero $b^3 \cdot a$. Poi, rifacendo lo stesso procedimento ma prendendo coefficienti diversi:
+\[(a + b)^4 = (a + \colorbox{yellow}{b}) \cdot (a + \colorbox{yellow}{b}) \cdot (\colorbox{green}{a} + b) \cdot (a + \colorbox{yellow}{b})\]
+Ovvero $b^2 \cdot a \cdot b = ab^3$.
+\[(a + b)^4 = (a + \colorbox{yellow}{b}) \cdot (\colorbox{green}{a} + b) \cdot (a + \colorbox{yellow}{b}) \cdot (a + \colorbox{yellow}{b})\]
+Ovvero $b \cdot a \cdot b^2 = ab^3$.
+\[(a + b)^4 = (\colorbox{green}{a} + b) \cdot (a + \colorbox{yellow}{b}) \cdot (a + \colorbox{yellow}{b}) \cdot (a + \colorbox{yellow}{b})\]
+Ovvero $a \cdot b^3 = ab^3$. \\
+Quindi in tutto ci sono 4 modi per realizzare $ab^3$ partendo da $(a + b)^n$ con $n$ pari a $4$. Ciò significa che avendo un insieme di $4$ elementi, si avranno $4$ insiemi di $3$ elementi:
+\[\binom{4}{3} = \colorbox{red}{4}\]
+Ora sappiamo come risalire ad ogni tassello della formula esposta in precedenza:
+\begin{equation}
+    (a + b)^4 = \dots a^4b^0 + \dots a^3b + \dots a^2b^2 + \colorbox{red}{4}ab^3 + \dots a^0b^4 \label{dim:formula_binomio_newton}
+\end{equation}
 \subsubsection{Esempio di calcolo della \textit{n}-sima potenza di un binomio}
 Per calcolare $(a+b)^n$, basterà far variare $n$ nella sommatoria presentata:
 \[
@@ -149,7 +210,7 @@ Per calcolare $(a+b)^n$, basterà far variare $n$ nella sommatoria presentata:
 Ora si può osservare come lo sviluppo della sommatoria presentata vada ad assumere la forma di un triangolo. Questo triangolo storicamente prende il nome di "Triangolo di Tartaglia" e permette di calcolare tutti i moltiplicatori di $a$ e di $b$ (vedi immagine sottostante).
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=1\textwidth, height=.7\textheight,keepaspectratio]{lezione_2/tartaglia.PNG} % essenzialmente resiza l'immagine
+    \includegraphics[width=1\textwidth, height=.7\textheight,keepaspectratio]{tartaglia.PNG} % essenzialmente resiza l'immagine
     \begin{center}
         \caption{\label{fig:tartaglia}Il triangolo di Tartaglia sviluppato fino ad n=5.} % label fuori da caption spesso non va, mettilo dentro
     \end{center}
