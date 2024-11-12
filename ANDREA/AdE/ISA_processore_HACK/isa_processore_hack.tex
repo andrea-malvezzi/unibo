@@ -1,0 +1,29 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}   
+\usepackage{graphicx}
+\usepackage{amsmath}
+\graphicspath{{../images/}}
+\author{Andrea Malvezzi}
+\title{\textbf{Architettura degli Elaboratori\\ ISA del processore HACK}}
+\date{05 novembre, 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\section{Che cos'è l'ISA}
+L'ISA è l'interfaccia tra HW e SW.
+Costituisce il set di istruzioni con cui opera la CPU e di conseguenza, varia di architettura in architettura.
+
+\section{L'architettura HACK}
+L'architettura HACK non segue né la filosofia CISC né quella RISC e, data la sua semplicità, in essa ad ogni istruzione eseguita corrisponde un ciclo di clock.
+Qui si usano una RAM (per contenere i dati di un programma in esecuzione) e una ROM (per contenere il programma \textit{stesso}) a 16 bit. \\
+Si utilizzano prevalentemente tre registri di memoria: \textbf{A}, \textbf{D} ed \textbf{M}.
+Quest'ultimo è un registro particolare, in quanto contiene il valore del registro di memoria RAM attualmente puntato da A. Questo si indica con RAM[A]. \\
+Oltre a questi due si usa inoltre il \textbf{Program Counter}, o \textbf{PC}. In esso è contenuto l'indirizzo della prossima istruzione da eseguire e si indica con ROM[PC].
+
+\section{Tipi di istruzione}
+\end{document}
