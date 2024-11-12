@@ -1,0 +1,32 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\definecolor{goldenrod_yellow}{RGB}{218, 165, 32}
+\definecolor{dark_green}{RGB}{116, 148, 121}
+\definecolor{exists_pink}{RGB}{255, 132, 212}
+\title{\textbf{Logica per l'informatica\\ brutta}}
+\date{05 novembre 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Definizioni}
+Connotazione $\Rightarrow$ stringhe di caratteri prese in esame;\\
+Denotazione $\Rightarrow$ un possibile significato di tale stringa;
+\section{Programmi per la logica}
+Partendo da una connotazione si possono sviluppare alberi ricorsivi (quelli informatici, non quelli di deduzione), dove ogni nodo è un altro albero fino a terminare con i casi base.
+\section{Semantica}
+\begin{gather*}
+    [[\bot]]^{v} = 0 \\
+    [[\top]]^{v} = 1 \\
+    [[A]]^{v} = v(A) \\
+    [[\not A]]^{v} = 1 - [[A]]^{v} \\
+    [[A_1 \wedge A_2]]^{v} = min\{[[A_1]]^{v}, [[A_2]]^{v}\} \\
+    [[A_1 \vee A_2]]^{v} = max\{[[A_1]]^{v}, [[A_2]]^{v}\} \\
+    [[A_1 \Rightarrow A_2]]^{v} = max\{1 - [[A_1]]^{v}, [[A_2]]^{v}\}
+\end{gather*}
+\end{document}
