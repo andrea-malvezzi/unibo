@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\graphicspath{{../../_images/}}
+\author{Andrea Malvezzi}
+\title{\textbf{Logica per l'informatica~-~Lezione 0}}
+\date{20 Settembre, 2024}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+Platonismo: esiste già la matematica, esistono già i concetti, dobbiamo arrivare a comprenderli e realizzare la loro presenza; \\
+Intuizionismo: non esistono costrutti pre-esistenti, è la mente umana a creare e quindi un ente esiste solamente quando siamo in grado di costruirlo con certezza (non c'è l'infinito, etc...);
+\section{La semantica intuizionista}
+Anche detta semantica dell'evidenza (evidenza = costruzione), della conoscenza diretta (evidenza = conoscenza diretta) o della calcolabilità.
+\section{La prova intuizionista}
+Per gli informatici è la logica da preferire quando si studia un problema, in quanto si basa anche sulla calcolabilità, quindi la ricerca dell'evidenza tramite programmi. \\
+Per loro questa logica si basa sulla concezione che alla base di ogni cosa vi sia un algoritmo.
+\section{Evidenza indiretta}
+"So che c'è un qualcosa per cui vale una proprietà" non richiede un'evidenza diretta; \\
+"So cos'è il qualcosa per cui vale una proprietà" richiede un'evidenza diretta; \\
+Quindi: \\
+"So che c'è" è la lettura del \textbf{per ogni, allora esiste} della logica classica; il "so cos'è" è il medesimo ma per la logica intuizionista.
+\subsection{Esempio}
+Teorema: per ogni n, n è pari oppure n non è pari. \\
+La dimostrazione classica direbbe che questo è ovvio per EM (o è pari, oppure non lo è). Ma questo non funziona nella logica intuizionista, in quanto essa punta a capire se un n è pari o dispari:
+5 è pari? la prova classica non ce lo dice. Occorre procedere per prova intuizionista: \\
+Caso 0: 0 = 2 * 0 e quindi 0 è pari. \\
+Caso Sm (successore di m): se m è pari, allora esiste k t.c. m = 2 * k e quindi Sm = 2 * k + 1 (e non sarà perciò pari); se invece m non è pari, allora esiste k t.c. m = 2 * k + 1 e Sm = 2 * k + 2 (e sarà quindi pari). \\
+Questo è un approcio ricorsivo strutturale: vuoi sapere se 5 è pari? guarda 4. Poi guarda 3. Poi guarda 2. Poi guarda 1. Poi guarda 0. Sapendo che 0 è pari, allora 1 sarà dispari, 2 sarà pari, 3 dispari, 4 pari e 5 dispari. Ora so che 5 non è pari. 
+\section{Approcio informatico}
+Nella logica intuizionista, $\forall i. \exists o. P(i, o)$: per ogni i, esiste un o per cui c'è una proprietà che lega i ed o, dove i ed o sono rispettivamente input e output. \\
+La logica classica si fermerebbe a dirci che esiste un o oppure no, ma non sapremmo qual è. \\
+\section{Regole della logica intuizionista}
+Nella logica classica della realtà platonica avevamo:
+\begin{itemize}
+    \item Un enunciato o è vero o è falso;
+    \item Un enunciato ha valore immutabile;
+\end{itemize}
+La logica intuizionista rifiuta entrambe le cose. In essa la verità di un enunciato è determinato solo quando si ha evidenza diretta (si riesce a trovare un algoritmo). Inoltre, la verità di un enunciato può passare dall'essere indeterminato all'avere un valore che è ORA immutabile (scopro almeno un algoritmo o dimostro che non ne esiste uno). \\
+Questo comportamento del passare dall'indeterminatezza a una verità immutabile è detto "maniera monotona" e si può pensare come una linea temporale monodirezionale.
+\end{document}
