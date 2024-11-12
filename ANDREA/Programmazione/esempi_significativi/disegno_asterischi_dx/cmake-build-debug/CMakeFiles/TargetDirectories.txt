@@ -1,3 +1,0 @@
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/esempi_significativi/disegno_asterischi_dx/cmake-build-debug/CMakeFiles/disegno_asterischi_dx.dir
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/esempi_significativi/disegno_asterischi_dx/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/esempi_significativi/disegno_asterischi_dx/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,3 +1,0 @@
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/variables/min_monete/cmake-build-debug/CMakeFiles/min_monete.dir
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/variables/min_monete/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/variables/min_monete/cmake-build-debug/CMakeFiles/rebuild_cache.dir

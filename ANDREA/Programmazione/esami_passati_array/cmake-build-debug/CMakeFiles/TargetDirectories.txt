@@ -1,3 +1,0 @@
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/esami_passati_array/cmake-build-debug/CMakeFiles/esami_passati_array.dir
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/esami_passati_array/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/esami_passati_array/cmake-build-debug/CMakeFiles/rebuild_cache.dir

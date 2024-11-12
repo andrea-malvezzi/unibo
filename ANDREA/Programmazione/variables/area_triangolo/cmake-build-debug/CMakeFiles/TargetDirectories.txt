@@ -1,3 +1,0 @@
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/variables/area_triangolo/cmake-build-debug/CMakeFiles/area_triangolo.dir
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/variables/area_triangolo/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/variables/area_triangolo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
