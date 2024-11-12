@@ -96,7 +96,7 @@ Il funzionamento della porta logica in figura è simile a quello della NOT in (\
     \item quando l'alimentazione di entrambi i transistor è alta, \textit{V\textsubscript{out}} non riceverà corrente (0);
     \item quando uno dei due transistor NON sarà alimentato, \textit{V\textsubscript{out}} sarà alimentato (1).
 \end{itemize}
-\subsection{La porta XOR}
+\section{La porta XOR}
 \begin{circuitikz} \draw(0, 2) node[xor port, number inputs=2](myxor){}
     (myxor.in 1) node[anchor=east]{A}
     (myxor.in 2) node[anchor=east]{B}
@@ -122,6 +122,15 @@ Inoltre, la funzione logica XOR si può rappresentare con la seguente forma cano
 \begin{equation}
     XoR(a, b) = Or(And(a, NOT(b)), And(Not(a),b)) = (a \cdot \overline{b}) + (\overline{a} \cdot b) \label{canon: xor}
 \end{equation}
+\section{Array logici programmabili (PLA)}
+Sono circuiti universali precostituiti. Sono composti da una porta AND usata per confrontare tra loro i valori in input, e precisamente se ne ha una per mintermine. Queste porte saranno collegate ad una stessa porta OR.
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.5\textwidth, height=.4\textheight,keepaspectratio]{porte_logiche/PLA.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:PLA}Esempio di PLA tra 2 mintermini, con 3 valori in input.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}\\
 \pagebreak
 \section{Implementare una funzione logica}
 \subsection{Dalla forma canonica all'implementazione}\label{sec:implem_canonica}
