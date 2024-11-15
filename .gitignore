@@ -1,3 +1,4 @@
+# subdirs
 /*/*/*/*.aux
 /*/*/*/*.fdb_latexmk
 /*/*/*/*.fls
@@ -6,6 +7,16 @@
 /*/*/*/*.synctex(busy)
 /*/*/*/*.synctex.*
 /*/*/*/*.toc
+
+# totali
+/*/*/*.aux
+/*/*/*.fdb_latexmk
+/*/*/*.fls
+/*/*/*.log
+/*/*/*.out
+/*/*/*.synctex(busy)
+/*/*/*.synctex.*
+/*/*/*.toc
 
 # logica
 /*/*/*/*/*.aux
