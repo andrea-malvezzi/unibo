@@ -1,0 +1,159 @@
+\documentclass[12pt]{article}
+
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{commentcolor}{rgb}{0.5, 0.5, 0.5}
+\definecolor{keywordcolor}{rgb}{0, 0, 1}
+\definecolor{stringcolor}{rgb}{0.58, 0, 0.82}
+
+% C++ settings
+\lstset{ 
+    language=C++,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{keywordcolor}\bfseries,
+    commentstyle=\color{commentcolor}\itshape,
+    stringstyle=\color{stringcolor},
+    numbers=left,                   % Position of line numbers
+    numberstyle=\tiny,              % Size of line numbers
+    stepnumber=1,                   % Increment of line numbers
+    numbersep=10pt,                 % Distance from line numbers to code
+    backgroundcolor=\color{white},  % Background color
+    showspaces=false,               % Show spaces
+    showstringspaces=false,         % Show spaces in strings
+    showtabs=false,                 % Show tabs
+    frame=single,                   % Frame code box
+    tabsize=4,                      % Tab size
+    captionpos=b,                   % Position of captions
+    breaklines=true,                % Line breaking
+    breakatwhitespace=false,        % Break at whitespace
+    escapeinside={\%*}{*)}          % Escape to LaTeX
+}
+
+\title{\textbf{Programmazione}}
+\date{Settembre 2024 - ..}
+\author{Andrea Malvezzi}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+\tableofcontents
+
+\pagebreak
+\section{HEAP e STACK}
+\label{sec:HEAP_STACK}
+L'HEAP e lo STACK sono due divisioni della memoria in cui vengono salvati i dati durante l'esecuzione di un programma. 
+I due svolgono due ruoli diversi ma fondamentali:
+
+\subsection{L'HEAP}
+\label{ssec:HEAP}
+L'HEAP è una porzione di memoria dedicata all'allocazione dinamica delle variabili, quindi mediante istruzioni come new e delete. Grazie a questa dinamicità, qui si possono sfruttare strutture dati di lunghezza indefinita, come liste o alberi, ma con una rapidità limitata.
+
+\subsection{Lo STACK}
+\label{ssec:STACK}
+Lo STACK è una porzione di memoria dedicata alla gestione automatica (quindi a cura del compilatore) di variabili locali e simili. Accedere ai dati al suo interno risulta veloce grazie alla filosofia LIFO (Last-In-First-Out).
+
+\section{Puntatori}
+\label{sec:puntatori}
+
+\subsection{Cosa sono e come si definiscono}
+\label{ssec:puntatori_cosa_sono}
+Un puntatore è uno speciale tipo di dato capace di immagazzinare un indirizzo di memoria corrispondente ad un altro dato. \\
+Quando si dichiara un puntatore bisogna specificare il tipo di dato a cui lo si vuole far puntare. Vediamo un esempio pratico:
+\begin{lstlisting}
+    int *int_p;         // Questo punta a un intero
+    char *char_p;       // Questo punta a un carattere
+    // E via dicendo ...
+\end{lstlisting}
+Inoltre in cpp la dichiarazione di un puntatore ha una sintassi variabile: il * può difatti essere posto dopo il tipo di puntatore o prima del nome di questo. A causa di questa caratteristica bisogna tuttavia prestare attenzione a quando si vogliono dichiarare due puntatori nella stessa riga:
+\begin{lstlisting}
+    // Qui r corrisponde a un intero, non a un puntatore!
+    int* p, r;
+
+    // Per due puntatori, occorre usare la seguente sintassi:
+    int *p, *r;
+\end{lstlisting}
+
+\subsection{Operazioni con i puntatori}
+\label{ssec:puntatori_operazioni}
+Si possono effettuare operazioni diversi con i puntatori, tra cui le più importanti sono:
+
+\subsubsection{NULL}
+\label{sssec:NULL_operator}
+Quando si assegna il valore NULL a un puntatore si indica che questo non punta a nessuna cella di memoria. Si usa spesso in seguito all'istruzione \hyperref[sssec:delete_operator]{delete}.
+\begin{lstlisting}
+    int *p = NULL;      // p non punta a una cella di memoria
+\end{lstlisting}
+
+\subsubsection{Operatore \&}
+\label{sssec:ampersand_operator}
+L'operatore ampersand '\&' si usa in due contesti: per ottenere l'indirizzo di una variabile e per creare un riferimento a questa.
+Il primo caso risulta utile quando si vuole creare un puntatore ad una certa variabile:
+\begin{lstlisting}
+    int n = 10;
+    int *n_p = &n;      // ora n_p punta all'indirizzo di n!
+\end{lstlisting}
+Mentre il secondo caso risulta più utile quando si vuole creare un alias di una variabile per modificare quest'ultima mediante reference.
+\begin{lstlisting}
+    int n = 10;
+    int &alias_n = n;   // reference ad n
+    alias_n = 20;       // n = 20;
+\end{lstlisting}
+La differenza sostanziale tra i due approci sta nella flessibilità: i puntatori possono essere riutilizzati e possono essere annullati, mentre le reference lavorano su una sola variabile definita esattamente alla definizione della reference stessa e non possono essere NULL.
+
+\subsubsection{Dereferenziazione (*)}
+\label{sssec:dereferenziazione}
+La dereferenziazione si usa in due casi: per dichiarare un puntatore e per accedere all'indirizzo a cui questo sta puntando.
+\begin{lstlisting}
+    int value = 42;
+    int *p = &value;    // Dichiarazione puntatore
+    int dereferencedValue = *p;  // Accede al valore 42
+\end{lstlisting}
+
+\subsubsection{Istruzione new}
+\label{sssec:new_operator}
+L'istruzione new alloca dinamicamente memoria (nell'HEAP), restituendo un puntatore all'area di memoria allocata.
+\begin{lstlisting}
+    int *p = new int;
+    *p = 42;
+\end{lstlisting}
+Qui fare p = 42 darebbe errore: staremmo assegnando un int a un int*. Invece in questa maniera assegnamo al contenuto della cella di memoria a cui punta p il valore 42. 
+
+\subsubsection{Istruzione delete}
+\label{sssec:delete_operator}
+L'operatore delete libera la memoria allocata dinamicamente mediante new.
+\begin{lstlisting}
+    int *p = new int;
+    delete p;
+    p = NULL;       // come mai p=NULL?
+\end{lstlisting}
+Nell'esempio fornito liberiamo la cella di memoria allocata dinamicamente con int *p = new int. Se lasciassimo *p senza una reference, questo diventerebbe un dangling pointer, ovvero un puntatore contenente un valore assegnato dal compilatore (randomico). Per evitarlo, annulliamo *p con p = NULL. 
+
+\subsection{L'istruzione typedef}
+\label{ssec:typedef_instruction}
+L'istruzione typedef permette di definire un nuovo tipo, utilizzabile durante le dichiarazioni di nuovi dati. Questo risulta particolarmente utile quando si lavora con i puntatori in quanto permette di scrivere quanto segue:
+\begin{lstlisting}
+    // fuori dal main, idealmente ...
+    typedef int *p_int;     // definisco tipo p_int
+
+    // nel main, ora...
+    p_int p, q;        // equivalente a int *p, *q
+
+    // ho dichiarato due puntatori in una sola riga!
+    // Questo permette di evitare confusione
+\end{lstlisting}
+
+\section{Strutture dati dinamiche}
+\label{sec:strutture_dati_dinamiche}
+
+\subsection{Le liste}
+\label{ssec:liste}
+
+
+\end{document}
