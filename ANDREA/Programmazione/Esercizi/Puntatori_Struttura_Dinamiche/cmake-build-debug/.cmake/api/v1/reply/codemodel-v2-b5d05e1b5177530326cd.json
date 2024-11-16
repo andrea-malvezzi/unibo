@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.29"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Puntatori_Struttura_Dinamiche",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Puntatori_Struttura_Dinamiche::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Puntatori_Struttura_Dinamiche-Debug-3286babf403f001ffc14.json",
+					"name" : "Puntatori_Struttura_Dinamiche",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Esercizi/Puntatori_Struttura_Dinamiche/cmake-build-debug",
+		"source" : "C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Esercizi/Puntatori_Struttura_Dinamiche"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
