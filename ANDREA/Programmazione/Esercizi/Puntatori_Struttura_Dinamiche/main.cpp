@@ -1,11 +1,8 @@
 #include <iostream>
 
+// serve per l'ultimo esercizio
 struct struttura5int {
-    int n1;
-    int n2;
-    int n3;
-    int n4;
-    int n5;
+    int arr[5];
 };
 
 /*
@@ -75,7 +72,30 @@ void loadDataInArray(){
  * Poi stampare i valori.
 */
 void get5inputsAndWrite(){
+    struttura5int myStruct;
 
+    // In cpp il nome degli array agisce come puntatore all'indirizzo del primo oggetto contenuto.
+    // Quindi arr equivale a dire &arr[0], e *p = arr equivale a dire *p = &arr[0].
+    int *p = myStruct.arr;
+
+    // potremmo riscrivere la funzione loadDataInArray per prendere in input un array e una length
+    // e riusare quella, ma per lasciare intatto l'esempio precedente non lo farò
+
+    std::cout << "Inserisci 5 interi premendo enter dopo ognuno di essi: \n";
+    for (int i = 0; i < 5; i++) {
+        std::cin >> *p;
+        p++;
+    }
+
+    std::cout << "Struttura dati: \n";
+
+    p = myStruct.arr;
+    for (int i = 0; i < 5; i++) {
+        std::cout << *p << ' ';
+        p++;
+    }
+
+    std:: cout << '\n';
 }
 
 int main()
@@ -83,5 +103,6 @@ int main()
     incrementaVarDueVolte();
     allocAndDeallocInt();
     loadDataInArray();
+    get5inputsAndWrite();
     return 0;
 }

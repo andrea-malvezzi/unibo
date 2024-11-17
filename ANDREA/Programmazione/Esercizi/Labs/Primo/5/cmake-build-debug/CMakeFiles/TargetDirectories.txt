@@ -1,0 +1,3 @@
+C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/Labs/Primo/5/cmake-build-debug/CMakeFiles/5.dir
+C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/Labs/Primo/5/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/Labs/Primo/5/cmake-build-debug/CMakeFiles/rebuild_cache.dir
