@@ -1,0 +1,165 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}   
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+
+% Define custom settings for HACK assembly language
+\lstdefinelanguage
+    [HACK]{Assembler}
+    {morekeywords={@SP, @LCL, @ARG, @THIS, @THAT, @SCREEN, @KBD}, % Common HACK symbols
+     alsoother={=,;,@},  % Symbols used in HACK assembly
+     sensitive=true,     % Case-sensitive
+     morecomment=[l]//,  % Define comments to start with "//"
+    }
+
+% Set up the listing style for HACK assembly
+\lstset{
+    language=[HACK]Assembler,
+    basicstyle=\ttfamily\small,      % Small monospace font
+    keywordstyle=\color{blue},       % Keywords in blue
+    commentstyle=\color{gray},       % Comments in gray
+    stringstyle=\color{red},         % Strings in red
+    tabsize=4,
+    showstringspaces=false,
+    numbers=left,                    % Line numbers on the left
+    numberstyle=\tiny\color{gray},
+    breaklines=true,
+    frame=single,                    % Frame around the code
+}
+\graphicspath{{../images/}}
+\author{Andrea Malvezzi}
+\title{\textbf{Architettura degli Elaboratori\\ L'Assembler dell'architettura HACK}}
+\date{20 novembre, 2024}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\section{Che cos'è l'Assembler}
+\label{sec:whats_assembler}
+L'assembler si occupa di tradurre da linguaggio Assembly a binario il nostro codice. Si passa quindi da istruzioni, etichette e simboli speciali a sequenze di 16 bit, generando in output un file \textit{.hack}.
+\\
+Oltre a quanto citato, l'assembler si occupa anche di tradurre spazi, righe vuote e simboli come \textit{\textbackslash{n}} o \textit{\textbackslash{t}} (ignorando quindi i commenti).
+
+\section{Traduzione di A-instructions}
+\label{sec:a_instructions_translation_details}
+Ricordando la traduzione delle A-instructions spiegata precedentemente,
+\\
+basta porre il primo bit della sequenza a 0 e poi tradurre il numero specificato nel codice. Ad esempio:
+\[ @3 \Rightarrow \textcolor{red}{0}00000000000011 \]
+
+\section{Traduzione di C-instructions}
+\label{sec:c_instructions_translation_details}
+Non occorre imparare a memoria la tabella, ma bensì conoscere a grandi linee il significato di una traduzione in bit, qualora se ne trovasse una. Ad esempio:
+\[ D=A \Rightarrow \textcolor{red}{111}0\textcolor{blue}{0110000}\textcolor{yellow}{010}\textcolor{green}{000} \]
+Dove le cifre in rosso sono valori fissi delle C-instructions.
+\\
+Quelli in blue sono le istruzioni inerenti alla \textit{comp}, ovvero l'istruzione effettiva da eseguire (in questo caso A), con davanti il valore di a (qui è 0).
+\\
+Quella gialla sono la parte \textit{comp}, ovvero la destinazione dove salvare il risultato dell'operazione (nel nostro caso D).
+\\
+La parte verde è la sezione per il \textit{jump}. Ovviamente, non avendo un jump, ogni bit sarà posto a 0.
+
+\section{Gestione dei simboli}
+\label{sec:gestione_simboli}
+I simboli si usano per identificare certi indirizzi nella ROM (destinazione salti) o nella RAM (dove son contenute le variabili).
+\\
+Alcuni simboli potrebbero essere le lettere, le cifre o caratteri speciali come \_,-,. etc $\dots$
+L'unica accortezza consiste nel non scrivere una cifra all'inizio di un simbolo (ed ecco spiegato perché non si può cominciare il nome di una variabile con un numero).
+
+\subsection{Simboli predefiniti}
+\label{ssec:simboli_predef}
+Alcuni simboli sono pre-esistenti nel linguaggio, ovvero $\dots$
+\begin{itemize}
+    \item $\dots$ I registri virtuali: I simboli da R0 a R15 fanno riferimento agli indirizzi RAM da 0 a 15;
+    \item $\dots$ I puntatori per I/O: I simboli SCREEN e KBD fanno riferimento rispettivamente agli indirizzi RAM 16384 e 24576;
+    \item $\dots$ I puntatori di controllo della VM: I simboli SP, LCL, ARG, THIS e THAT fanno riferimento agli indirizzi RAM da 0 a 4, rispettivamente.
+\end{itemize}
+
+\subsection{Simboli NON predefiniti}
+\label{ssec:simboli_non_predef}
+Ci sono poi anche simboli non definiti dal linguaggi, ovvero le etichette e le variabili.
+\\
+Le prime sono usate per identificare la destinazione dei JUMP e a queste è assegnato come valore l'indirizzo della ROM in cui verrà caricata la prossima istruzione da eseguire. Ad esempio:
+\begin{lstlisting}
+    // Valore: numero della riga contenente
+    // l'istruzione seguente
+    (LOOP)
+        istruzione 1...
+        istruzione 2...
+        istruzione 3...
+\end{lstlisting}
+Le seconde sono usate nelle A-instructions per identificare celle della memoria RAM a partire dalla 16-esima. Riceveranno quindi un valore che va dal 16 in poi. Ad esempio:
+\begin{lstlisting}
+    @counter        // Valore: 16
+    ...codice...
+    @max            // Valore: 17
+    ...codice...
+    @min            // Valore: 18
+    ...codice...
+\end{lstlisting}
+
+\section{Procedura di assemblaggio}
+\label{sec:proc_assemblaggio}
+Il processo di assemblaggio è diviso in 3 fasi:
+
+\subsection{Inizializzazione}
+\label{ssec:proc_init}
+\begin{itemize}
+    \item si apre in lettura il file .asm in input;
+    \item si inizializza la symbol table dei simboli predefiniti;
+\end{itemize}
+
+\subsection{Prima passata}
+\label{proc_first}
+Si scorre l'input per inserire nella symbol table le codifiche delle etichette incontrate.
+Per farlo si usa un counter del totale delle A/C-instructions incontrate, assegnando a ogni etichetta il valore corrente del counter +1.
+
+\subsection{Seconda passata}
+\label{proc_second}
+Si apre in writing il file .hack prodotto e si scorre nuovamente l'input.
+Per ogni A/C-instruction incontrata ne si scrive nell'out la relativa codifica.
+Inoltre qualora una A-instruction usasse un simbolo, si dovrebbe ricercare questo nella symbol table e, nel caso in cui questo sia assente (quindi si sta parlando di una variabile) si assegna a questa istruzione un valore progressivo a partire da 16, per poi memorizzare questo nella symbol table. 
+
+\subsection{Esempio di assemblaggio}
+N.B. questa non è una tipologia di esercizio ma bensì solamente un esempio per comprendere meglio quanto appena spiegato.
+\begin{lstlisting}
+    @x
+    M=1
+
+    (CICLO)
+        @1
+        D=M
+        x
+        D=D-M
+        @END
+        D;JLE
+        @CICLO
+        0;JMP
+
+    (END)
+        @END
+        0;JMP
+\end{lstlisting}
+
+Corrisponde alla tabella:
+\begin{lstlisting}
+    ...simboli predefiniti...
+    CICLO   2
+    END     15
+    x       16
+\end{lstlisting}
+Dove:
+\begin{itemize}
+    \item CICLO ha valore di 2 in quanto prima della sua definizione si conta una sola A-instruction, quindi $\text{counter}+1=2$;
+    \item END ha valore di 15 in quanto la riga seguente è la quindicesima;
+    \item x ha valore di 16 in quanto è la prima (ed unica) variabile incontrata nel codice.
+\end{itemize}
+
+\end{document}

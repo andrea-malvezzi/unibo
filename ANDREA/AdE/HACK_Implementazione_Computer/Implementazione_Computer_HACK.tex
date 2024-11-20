@@ -142,9 +142,38 @@ Questa esegue istruzioni seguendo le specifiche del linguaggio HACK (nel nostro 
             l'output verrà scritto in outM, A prenderà il valore di addressM e writeM verrà alzato ad 1.
 \end{itemize}
 
-% TODO: slide 16 continua
-
 \section{Codifica A-Instruction}
+\label{sec:A-instruction}
+In HACK le A-instruction sono codificate nella maniera seguente: il bit di segno (o modulo) è sempre pari a 0, mentre i 15 valori a seguire saranno cifre binarie.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth, height=.7\textheight,keepaspectratio]{realizzare_HACK/a_instruction.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:codifica_a_instruction}Codifica delle A-instruction nell'architettura HACK.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
+Tramite questo approcio si possono codificare tutti i valori non negativi codificabili in complemento a 2 con 16 bit (si ha effettivamente un bit in meno, quello modulo).
 
+\section{Codifica C-instruction}
+\label{sec:C-instruction}
+Nell'architettura HACK le C-instruction sono codificate nella maniera
+\\
+seguente: il modulo e le due cifre subito dopo di esso sono \textbf{sempre} pari ad 1, ed i valori seguenti sono posti ad 1 solamente quando alcune caratteristiche vengono rispettate.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth, height=.7\textheight,keepaspectratio]{realizzare_HACK/c_instruction.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:codifica_c_instruction}Codifica delle C-instruction nell'architettura HACK.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
+
+E come possibile vedere dalla figura, il corpo effettivo dell'istruzione è composto da valori impostati a seconda della presenza di alcune direttive. Ma come sono decisi questi valori? tramite la seguente tabella:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth, height=.7\textheight,keepaspectratio]{realizzare_HACK/tabella_c_instruction.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:c_instruction_tabella}Ad esempio un'istruzione contenente un JGT avrebbe gli ultimi 3 bit (quelli di \textit{jump}) pari a $001$.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
 
 \end{document}

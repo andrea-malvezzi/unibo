@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}   
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+
+% Define custom settings for HACK assembly language
+\lstdefinelanguage
+    [HACK]{Assembler}
+    {morekeywords={@SP, @LCL, @ARG, @THIS, @THAT, @SCREEN, @KBD}, % Common HACK symbols
+     alsoother={=,;,@},  % Symbols used in HACK assembly
+     sensitive=true,     % Case-sensitive
+     morecomment=[l]//,  % Define comments to start with "//"
+    }
+
+% Set up the listing style for HACK assembly
+\lstset{
+    language=[HACK]Assembler,
+    basicstyle=\ttfamily\small,      % Small monospace font
+    keywordstyle=\color{blue},       % Keywords in blue
+    commentstyle=\color{gray},       % Comments in gray
+    stringstyle=\color{red},         % Strings in red
+    tabsize=4,
+    showstringspaces=false,
+    numbers=left,                    % Line numbers on the left
+    numberstyle=\tiny\color{gray},
+    breaklines=true,
+    frame=single,                    % Frame around the code
+}
+\graphicspath{{../images/}}
+\author{Andrea Malvezzi}
+\title{\textbf{Architettura degli Elaboratori\\ Pratica}}
+\date{Novembre 2024 - $\dots$}
+\author{Andrea Malvezzi}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\section{}
+
+\end{document}

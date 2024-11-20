@@ -147,7 +147,9 @@ La regola di introduzione si indica con $\top_i$ e consiste in:
 \end{equation}
 \pagebreak
 \section{IMPLICAZIONE}
+\label{sec:imply}
 \subsection{Regola di introduzione}
+\label{ssec:imply_intro}
 La regola di introduzione dell'implicazione si indica con $\Rightarrow_i$ e consiste in:
 \begin{figure}[!htb]
     \centering
@@ -158,6 +160,7 @@ La regola di introduzione dell'implicazione si indica con $\Rightarrow_i$ e cons
 \end{figure}\\
 Si nota facilmente come la regola sia invertibile (e si debba quindi prediligere qualora occorresse lavorare su un implicazione).
 \subsection{Regola di eliminazione (modus ponens)}
+\label{ssec:imply_elim}
 La regola di eliminazione dell'implicazione si indica con $\Rightarrow_e$ e consiste in:
 \begin{equation}
     \dfrac{F_1 \Rightarrow F_2 \text{ } F_1}{F_2} \Rightarrow_e \label{rule:implica_elim}
@@ -165,10 +168,12 @@ La regola di eliminazione dell'implicazione si indica con $\Rightarrow_e$ e cons
 Spesso la formula si applica all'avanti (devo prima convincermi che $F_1$ sia dimostrabile ) e non è mai invertibile.
 
 \section{NEGAZIONE}
+\label{sec:neg}
 Dalla logica classica sapppiamo che $ \neg F $ significa che $F \Rightarrow \bot $.
 
 \pagebreak
 \subsection{Regole di introduzione}
+\label{ssec:neg_intro}
 La regola di introduzione della negazione si indica con $\neg_i$ e consiste in:
 \begin{figure}[!htb]
     \centering
@@ -181,6 +186,55 @@ La regola di introduzione della negazione si indica con $\neg_i$ e consiste in:
 Che tradotto significa: se ipotizzando $F_1$ posso dimostrare l'assurdo allora ho $\neg F_1$.
 
 \subsection{Regole di eliminazione}
-La regola dell'eliminazione 
+\label{ssec:neg_elim}
+La regola dell'eliminazione della negazione si indica con $\neg_e$ e consiste in:
+\begin{equation}
+    \dfrac{\neg F_1 \text{ } F_1}{\bot} \label{rule:neg_elim}
+\end{equation}
+Ovvero è assurdo (bottom) avere sia $\neg F_1$ che $F_1$. Ne consegue che per dimostare l'assurdo basta dimostrare qualcosa ed il suo contrario.
+
+\subsection{Invertibilità regole}
+\label{ssec:neg_invert_rules}
+Entrambe le regole della negazione sono invertibili. Inoltre, quando ci si trova a dimostrare il falso (bottom), da quel momento in poi tutte le regole applicabili saranno considerate invertibili, in quanto si potrà sempre tornare a dimostrare il bottom per mezzo della regola $\bot_e$.
+
+\section{Tautologie e come risolverle}
+\label{sec:tautologies}
+Alcune tautologie non si possono dimostrare con gli strumenti definiti fino ad ora, come ad esempio:
+\begin{gather*}
+    \neg \neg A \Rightarrow A \\
+    A \vee \neg A
+\end{gather*}
+
+Per dimostrare queste affermazioni, occorre utilizzare il \textbf{ragionamento per assurdo} (RAA) e il \textbf{terzo escluso} (Excluded Middle o EM).
+
+\subsection{RAA}
+\label{sec:RAA}
+Il ragionamento per assurdo permette di dimostrare un'affermazione procedendo per assurdo, assumendo $\neg F$ e dimostrando $\bot$. Ovvero:
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.9\linewidth,height=.2\textheight,keepaspectratio]{logica_proposizionale/introduzione/RAA.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:RAA}Regola di introduzione del RAA.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
+\\
+La regola è invertibile, in quanto in ogni mondo avendo qualcosa di falso allora ne si nega la veridicità.
+
+\subsubsection{Schema frequente per utilizzo del RAA}
+Il RAA si sfrutta frequentemente per ricondursi a una struttura del genere:
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.9\linewidth,height=.2\textheight,keepaspectratio]{logica_proposizionale/introduzione/RAA_schema.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:RAA_schema}Schema frequente di utilizzo del RAA.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
+\\
+Ovvero, per trovare una prova di A ci si riduce a cercare una prova di A assumendo $\neg A$.
+
+%TODO: finire EM
+\subsection{EM}
+\label{ssec:EM}
+Il principio del terzo escluso è dimostrabile a partire dal RAA, anche se in maniera molto complessa. Tuttavia il risultato è molto potente in quanto permette di scrivere quanto segue:
 
 \end{document}
