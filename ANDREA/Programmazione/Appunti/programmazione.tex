@@ -6,6 +6,8 @@
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
 
 \definecolor{commentcolor}{rgb}{0.5, 0.5, 0.5}
 \definecolor{keywordcolor}{rgb}{0, 0, 1}
@@ -34,6 +36,8 @@
     escapeinside={\%*}{*)}          % Escape to LaTeX
 }
 
+\graphicspath{{./_images/}}
+
 \title{\textbf{Programmazione}}
 \date{Settembre 2024 - ..}
 \author{Andrea Malvezzi}
@@ -60,10 +64,10 @@ L'HEAP è una porzione di memoria dedicata all'allocazione dinamica delle variab
 Lo STACK è una porzione di memoria dedicata alla gestione automatica (quindi a cura del compilatore) di variabili locali e simili. Accedere ai dati al suo interno risulta veloce grazie alla filosofia LIFO (Last-In-First-Out).
 
 \section{Puntatori}
-\label{sec:puntatori}
+\label{sec:pointers}
 
 \subsection{Cosa sono e come si definiscono}
-\label{ssec:puntatori_cosa_sono}
+\label{ssec:whats_pointers}
 Un puntatore è uno speciale tipo di dato capace di immagazzinare un indirizzo di memoria corrispondente ad un altro dato. \\
 Quando si dichiara un puntatore bisogna specificare il tipo di dato a cui lo si vuole far puntare. Vediamo un esempio pratico:
 \begin{lstlisting}
@@ -81,7 +85,7 @@ Inoltre in cpp la dichiarazione di un puntatore ha una sintassi variabile: il * 
 \end{lstlisting}
 
 \subsection{Operazioni con i puntatori}
-\label{ssec:puntatori_operazioni}
+\label{ssec:pointers_operations}
 Si possono effettuare operazioni diversi con i puntatori, tra cui le più importanti sono:
 
 \subsubsection{NULL}
@@ -108,7 +112,7 @@ Mentre il secondo caso risulta più utile quando si vuole creare un alias di una
 La differenza sostanziale tra i due approci sta nella flessibilità: i puntatori possono essere riutilizzati e possono essere annullati, mentre le reference lavorano su una sola variabile definita esattamente alla definizione della reference stessa e non possono essere NULL.
 
 \subsubsection{Dereferenziazione (*)}
-\label{sssec:dereferenziazione}
+\label{sssec:deref}
 La dereferenziazione si usa in due casi: per dichiarare un puntatore e per accedere all'indirizzo a cui questo sta puntando.
 \begin{lstlisting}
     int value = 42;
@@ -152,8 +156,50 @@ L'istruzione typedef permette di definire un nuovo tipo, utilizzabile durante le
 \section{Strutture dati dinamiche}
 \label{sec:strutture_dati_dinamiche}
 
-\subsection{Le liste}
-\label{ssec:liste}
+\subsection{Le linked lists}
+\label{ssec:linked_lists}
+Una linked list corrisponde ad una sequenza di nodi di grandezza dinamica.
+Questo significa che la lista non avrà una grandezza fissa, ma si adatterà alle necessità del programma scritto da noi (se implementata correttamente).
 
+\subsubsection{Introduzione all'implementazione delle linked lists}
+\label{sssec:linked_lists_introduction}
+Per implementare una linked list occorrerà utilizzare la direttiva struct (per definire che cos'è un \textit{nodo})
+e i puntatori, per puntare al nodo successivo e/o precedente (in questo caso si parlerebbe di doubly-linked-list).
+Visualizzato, quanto appena spiegato equivale a qualcosa del genere:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.9\linewidth,height=.40\textheight,keepaspectratio]{linked_list_visualized.png} % essenzialmente resiza l'immagine
+    \begin{center}
+        \caption{\label{fig:} "Head" corrisponde ad un puntatore puntante all'indirizzo in memoria del primo elemento della lista. Ogni elemento contiene inoltre un puntatore all'indirizzo del prossimo item.} % label fuori da caption spesso non va, mettilo dentro
+    \end{center}
+\end{figure}
+
+\subsubsection{Operazioni delle linked lists}
+\label{sssec:linked_lists_operations}
+
+
+\subsubsection{Implementare le linked lists}
+\label{sssec:linked_lists_implement}
+Anzitutto, occorre capire come funziona una linked list ad un livello più profondo.
+Essendo questa una struttura dati dinamica, di cui non si conosce la grandezza a priori, la si dovrà ingrandire mano a mano che si avanza nel programma.
+Per farlo, occorrerà sfruttare \hyperref[sec:HEAP_STACK]{l'Heap}, mediante istruzioni come new e delete, olre che ai puntatori.
+\\
+Partiamo definendo la struttura dati che useremo per immagazzinare il dato da salvare e l'indirizzo del prossimo item: un \textbf{Nodo}.
+\begin{lstlisting}
+    struct Nodo {
+        int valore;
+        Nodo *next;     // Definizione circolare
+    }
+\end{lstlisting}
+In seguito, occorrerà definire un head della lista.
+Questo oggetto non corrisponderà al primo elemento della lista, ma bensì al puntatore puntante all'indirizzo del primo oggetto stesso.
+Questo significa che per accedere ai campi effettivi del Nodo, occorrerà usare la dereferenziazione (*).
+\begin{lstlisting}
+    Nodo head = new Nodo;   // new alloca memoria nell'Heap
+    head -> value = 10;     // -> corrisponde al punto
+    head -> next = nullptr; // anche NULL andrebbe bene
+    ...codice...
+    delete head;            // non leakare memoria!
+\end{lstlisting}
 
 \end{document}

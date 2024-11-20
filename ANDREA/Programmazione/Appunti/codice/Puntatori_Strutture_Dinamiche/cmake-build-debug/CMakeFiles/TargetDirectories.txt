@@ -1,0 +1,3 @@
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Puntatori_Strutture_Dinamiche/cmake-build-debug/CMakeFiles/Puntatori_Strutture_Dinamiche.dir
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Puntatori_Strutture_Dinamiche/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Puntatori_Strutture_Dinamiche/cmake-build-debug/CMakeFiles/rebuild_cache.dir
