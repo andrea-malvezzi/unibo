@@ -148,6 +148,10 @@ void print(const Nodo *head){
     }
 }
 
+void revert(Nodo *head) {
+
+}
+
 int main(){
     Nodo *head = init_lista();
     head -> value = 0;
