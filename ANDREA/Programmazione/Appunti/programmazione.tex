@@ -170,13 +170,9 @@ Visualizzato, quanto appena spiegato equivale a qualcosa del genere:
     \centering
     \includegraphics[width=.9\linewidth,height=.40\textheight,keepaspectratio]{linked_list_visualized.png} % essenzialmente resiza l'immagine
     \begin{center}
-        \caption{\label{fig:} "Head" corrisponde ad un puntatore puntante all'indirizzo in memoria del primo elemento della lista. Ogni elemento contiene inoltre un puntatore all'indirizzo del prossimo item.} % label fuori da caption spesso non va, mettilo dentro
+        \caption{\label{fig:} "Head" corrisponde ad un puntatore puntante all'indirizzo in memoria del nodo della lista. Ogni elemento (nodo) contiene inoltre un puntatore all'indirizzo del prossimo della struttura.} % label fuori da caption spesso non va, mettilo dentro
     \end{center}
 \end{figure}
-
-\subsubsection{Operazioni delle linked lists}
-\label{sssec:linked_lists_operations}
-
 
 \subsubsection{Implementare le linked lists}
 \label{sssec:linked_lists_implement}
@@ -195,11 +191,40 @@ In seguito, occorrerà definire un head della lista.
 Questo oggetto non corrisponderà al primo elemento della lista, ma bensì al puntatore puntante all'indirizzo del primo oggetto stesso.
 Questo significa che per accedere ai campi effettivi del Nodo, occorrerà usare la dereferenziazione (*).
 \begin{lstlisting}
-    Nodo head = new Nodo;   // new alloca memoria nell'Heap
-    head -> value = 10;     // -> corrisponde al punto
+    Nodo *head = new Nodo;   // new alloca memoria nell'Heap
+
+    // -> corrisponde a derefernziare e usare il punto
+    head -> value = 10;     // come (*head).value = 10
     head -> next = nullptr; // anche NULL andrebbe bene
-    ...codice...
-    delete head;            // non leakare memoria!
 \end{lstlisting}
+Al termine del codice, occorre ricordarsi di liberare la memoria allocata con \textit{new}, per evitare \textbf{Memory Leaks}.
+\begin{lstlisting}
+    Nodo *head = new Nodo;
+    ...codice...
+
+    // al termine del codice libero la memoria allocata
+    delete head;
+\end{lstlisting}
+Nel caso in cui si avesse una lista con molteplici elementi, occorrerebbe liberare la memoria di ognuno dei nodi di questa. Per farlo si potrebbe usare la seguente funzione:
+\begin{lstlisting}
+    void empty(Nodo *&head){
+        // itero fino a che non ho il Nodo corrente null
+        while(head != nullptr)
+        {
+            // creo una variabile temp per copiare head
+            Nodo *temp = head;
+            // sposto head al Nodo successivo
+            head = head -> next;
+            // cancello temp, che punta al nodo precedente
+            delete temp;
+        }
+    }
+\end{lstlisting}
+
+\subsubsection{Operazioni sulle linked lists}
+\label{sssec:linked_lists_operations}
+Si possono inserire elementi all'inizio della lista, in una certa posizione, eliminare certi elementi, controllare che sia vuota $\dots$ qualunque cosa sia utile e si sia in grado di implementare.
+\\
+A \textcolor{blue}{\href{https://github.com/andrea-malvezzi/unibo/tree/master/ANDREA/Programmazione/Appunti/codice/Puntatori_Strutture_Dinamiche}{questo}} link è presente il codice delle operazioni più popolari inerenti alle linked lists.
 
 \end{document}

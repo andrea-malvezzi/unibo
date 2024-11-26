@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Puntatori_Strutture_Dinamiche/cmake-build-debug"
+			"value" : "c:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Introduzione_Puntatori_Strutture_Dinamiche/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Puntatori_Strutture_Dinamiche/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Introduzione_Puntatori_Strutture_Dinamiche/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Puntatori_Strutture_Dinamiche"
+			"value" : "C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Introduzione_Puntatori_Strutture_Dinamiche"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -659,7 +659,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/Puntatori_Strutture_Dinamiche"
+			"value" : "C:/Program Files (x86)/Introduzione_Puntatori_Strutture_Dinamiche"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -875,7 +875,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Puntatori_Strutture_Dinamiche"
+			"value" : "Introduzione_Puntatori_Strutture_Dinamiche"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1270,7 +1270,7 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "Puntatori_Strutture_Dinamiche_BINARY_DIR",
+			"name" : "Introduzione_Puntatori_Strutture_Dinamiche_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1279,10 +1279,10 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Puntatori_Strutture_Dinamiche/cmake-build-debug"
+			"value" : "C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Introduzione_Puntatori_Strutture_Dinamiche/cmake-build-debug"
 		},
 		{
-			"name" : "Puntatori_Strutture_Dinamiche_IS_TOP_LEVEL",
+			"name" : "Introduzione_Puntatori_Strutture_Dinamiche_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1294,7 +1294,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "Puntatori_Strutture_Dinamiche_SOURCE_DIR",
+			"name" : "Introduzione_Puntatori_Strutture_Dinamiche_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -1303,7 +1303,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Puntatori_Strutture_Dinamiche"
+			"value" : "C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Appunti/codice/Introduzione_Puntatori_Strutture_Dinamiche"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

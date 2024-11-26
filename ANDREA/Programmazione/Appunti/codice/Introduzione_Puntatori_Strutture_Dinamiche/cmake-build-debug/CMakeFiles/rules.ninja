@@ -6,7 +6,7 @@
 # It is included in the main 'build.ninja'.
 
 # =============================================================================
-# Project: Puntatori_Strutture_Dinamiche
+# Project: Introduzione_Puntatori_Strutture_Dinamiche
 # Configurations: Debug
 # =============================================================================
 # =============================================================================
@@ -14,7 +14,7 @@
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__Puntatori_Strutture_Dinamiche_unscanned_Debug
+rule CXX_COMPILER__Introduzione_Puntatori_Strutture_Dinamiche_unscanned_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ${LAUNCHER}${CODE_CHECK}C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -24,8 +24,8 @@ rule CXX_COMPILER__Puntatori_Strutture_Dinamiche_unscanned_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__Puntatori_Strutture_Dinamiche_Debug
-  command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
+rule CXX_EXECUTABLE_LINKER__Introduzione_Puntatori_Strutture_Dinamiche_Debug
+  command = C:\WINDOWS\system32\cmd.exe /C "$PRE_LINK && C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
 
@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\JetBrains\CLion 2024.2.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\utente\Desktop\unibo\ANDREA\Programmazione\Appunti\codice\Puntatori_Strutture_Dinamiche -BC:\Users\utente\Desktop\unibo\ANDREA\Programmazione\Appunti\codice\Puntatori_Strutture_Dinamiche\cmake-build-debug
+  command = "C:\Program Files\JetBrains\CLion 2024.2.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\andre\OneDrive\Desktop\unibo\ANDREA\Programmazione\Appunti\codice\Introduzione_Puntatori_Strutture_Dinamiche -BC:\Users\andre\OneDrive\Desktop\unibo\ANDREA\Programmazione\Appunti\codice\Introduzione_Puntatori_Strutture_Dinamiche\cmake-build-debug
   description = Re-running CMake...
   generator = 1
 
