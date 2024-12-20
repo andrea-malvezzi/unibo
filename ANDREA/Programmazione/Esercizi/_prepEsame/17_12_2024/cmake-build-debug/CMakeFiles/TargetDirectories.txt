@@ -1,0 +1,3 @@
+C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/17_12_2024/cmake-build-debug/CMakeFiles/17_12_2024.dir
+C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/17_12_2024/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/17_12_2024/cmake-build-debug/CMakeFiles/rebuild_cache.dir

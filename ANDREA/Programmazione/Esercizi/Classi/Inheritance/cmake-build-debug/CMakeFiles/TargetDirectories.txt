@@ -1,0 +1,3 @@
+C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/Classi/Inheritance/cmake-build-debug/CMakeFiles/Inheritance.dir
+C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/Classi/Inheritance/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/Classi/Inheritance/cmake-build-debug/CMakeFiles/rebuild_cache.dir

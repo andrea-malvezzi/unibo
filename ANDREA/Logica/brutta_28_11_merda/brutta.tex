@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage[hidelinks]{hyperref}    
+\usepackage[all]{hypcap}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\graphicspath{{../../_images/}}
+\author{Andrea Malvezzi}
+\title{\textbf{Logica per l'informatica~-~Relazioni tra funzioni}}
+\date{28 Novembre, 2024}
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\section{L'insieme quoziente}
+Utile quando si lavora con gli infiniti per definire la cardinalità degli insiemi.
+\\
+Per farlo occorre definire nuovi insiemi dove si usano numeri diversi da quelli naturali.
+Per fare ciò risultano utili le proprietà delle funzioni: consideriamo una funzione A e una funzione B.
+\begin{itemize}
+    \item Se l'insieme A risulta iniettivo rispetto al B, allora B ha sicuramente un numero di elementi uguale ad A, ma potrebbe anche averne di più.
+    \item Se l'insieme A risulta biiettivo rispetto al B, allora A e B hanno la stessa cardinalità.
+\end{itemize}
+Quando si considera l'infinito occorre però usare alcune accortezze:
+ad esempio l'insieme dei pari ha cardinalità pari all'insieme dei numeri naturali, in quanto si può scrivere una funzione dove ad ogni naturale si associa un numero pari.
+Entrambi questi due insiemi avranno quindi cardinalità pari ad \textit{aleph 0} ($\aleph_0$).
+\\
+Per indicare la cardinalità di un insieme A si usa la scrittura $|A|$, che indica il numero cardinale $[A]$.
+
+\section{Definizione di insieme finito}
+Un insieme si dice finito quando $\dots$ non è infinito.
+
+\section{Operazioni tra numeri cardinali}
+Avendo due numeri cardinali $x, y$ corrispondenti rispettivamente ad $|A|$ e $|B|$, allora:
+
+\subsection{Minore uguale}
+Dire che $x \leq y$ corrisponde a dire che l'insieme A è iniettivo rispetto \\
+all'insieme B, ma che l'insieme B potrebbe contenere ulteriori elementi.
+\subsubsection{Esempio}
+Consideriamo $2 \leq 3$:
+\begin{itemize}
+    \item $2 = |\{a, b\}|$; $3 = |\{a, b, c\}|$, perciò $2 \neq 3$.
+    \item Considerando i due insiemi appena definiti si può notare come vi sia iniettività da A a B, ma B abbia più elementi.
+\end{itemize}
+\subsection{Teorema di Cantor}
+
+
+\end{document}
