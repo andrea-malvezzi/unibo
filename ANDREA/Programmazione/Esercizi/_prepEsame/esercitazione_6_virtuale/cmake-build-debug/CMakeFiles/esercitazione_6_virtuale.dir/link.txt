@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2024.2.2\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\esercitazione_6_virtuale.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\ar.exe qc CMakeFiles\esercitazione_6_virtuale.dir/objects.a @CMakeFiles\esercitazione_6_virtuale.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\esercitazione_6_virtuale.dir/objects.a -Wl,--no-whole-archive -o esercitazione_6_virtuale.exe -Wl,--out-implib,libesercitazione_6_virtuale.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\esercitazione_6_virtuale.dir\linkLibs.rsp
