@@ -22,7 +22,8 @@ bool there_are_primes(const int numbers[], const int length) {
     return length == 1 ? true : there_are_primes(&numbers[1], length - 1);
 }
 
-// TODO esercizio 2
+// esercizio 2
+
 struct tavolo {
     int maxPeople;
     double hoursFree;
@@ -87,7 +88,109 @@ void stampa(const ptavolo head) {
 // TODO riscrivi le funzioni considerando il tavolo con il numero di persone max più vicino
 // TODO a quello specificato nel caso in cui non ci siano tavoli con il numero esatto disponibili
 
-// TODO esericizio 3
+// esericizio 3
+struct Prodotto {
+    int code;
+    char name[40];
+    int quantity;
+    Prodotto *next;
+};
+
+typedef Prodotto* prodottoPtr;
+
+class Magazzino {
+protected:
+    prodottoPtr firstProduct;
+
+public:
+    Magazzino();
+    Magazzino(prodottoPtr head);
+    int decrementa_disponibilita(int productCode, int quantity) const;
+    // serve per debug, non nella consegna
+    void stampa() const;
+};
+
+// constructors
+Magazzino::Magazzino() {
+    firstProduct = NULL;
+}
+
+Magazzino::Magazzino(const prodottoPtr head) {
+    firstProduct = head;
+}
+
+int Magazzino::decrementa_disponibilita(const int productCode, const int quantity) const {
+    int index = 0;
+    prodottoPtr indexer = firstProduct;
+    while (indexer != NULL) {
+        // codice & quantity esatte, termino
+        if (indexer -> code == productCode && indexer -> quantity >= quantity) {
+            indexer -> quantity -= quantity;
+            return index;
+        }
+        // codice esatto quantity sbagliata, ritorno per evitare iterazioni inutili
+        if (indexer -> code == productCode && indexer -> quantity < quantity)
+            return -1;
+        // aumento counter e passo al nodo dopo
+        ++index;
+        indexer = indexer -> next;
+    }
+    // al termine del while non ho trovato il prodotto, ritorno -1
+    return -1;
+}
+
+// serviva a me per debug, dont mind this
+void Magazzino::stampa() const {
+    prodottoPtr localHead = firstProduct;
+    while(localHead != NULL) {
+        std::cout << "Prodotto con codice: " << localHead -> code << "; quantita: " << localHead -> quantity << '.'
+            << std::endl;
+        localHead = localHead -> next;
+    }
+    std::cout << "Fine inventario." << std::endl;
+}
+
+// extra part
+class MagazzinoPlus: Magazzino {
+private:
+    int toUpdateAmount;
+    int minimumQuantity;
+
+public:
+    MagazzinoPlus();
+    MagazzinoPlus(prodottoPtr head, int amount, int minQuantity);
+    void da_approvvigionare(int codes[]);
+    void aggiorna_disponibilita(const int codes[], const int quantities[], int length);
+};
+
+MagazzinoPlus::MagazzinoPlus() : Magazzino() {
+    firstProduct = NULL;
+    minimumQuantity = 2;
+    toUpdateAmount = 0;
+}
+
+MagazzinoPlus::MagazzinoPlus(const prodottoPtr head, const int amount, const int minQuantity) : Magazzino(head) {
+    toUpdateAmount = amount;
+    minimumQuantity = minQuantity;
+}
+
+void MagazzinoPlus::da_approvvigionare(int codes[]) {
+    int index = 0;
+    prodottoPtr localHead = firstProduct;
+    while (localHead != NULL && toUpdateAmount > 0) {
+        if (localHead -> quantity <= minimumQuantity) {
+            toUpdateAmount--;
+            codes[index] = localHead -> code;
+            index++;
+        }
+        localHead = localHead -> next;
+    }
+}
+
+void MagazzinoPlus::aggiorna_disponibilita(const int codes[], const int quantities[], int length) {
+    prodottoPtr localHead = firstProduct;
+    // todo finisci
+}
 
 int main()
 {
@@ -145,10 +248,41 @@ int main()
     const int amountTablesOutside = quanti_tavoli(head, false);
     std::cout << "Tavoli all\'esterno: " << amountTablesOutside << '.' << std::endl;
 
+    std::cout << std::endl;
+
+    // esercizio 3 TEST
+    auto productHead = new Prodotto();
+    productHead -> code = 1;
+    productHead -> quantity = 10;
+
+    auto secondProduct = new Prodotto();
+    productHead -> next = secondProduct;
+    secondProduct -> code = 2;
+    secondProduct -> quantity = 20;
+
+    auto const magazzino = new Magazzino(productHead);
+    std::cout << "Il Magazzino contiene:" << std::endl;
+    magazzino->stampa();
+    std::cout << std::endl;
+    std::cout << "Prodotto con codice 1 ritirato (5u) da indice: "
+        << magazzino->decrementa_disponibilita(1, 5) << '.' << std::endl;
+    std::cout << std::endl;
+    std::cout << "Prodotto con codice 1 ritirato (5u) da indice: "
+        << magazzino->decrementa_disponibilita(1, 5) << '.' << std::endl;
+
+    std::cout << std::endl;
+    magazzino -> stampa();
+
     delete head;
     delete table2;
     // non cancello table3 because so che equivale a bookedTable e farlo cancellerebbe memoria a cazzo di cane.
     delete bookedTable;
     delete table4;
+
+    delete productHead;
+    delete secondProduct;
+
+    delete magazzino;
+
     return 0;
 }
