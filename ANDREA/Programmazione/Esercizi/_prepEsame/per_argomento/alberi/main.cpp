@@ -25,7 +25,12 @@ void deleteTree(pnodo root) {
     delete root;
 }
 
-// esercizi
+// BT
+
+void add_value(const pnodo root, const int val) {
+
+}
+
 // restituisce la max depth dell'albero
 int max_depth(const pnodo root) {
     if (root == NULL) return 0;
@@ -51,7 +56,22 @@ bool find_value(const pnodo root, const int val) {
     return leftCheck || rightCheck;
 }
 
+// albero bilanciato = tutti i nodi hanno o 2 figli o 0.
+bool is_balanced(const pnodo root) {
+    // if (node_count(root) % 2 == 0) return false;
+    bool leftCheck;
+    bool rightCheck;
+    if (root -> left != NULL && root -> right != NULL) {
+        leftCheck = is_balanced(root -> left);
+        rightCheck = is_balanced(root -> right);
+    }
+    else if (root -> right == NULL && root -> left == NULL) return true;
+    else return false;
 
+    return leftCheck && rightCheck;
+}
+
+// BST
 
 int main() {
     auto newNodo = makeNodo(1);
@@ -70,9 +90,19 @@ int main() {
     std::cout << totalNodes << std::endl;
 
     const int valueToBeSearched = 10;
-    std::cout << "L'albero contiene il valore " << valueToBeSearched << '?' << std::endl;
+    std::cout << "L'albero contiene il valore " << valueToBeSearched << "? ";
     const bool findCheck = find_value(newNodo, valueToBeSearched);
     findCheck ? std::cout << 'y' << std::endl : std::cout << 'n' << std::endl;
+
+    std::cout << "Albero bilanciato? ";
+    const bool balancedCheck = is_balanced(newNodo);
+    balancedCheck ? std::cout << 'y' << std::endl : std::cout << 'n' << std::endl;
+
+    std::cout << "Test bilanciato positivo: ";
+    const bool balancePositiveCheck = is_balanced(testNodo);
+    balancePositiveCheck ? std::cout << 'y' << std::endl : std::cout << 'n' << std::endl;
+
+
 
     deleteTree(newNodo);
     deleteTree(testNodo);
