@@ -1,0 +1,3 @@
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/sorting/cmake-build-debug/CMakeFiles/sorting.dir
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/sorting/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/sorting/cmake-build-debug/CMakeFiles/rebuild_cache.dir
