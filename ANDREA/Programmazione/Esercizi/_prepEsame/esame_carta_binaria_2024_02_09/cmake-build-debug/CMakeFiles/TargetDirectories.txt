@@ -1,3 +1,0 @@
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/esame_carta_binaria_2024_02_09/cmake-build-debug/CMakeFiles/esame_carta_binaria_2024_02_09.dir
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/esame_carta_binaria_2024_02_09/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/esame_carta_binaria_2024_02_09/cmake-build-debug/CMakeFiles/rebuild_cache.dir

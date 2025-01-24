@@ -1,3 +1,0 @@
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/17_12_2024_stringhe/cmake-build-debug/CMakeFiles/17_12_2024_stringhe.dir
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/17_12_2024_stringhe/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/17_12_2024_stringhe/cmake-build-debug/CMakeFiles/rebuild_cache.dir

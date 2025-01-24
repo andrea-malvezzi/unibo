@@ -1,3 +1,0 @@
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/esercitazione_6_virtuale/cmake-build-debug/CMakeFiles/esercitazione_6_virtuale.dir
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/esercitazione_6_virtuale/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/utente/Desktop/unibo/ANDREA/Programmazione/Esercizi/_prepEsame/esercitazione_6_virtuale/cmake-build-debug/CMakeFiles/rebuild_cache.dir
