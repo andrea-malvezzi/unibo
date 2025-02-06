@@ -97,12 +97,26 @@ papp rimuovi_appunto(papp head, const int giorno) {
     return head;
 }
 
-// TODO
-papp inverti_lista(papp head) {
-    if (head == NULL)
-        return NULL;
-    return head;
+void inverti_lista(papp* testa) {
+    papp attuale = *testa;
+    papp temp = NULL;
+
+    // mette in prev il next e in next il prev.
+    // Essenzialmente funziona al contrario: per andare avanti devo andare indietro
+    // (that's why usiamo attuale = attuale -> prev)
+    while (attuale != NULL) {
+        temp = attuale->prev;
+        attuale->prev = attuale->next;
+        attuale->next = temp;
+        attuale = attuale->prev;
+    }
+
+    if (temp != NULL) {
+        *testa = temp->prev;
+    }
 }
+
+// TODO es.3
 
 // DEBUG, non servono per l'esame
 void stampa_lista(papp head) {
@@ -148,6 +162,9 @@ int main() {
     head -> next -> next -> next = NULL;
 
     std::cout << std::endl;
+    stampa_lista(head);
+    std::cout << std::endl;
+    inverti_lista(&head);
     stampa_lista(head);
     head = rimuovi_appunto(head, 1);
     std::cout << std::endl;
