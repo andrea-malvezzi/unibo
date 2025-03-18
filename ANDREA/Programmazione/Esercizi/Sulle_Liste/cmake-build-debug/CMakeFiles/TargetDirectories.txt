@@ -1,3 +1,0 @@
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/Sulle_Liste/cmake-build-debug/CMakeFiles/Sulle_Liste.dir
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/Sulle_Liste/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/andre/OneDrive/Desktop/unibo/ANDREA/Programmazione/Esercizi/Sulle_Liste/cmake-build-debug/CMakeFiles/rebuild_cache.dir
