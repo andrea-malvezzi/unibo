@@ -1,55 +1,83 @@
+import java.util.Arrays;
+
 public class Algoritmi {
 
     /*
      * Merge Sort:
-     * 
+     * spezzo l'array in due subarrays: left e right.
+     * Richiamo ricorsivamente sia per left che per right, fino ad arrivare a quando si hanno array lunghi 1,
+     * In seguito la funzione ritornerà, procedendo con l'esecuzione del resto della funzione.
+     * Chiama merge per riempire l'array originale con il minore tra left e right, che sono ora ordinati.
      */
-    public void MergeSort(int[] A, int p, int r){
-        int q;
-        if (p > r){
-            q = Math.floorDiv(p + r, 2);
-            MergeSort(A, p, q);
-            MergeSort(A, q + 1, r);
-            // ora A[p ... q] e A[q+1 ... r] sono ordinati
-            Merge(A,p,q,r);
+    public void mergeSort(int[] array) {
+        if (array.length < 2) {
+            return;
         }
+        
+        int mid = array.length / 2;
+        int[] left = Arrays.copyOfRange(array, 0, mid);
+        int[] right = Arrays.copyOfRange(array, mid, array.length);
+        
+        mergeSort(left);
+        mergeSort(right);
+        
+        merge(array, left, right);
+    }
+
+    public void quickSort(int[] array, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(array, low, high);
+            quickSort(array, low, pivotIndex - 1);
+            quickSort(array, pivotIndex + 1, high);
+        }
+    }
+    
+    private int partition(int[] array, int low, int high) {
+        int pivot = array[high]; // Pivot scelto come ultimo elemento
+        int i = low - 1;
+        
+        for (int j = low; j < high; j++) {
+            if (array[j] < pivot) {
+                i++;
+                swap(array, i, j);
+            }
+        }
+        
+        swap(array, i + 1, high);
+        return i + 1;
+    }
+    
+    private void swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 
     /*
-     * Combina gli array ordinati A[p ... q] e A[q + 1 ... r].
-     * Per farlo prende l'indice di inizio delle due frammentazioni ed itera contemporaneamente su entrambi,
-     * confrontando i valori così trovati e costruendo B con il minore tra i due.
+     * Combina gli array ordinati left e right.
+     * Per farlo itera contemporaneamente su entrambi, confrontando i valori così trovati
+     * e riempiendo l'array originale con il minore tra i due.
      */
-    private void Merge(int[] A, int p, int q, int r){
-        int[] B = new int[r - p + 1];
-        int i = p;              // index over A[p ... q]
-        int j = q + 1;          // index over A[q+1 ... r]
-        int k = 0;              // index over B
-        while (i <= q && j <= r){
-            // costruisco l'array con l'elemento minore tra i due correntemente presi in esame
-            if (A[i] <= A[j]){
-                B[k] = A[i];
-                i++;
+    private void merge(int[] array, int[] left, int[] right) {
+        int i = 0, j = 0, k = 0;
+        
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[j]) {
+                array[k++] = left[i++];
             } else {
-                B[k] = A[j];
-                j++;
+                array[k++] = right[j++];
             }
-            k++;
         }
-        while(i <= q){
-            B[k] = A[i];
-            k++;
-            i++;
+        
+        while (i < left.length) {
+            array[k++] = left[i++];
         }
-        while(j <= r){
-            B[k] = A[j];
-            k++;
-            j++;
+        
+        while (j < right.length) {
+            array[k++] = right[j++];
         }
-        for (k = 1; k <= r - p + 1; k++)
-            A[p + k - 1] = B[k];
     }
-    
+
     public void PrintArray(int[] A){
         for(int i = 0; i < A.length; i++){
             System.out.print(A[i] + " ");
@@ -60,9 +88,14 @@ public class Algoritmi {
     public static void main(String[] args){
         Algoritmi algos = new Algoritmi();
         int[] A = {9, 7, 4, 6, 3, 5, 1, 2, 10, 0};
+        int[] B = A.clone();
+
         algos.PrintArray(A);
-        // ???
-        algos.MergeSort(A, 0, A.length);
+        algos.mergeSort(A);
         algos.PrintArray(A);
+        
+        algos.PrintArray(B);
+        algos.quickSort(B, 0, A.length - 1);
+        algos.PrintArray(B);
     }
 }
