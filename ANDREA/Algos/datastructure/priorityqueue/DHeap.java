@@ -56,7 +56,7 @@ public class DHeap<K extends Comparable<K>,D> implements PriorityQueue<K,D>{
 	* @return the inserted node
 	*/
 	public PriorityQueueNode<K,D> insert(K key, D data) {
-		DHeapNode<K, D> newNode = new DHeapNode<K,D>(key, data, this.d);
+		DHeapNode<K, D> newNode = new DHeapNode<K,D>(key, data, n);
 		this.nodes.add(newNode);
 		this.n++;
 		moveUp(newNode);
