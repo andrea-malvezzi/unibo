@@ -1,0 +1,23 @@
+{
+  "C main boilerplate": {
+    "prefix": "!",
+    "body": [
+      "#include <stdio.h>",
+      "",
+      "int main(void) {",
+      "    ${1:}",
+      "    return ${2:0};",
+      "}"
+    ],
+    "description": "Generate #include <stdio.h> and main function"
+  },
+  "Void function template": {
+    "prefix": "void",
+    "body": [
+      "void ${1:voidfunc}(${2:}) {",
+      "    ${3:}",
+      "}"
+    ],
+    "description": "Generate a void function template"
+  }
+}

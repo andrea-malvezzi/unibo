@@ -1,0 +1,32 @@
+\contentsline {section}{\numberline {1}Cos'è la logica proposizionale}{4}{section.1}%
+\contentsline {section}{\numberline {2}Sintassi della logica proposizionale}{4}{section.2}%
+\contentsline {section}{\numberline {3}Gli alberi di deduzione naturale}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Esempio pratico}{5}{subsection.3.1}%
+\contentsline {section}{\numberline {4}Le regole}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Invertibilità di una regola}{6}{subsection.4.1}%
+\contentsline {section}{\numberline {5}AND}{6}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Regola di introduzione}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Regola di eliminazione}{7}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Non-invertibile}{8}{subsubsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.3}Regole alternative di eliminazione}{8}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Riassunto regole dell'AND}{8}{subsection.5.4}%
+\contentsline {section}{\numberline {6}OR}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Regole di introduzione}{9}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Regola di eliminazione}{9}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Armonia nell'AND e nell'OR}{10}{section.7}%
+\contentsline {section}{\numberline {8}BOTTOM}{11}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Regola di eliminazione}{11}{subsection.8.1}%
+\contentsline {subsubsection}{\numberline {8.1.1}Non-Invertibilità}{11}{subsubsection.8.1.1}%
+\contentsline {section}{\numberline {9}TOP}{11}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Regola di introduzione}{11}{subsection.9.1}%
+\contentsline {section}{\numberline {10}IMPLICAZIONE}{12}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Regola di introduzione}{12}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Regola di eliminazione (modus ponens)}{12}{subsection.10.2}%
+\contentsline {section}{\numberline {11}NEGAZIONE}{12}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Regole di introduzione}{13}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Regole di eliminazione}{13}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Invertibilità regole}{13}{subsection.11.3}%
+\contentsline {section}{\numberline {12}Tautologie e come risolverle}{14}{section.12}%
+\contentsline {subsection}{\numberline {12.1}RAA}{14}{subsection.12.1}%
+\contentsline {subsubsection}{\numberline {12.1.1}Schema frequente per utilizzo del RAA}{14}{subsubsection.12.1.1}%
+\contentsline {subsection}{\numberline {12.2}EM}{15}{subsection.12.2}%

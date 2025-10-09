@@ -1,0 +1,11 @@
+To run the code, use
+gcc [filename].c -o [desired output name]
+
+Add the snippet.json code to
+[CTRL + SHIFT + P] > Snippets: configure snippets > c.json
+to add custom snippets. If those don't show up, try pressing
+[CTRL + SPACE].
+
+Snippets list:
+!       -> Boilerplate C code
+void    -> void returning function template
