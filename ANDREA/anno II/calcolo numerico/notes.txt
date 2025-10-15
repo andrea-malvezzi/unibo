@@ -1,0 +1,9 @@
+L'ambiente virtuale si chiama CN25, attivalo con:
+conda activate CN25
+
+Per disattivarlo:
+deactivate
+
+Altri comandi utili:
+conda list - lista tutti i pkg dentro all'ambiente virtuale attuale
+conda env list - lista tutti gli ambienti virtuali disponibili
