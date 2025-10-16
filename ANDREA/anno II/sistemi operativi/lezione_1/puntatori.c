@@ -40,6 +40,14 @@ int** genera_matrice_4(int n, int m) {
     return p_matrice;
 }
 
+void libera_matrice(int** mat, int n, int m){
+    for(int i = 0; i<n; i++){
+        free(mat[i]);
+        mat[i]=NULL;
+    }
+    free(mat);
+}
+
 // in C struct NON fa il typedef come in cpp, quindi dovrei ripetere ogni volta struct davanti a Node.
 // Con typedef evito questa cosa, basta ricordarsi di mettere il nome corretto dopo la graffa di chiusura.
 typedef struct Node {
@@ -48,10 +56,30 @@ typedef struct Node {
     struct Node* next;
 } Node;
 
-// TODO: Add following methods
 // insert head
+Node* insert_head(Node* head, int value) {
+    Node* tmp = malloc(sizeof(Node));
+    tmp -> value = value;
+    tmp -> next = head;
+
+    return tmp;
+}
+
 // print list
+void print_list(Node* head) {
+    if (head == NULL) return;
+    // invertendo le due righe seguenti, inverto l'ordine. Ora stampa dal fondo
+    printf("%d ", head -> value);
+    print_list(head -> next);
+}
+
 // free list
+void free_list(Node* head) {
+    if (head == NULL) return;
+    // arrivo fino in fondo e cancello dal fondo
+    free_list(head -> next);
+    free(head);
+}
 
 int main(void) {
     printf("---------- INIZIO TEST ----------\n\n");
@@ -77,7 +105,15 @@ int main(void) {
         for (int j = 0; j < b; j++) printf("%d", matrice[i][j]);
         printf("\n");
     }
-    
+
+    Node* head = NULL;
+    for (int i = 0; i < 10; i++) head = insert_head(head, i);
+    printf("\n");
+    print_list(head);
+
+    // memory management
+    libera_matrice(matrice, a, b);
+    free_list(head);
 
     return 0;
 }
